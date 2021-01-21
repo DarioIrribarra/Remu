@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>-- TOTAL PAGADO EN EL MES FONASA
+DECLARE @FONASA  AS DECIMAL
+SET @FONASA = (SELECT SUM(valorcalculado) FROM itemTrabajador 
+               INNER JOIN trabajador ON itemTrabajador.anomes = trabajador.anomes AND itemTrabajador.contrato = trabajador.contrato 
+               INNER JOIN isapre ON isapre.id = trabajador.salud 
+               WHERE itemTrabajador.anomes = 201905 AND coditem = 'SALUD' AND isapre.id = 1 
+               AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+               GROUP BY isapre.nombre )
+
+-- TOTAL PAGADO EN EL MES CAJA
+DECLARE @CAJA AS DECIMAL
+SET @CAJA = ( SELECT SUM(valorcalculado) FROM itemTrabajador 
+              WHERE anomes = 201905 AND coditem = 'CAJACOM' 
+              AND contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) )
+
+-- TOTAL ASIGNACIONES FAMILIARES
+DECLARE @ASIGNACIONES AS DECIMAL
+SET @ASIGNACIONES = (SELECT SUM(valorcalculado) as suma FROM itemtrabajador WHERE anomes = 201905 AND tipo = 3 AND contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0))
+
+
+SELECT nombre, SUM(cotizacion) as Cotizacion , SUM(ahorro) as Ahorro, SUM(seguroinvalidez) as 'Seguro Invalidez', SUM(segurotrabajador) as 'Seguro Afiliado', SUM(seguroempresa) as 'Seguro Empresa', SUM(asignacion) as 'Asignaciones Familiares', SUM(total) as Total, orden, detalle from 
+                            ( 
+																-- OBTENEMOS EL TOTAL COTIZACIONES AFP AGRUPADOS POR FONASA
+                                select afp.nombre as nombre, SUM(valorcalculado) as cotizacion, 0 as Ahorro,  0 as seguroinvalidez , 0 as segurotrabajador , 0 as seguroempresa , 0 as asignacion , 0 as total , 1 as orden, 'dato' as detalle  FROM itemtrabajador 
+                                INNER JOIN trabajador On trabajador.contrato = itemTrabajador.contrato and trabajador.anomes = itemTrabajador.anomes 
+                                INNER JOIN afp ON afp.id = trabajador.afp 
+                                WHERE itemTrabajador.anomes = 201905 AND coditem = 'PREVISI' AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY afp.nombre 
+                             UNION 												
+																-- OBTENEMOS EL TOTAL PARA AHORRO POR AFP
+																SELECT afp.nombre, 0, SUM(valorcalculado), 0, 0, 0, 0, 0, 1, 'dato'  FROM itemTrabajador
+																INNER JOIN trabajador 
+																On trabajador.contrato = itemtrabajador.contrato AND trabajador.anomes = itemTrabajador.anomes
+																INNER JOIN afp ON afp.id = trabajador.afp
+																WHERE itemTrabajador.anomes = 201905 AND (coditem = 'AFPAHO' OR coditem = 'APREVOL') AND itemTrabajador.contrato IN (SELECT contrato FROM trabajador WHERE salud &gt; 0)
+																Group by afp.nombre
+														 UNION
+																-- OBTENEMOS EL TOTAL PARA SEGURO DE INVALIDEZ POR AFP
+                                select afp.nombre, 0, 0,SUM(valorcalculado) , 0 , 0, 0, 0, 1, 'dato' from itemtrabajador 
+                                INNER JOIN trabajador On trabajador.contrato = itemTrabajador.contrato and trabajador.anomes = itemTrabajador.anomes 
+                                INNER JOIN afp ON afp.id = trabajador.afp 
+                                WHERE itemTrabajador.anomes = 201905 AND coditem = 'SEGINV' AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY afp.nombre 
+                            UNION 
+																-- OBTENEMOS EL TOTAL PARA SEGURO CENSATIA PARTE TRABAJADOR POR AFP
+                                select afp.nombre, 0, 0, 0, SUM(valorcalculado), 0, 0, 0, 1, 'dato' from itemtrabajador 
+                                INNER JOIN trabajador On trabajador.contrato = itemTrabajador.contrato and trabajador.anomes = itemTrabajador.anomes 
+                                INNER JOIN afp ON afp.id = trabajador.afp 
+                                WHERE itemTrabajador.anomes = 201905 AND coditem = 'SCEMPLE' AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY afp.nombre 
+                             UNION 
+																-- OBTENEMOS EL TOTAL PARA SEGURO DE CESANTIA PARTE QUE PAGA EMPRESA POIR AFP
+                                select afp.nombre, 0, 0, 0, 0, SUM(valorcalculado), 0, 0, 1, 'dato' from itemtrabajador 
+                                INNER JOIN trabajador On trabajador.contrato = itemTrabajador.contrato and trabajador.anomes = itemTrabajador.anomes 
+                                INNER JOIN afp ON afp.id = trabajador.afp 
+                                WHERE itemTrabajador.anomes = 201905 AND coditem = 'SCEMPRE' AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY afp.nombre 
+                            UNION 
+																-- SUMATORIA TOTAL AGRUPADO POR AFP
+                                SELECT afp.nombre, 0, 0, 0, 0, 0, 0, SUM(valorcalculado), 1, 'dato' FROM itemTrabajador 
+                                INNER JOIN trabajador On trabajador.contrato = itemtrabajador.contrato AND itemtrabajador.anomes = trabajador.anomes 
+                                INNER JOIN afp ON afp.id = trabajador.afp 
+                                WHERE itemTrabajador.anomes = 201905 AND(coditem = 'SEGINV' OR coditem = 'SCEMPLE' OR coditem = 'SCEMPRE' OR coditem = 'PREVISI' OR coditem = 'AFPAHO' OR coditem = 'APREVOL') 
+                                AND itemTrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY afp.nombre 
+                            UNION 
+																-- TOTAL COTIZACION ISAPRES AGRUPADO POR NOMBRE DE ISAPRE
+                                SELECT isapre.nombre, SUM(valorcalculado), 0, 0, 0, 0,0, SUM(valorcalculado), 4, 'dato' FROM itemTrabajador 
+                                INNER JOIN trabajador ON trabajador.anomes = itemtrabajador.anomes AND itemtrabajador.contrato = trabajador.contrato 
+                                INNER JOIN isapre ON isapre.id = trabajador.salud 
+                                WHERE itemTrabajador.anomes = 201905 AND coditem = 'SALUD' AND isapre.id &gt; 1 
+                                AND itemtrabajador.contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                                GROUP BY isapre.nombre 
+                            UNION 
+																-- TOTAL FONASA SIN CONSIDERAR EL PAGO POR CAJA
+                                SELECT 'FONASA', @Fonasa - @Caja, 0, 0, 0, 0, 0,@Fonasa - @Caja, 4, 'dato'                              
+                            UNION 
+																-- TOTAL CAJA COMPENSACION Y TOTAL POR ASIGANCIONES FAMILIARES
+                                 SELECT 'CAJA', @Caja, 0, 0, 0,0, ISNULL(@Asignaciones, 0), @Caja - ISNULL(@Asignaciones, 0), 8, 'dato'
+                            UNION 
+                                   SELECT 'MUTUAL', ISNULL(SUM(sysmutual + sysvalsanna), 0), 0, 0, 0, 0,0, ISNULL(SUM(sysmutual + sysvalsanna), 0), 9, 'dato'  
+                                   FROM calculomensual WHERE anomes = 201905 
+                                   AND contrato IN(SELECT contrato FROM trabajador WHERE salud &gt; 0) 
+                        ) as tabla 
+                        GROUP BY nombre, orden, detalle
+                        ORDER BY orden</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0ibm9tYnJlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNvdGl6YWNpb24iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkFob3JybyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iU2VndXJvIEludmFsaWRleiIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iU2VndXJvIEFmaWxpYWRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJTZWd1cm8gRW1wcmVzYSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQXNpZ25hY2lvbmVzIEZhbWlsaWFyZXMiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlRvdGFsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJvcmRlbiIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9ImRldGFsbGUiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
+</root>

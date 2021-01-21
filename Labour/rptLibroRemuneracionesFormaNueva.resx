@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>SELECT rut, contrato, concat(trabajador.nombre, ' ', trabajador.apepaterno, ' ', trabajador.apematerno) as nombre, anomes, (SELECT SUM(sysdiastr) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes) as diasTrabajados, cargo.nombre as cargo, (SELECT alias FROM libro WHERE orden = 1) as headercampo1, (SELECT alias FROM libro WHERE orden = 2) as headercampo2, (SELECT alias FROM libro WHERE orden = 3) as headercampo3, (SELECT alias FROM libro WHERE orden = 4) as headercampo4, (SELECT alias FROM libro WHERE orden = 5) as headercampo5, (SELECT alias FROM libro WHERE orden = 6) as headercampo6, (SELECT alias FROM libro WHERE orden = 7) as headercampo7, (SELECT alias FROM libro WHERE orden = 8) as headercampo8, (SELECT alias FROM libro WHERE orden = 9) as headercampo9, (SELECT alias FROM libro WHERE orden = 10) as headercampo10, (SELECT alias FROM libro WHERE orden = 11) as headercampo11, (SELECT alias FROM libro WHERE orden = 12) as headercampo12, (SELECT alias FROM libro WHERE orden = 13) as headercampo13, (SELECT alias FROM libro WHERE orden = 14) as headercampo14, (SELECT alias FROM libro WHERE orden = 15) as headercampo15, (SELECT alias FROM libro WHERE orden = 16) as headercampo16, (SELECT alias FROM libro WHERE orden = 17) as headercampo17, (SELECT alias FROM libro WHERE orden = 18) as headercampo18, (SELECT alias FROM libro WHERE orden = 19) as headercampo19, (SELECT alias FROM libro WHERE orden = 20) as headercampo20,  (SELECT negrita FROM libro WHERE orden = 1) as negrita1, (SELECT negrita FROM libro WHERE orden = 2) as negrita2, (SELECT negrita FROM libro WHERE orden = 3) as negrita3, (SELECT negrita FROM libro WHERE orden = 4) as negrita4, (SELECT negrita FROM libro WHERE orden = 5) as negrita5, (SELECT negrita FROM libro WHERE orden = 6) as negrita6, (SELECT negrita FROM libro WHERE orden = 7) as negrita7, (SELECT negrita FROM libro WHERE orden = 8) as negrita8, (SELECT negrita FROM libro WHERE orden = 9) as negrita9, (SELECT negrita FROM libro WHERE orden = 10) as negrita10, (SELECT negrita FROM libro WHERE orden = 11) as negrita11, (SELECT negrita FROM libro WHERE orden = 12) as negrita12, (SELECT negrita FROM libro WHERE orden = 13) as negrita13, (SELECT negrita FROM libro WHERE orden = 14) as negrita14, (SELECT negrita FROM libro WHERE orden = 15) as negrita15, (SELECT negrita FROM libro WHERE orden = 16) as negrita16, (SELECT negrita FROM libro WHERE orden = 17) as negrita17, (SELECT negrita FROM libro WHERE orden = 18) as negrita18, (SELECT negrita FROM libro WHERE orden = 19) as negrita19, (SELECT negrita FROM libro WHERE orden = 20) as negrita20,  (SELECT cursiva FROM libro WHERE orden = 1) as cursiva1, (SELECT cursiva FROM libro WHERE orden = 2) as cursiva2, (SELECT cursiva FROM libro WHERE orden = 3) as cursiva3, (SELECT cursiva FROM libro WHERE orden = 4) as cursiva4, (SELECT cursiva FROM libro WHERE orden = 5) as cursiva5, (SELECT cursiva FROM libro WHERE orden = 6) as cursiva6, (SELECT cursiva FROM libro WHERE orden = 7) as cursiva7, (SELECT cursiva FROM libro WHERE orden = 8) as cursiva8, (SELECT cursiva FROM libro WHERE orden = 9) as cursiva9, (SELECT cursiva FROM libro WHERE orden = 10) as cursiva10, (SELECT cursiva FROM libro WHERE orden = 11) as cursiva11, (SELECT cursiva FROM libro WHERE orden = 12) as cursiva12, (SELECT cursiva FROM libro WHERE orden = 13) as cursiva13, (SELECT cursiva FROM libro WHERE orden = 14) as cursiva14, (SELECT cursiva FROM libro WHERE orden = 15) as cursiva15, (SELECT cursiva FROM libro WHERE orden = 16) as cursiva16, (SELECT cursiva FROM libro WHERE orden = 17) as cursiva17, (SELECT cursiva FROM libro WHERE orden = 18) as cursiva18, (SELECT cursiva FROM libro WHERE orden = 19) as cursiva19, (SELECT cursiva FROM libro WHERE orden = 20) as cursiva20,  (SELECT visible FROM libro WHERE orden = 1) as visible1, (SELECT visible FROM libro WHERE orden = 2) as visible2, (SELECT visible FROM libro WHERE orden = 3) as visible3, (SELECT visible FROM libro WHERE orden = 4) as visible4, (SELECT visible FROM libro WHERE orden = 5) as visible5, (SELECT visible FROM libro WHERE orden = 6) as visible6, (SELECT visible FROM libro WHERE orden = 7) as visible7, (SELECT visible FROM libro WHERE orden = 8) as visible8, (SELECT visible FROM libro WHERE orden = 9) as visible9, (SELECT visible FROM libro WHERE orden = 10) as visible10, (SELECT visible FROM libro WHERE orden = 11) as visible11, (SELECT visible FROM libro WHERE orden = 12) as visible12, (SELECT visible FROM libro WHERE orden = 13) as visible13, (SELECT visible FROM libro WHERE orden = 14) as visible14, (SELECT visible FROM libro WHERE orden = 15) as visible15, (SELECT visible FROM libro WHERE orden = 16) as visible16, (SELECT visible FROM libro WHERE orden = 17) as visible17, (SELECT visible FROM libro WHERE orden = 18) as visible18, (SELECT visible FROM libro WHERE orden = 19) as visible19, (SELECT visible FROM libro WHERE orden = 20) as visible20,  (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='SUBASE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo1, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='HRSEX50' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo2, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='GRATIFI' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo3, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='COLACIO' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo4, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='MOVILIZ' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo5, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='PREVISI' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo6, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='SALUD' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo7, (ISNULL((SELECT SUM(SYSTIMP) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes ),0)) as campo8, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='SCEMPRE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo9, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='SEGINV' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo10, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='IMPUEST' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo11, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='ANTSUEL' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo12, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='ASIFAR' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo13, (ISNULL((SELECT SUM(SYSCAJA) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes ),0)) as campo14, (ISNULL((SELECT SUM(SYSLIQ) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes ),0)) as campo15, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='AFPAHO' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo16, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo17, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo18, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo19, (ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo20  FROM trabajador INNER JOIN cargo ON trabajador.cargo = cargo.id WHERE ANOMES = 201906 AND status = 1</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0icnV0IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNvbnRyYXRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Im5vbWJyZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhbm9tZXMiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJkaWFzVHJhYmFqYWRvcyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FyZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG8xIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvMiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG80IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvNSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzYiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG83IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvOCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzkiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG8xMCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzExIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvMTIiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG8xMyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzE0IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvMTUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG8xNiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzE3IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImhlYWRlcmNhbXBvMTgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iaGVhZGVyY2FtcG8xOSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJoZWFkZXJjYW1wbzIwIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGExIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhMiIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTMiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGE0IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhNSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTYiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGE3IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhOCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTkiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGExMCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTExIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhMTIiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGExMyIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTE0IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhMTUiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGExNiIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTE3IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJuZWdyaXRhMTgiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9Im5lZ3JpdGExOSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0ibmVncml0YTIwIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhMSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTIiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmEzIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhNCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTUiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmE2IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhNyIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTgiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmE5IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhMTAiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmExMSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTEyIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhMTMiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmExNCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTE1IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhMTYiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmExNyIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0iY3Vyc2l2YTE4IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJjdXJzaXZhMTkiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImN1cnNpdmEyMCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTEiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGUyIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlMyIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTQiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGU1IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlNiIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTciIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGU4IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlOSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTEwIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlMTEiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGUxMiIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTEzIiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlMTQiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGUxNSIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTE2IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlMTciIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9InZpc2libGUxOCIgVHlwZT0iQm9vbGVhbiIgLz48RmllbGQgTmFtZT0idmlzaWJsZTE5IiBUeXBlPSJCb29sZWFuIiAvPjxGaWVsZCBOYW1lPSJ2aXNpYmxlMjAiIFR5cGU9IkJvb2xlYW4iIC8+PEZpZWxkIE5hbWU9ImNhbXBvMSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8yIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzMiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvNCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG81IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzYiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvNyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG84IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzkiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTAiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTIiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTMiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTYiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTciIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTgiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMTkiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMjAiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
+  </data>
+  <data name="xrLabel18.ExpressionBindings" xml:space="preserve">
+    <value>Iif([Query].[visible17] == 'True',sumSum([Query].[campo17]) ,  0)  +
+Iif([Query].[visible18] == 'True',sumSum([Query].[campo18]) ,  0)  +
+Iif([Query].[visible19] == 'True',sumSum([Query].[campo19]) ,  0)  +
+Iif([Query].[visible20] == 'True',sumSum([Query].[campo20]) ,  0)</value>
+  </data>
+  <data name="xrLabel17.ExpressionBindings" xml:space="preserve">
+    <value>Iif([Query].[visible13] == 'True',sumSum([Query].[campo13]) ,  0)  +
+Iif([Query].[visible14] == 'True',sumSum([Query].[campo14]) ,  0)  +
+Iif([Query].[visible15] == 'True',sumSum([Query].[campo15]) ,  0)  +
+Iif([Query].[visible16] == 'True',sumSum([Query].[campo16]) ,  0)</value>
+  </data>
+  <data name="xrLabel16.ExpressionBindings" xml:space="preserve">
+    <value>Iif([Query].[visible8] == 'True',sumSum([Query].[campo8]) ,  0)  +
+Iif([Query].[visible9] == 'True',sumSum([Query].[campo9]) ,  0)  +
+Iif([Query].[visible10] == 'True',sumSum([Query].[campo10]) ,  0)  +
+Iif([Query].[visible11] == 'True',sumSum([Query].[campo11]) ,  0)</value>
+  </data>
+  <data name="xrLabel15.ExpressionBindings" xml:space="preserve">
+    <value>Iif([Query].[visible4] == 'True',sumSum([Query].[campo4]) ,  0)  +
+Iif([Query].[visible5] == 'True',sumSum([Query].[campo5]) ,  0)  +
+Iif([Query].[visible6] == 'True',sumSum([Query].[campo6]) ,  0)  +
+Iif([Query].[visible7] == 'True',sumSum([Query].[campo7]) ,  0)</value>
+  </data>
+  <data name="xrLabel14.ExpressionBindings" xml:space="preserve">
+    <value>Iif([Query].[visible1] == 'True',sumSum([Query].[campo1]) ,  0)  +
+Iif([Query].[visible2] == 'True',sumSum([Query].[campo2]) ,  0)  +
+Iif([Query].[visible3] == 'True',sumSum([Query].[campo3]) ,  0)  +
+Iif([Query].[visible4] == 'True',sumSum([Query].[campo4]) ,  0)</value>
+  </data>
+</root>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>SELECT rut, contrato, concat(trabajador.nombre, ' ', trabajador.apepaterno, ' ', trabajador.apematerno) as nombre, anomes, (SELECT sysDiastr from calculoMensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes) as diasTrabajados, cargo.nombre as cargo,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 1) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo1,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 2) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo2,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 3) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo3,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 4) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo4,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 5) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo5,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 6) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo6,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 7) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo7,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 8) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo8,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 9) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo9,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 10) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo10,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 11) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo11,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 12) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo12,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 13) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo13,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 14) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo14,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 15) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo15,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 16) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo16,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 17) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo17,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 18) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo18,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 19) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo19,
+(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem=(SELECT coditem from libro where orden = 20) AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ),0)) as campo20
+/*
+(SELECT valorcalculado from itemtrabajador WHERE coditem='SCEMPLE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as campo01,
+(SELECT valorcalculado from itemtrabajador WHERE coditem='SCEMPRE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as SCEMPRE,
+(SELECT valorcalculado from itemtrabajador WHERE coditem='SEGINV' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as SEGINV,
+(SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='moviliz' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as IMPUEST,
+(SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='ANTSUEL' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as ANTS,
+
+(ISNULL((SELECT valorcalculado from itemtrabajador WHERE coditem='AFPAHO' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes),0)) as AFPAHO,
+(SELECT valorcalculado from itemtrabajador WHERE coditem='SUBASE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) as SUBASE,
+
+(ISNULL((SELECT systimp from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes),0)) as IMPONIBLE,
+(SELECT (SELECT valorcalculado from itemtrabajador WHERE coditem='AFPAHO' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) +(SELECT valorcalculado from itemtrabajador WHERE coditem='SUBASE' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes ) ) as CALCULO_PRUEBA*/
+
+FROM trabajador
+INNER JOIN cargo ON trabajador.cargo = cargo.id
+WHERE ANOMES=201905 AND status=1</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0icnV0IiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNvbnRyYXRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Im5vbWJyZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJhbm9tZXMiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJkaWFzVHJhYmFqYWRvcyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FyZ28iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY2FtcG8xIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzIiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvMyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG80IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvNiIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG83IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJjYW1wbzgiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImNhbXBvOSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xMCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xMSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xMiIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xMyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xNCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xNSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xNiIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xNyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xOCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8xOSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iY2FtcG8yMCIgVHlwZT0iRGVjaW1hbCIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
+</root>
