@@ -14,16 +14,37 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+#[Dd]ebug/
+#**/[Dd]ebug/*/
+
+#Para no ignorar archivos se debe mantener el símbolo !
+#antes de la dirección. Hasta el momento ignora todos los
+#archivos de la carpeta debug, excepto los que tienen !
+#además va ignorando en orden descendente
+
+#Ignora todos los archivos de Debug
+**/[Dd]ebug/*
+#No ignora los archivos que terminen en .sqlite
+!**/[Dd]ebug/*.sqlite
+#No ignora archivos que terminen en .dll
+!**/[Dd]ebug/*.dll
+**/[Dd]ebug/DevExpress*.dll
+**/[Dd]ebug/EntityFramework*.dll
+**/[Dd]ebug/Microsoft*.dll
+#No ignora ninguno de estos
+!**/[Dd]ebug/System.Data.SQLite.dll
+!**/[Dd]ebug/System.Data.SQLite.EF6.dll
+!**/[Dd]ebug/System.Data.SQLite.Linq.dll
+!**/[Dd]ebug/System.Data.SQLite.xml
+
+[Dd]ebugPublic/*
+[Rr]elease/*
+[Rr]eleases/*
 x64/
 x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
 [Oo]bj/
 [Ll]og/
 
