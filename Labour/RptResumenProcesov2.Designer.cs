@@ -55,6 +55,7 @@
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.empresa = new DevExpress.XtraReports.Parameters.Parameter();
             this.condicion = new DevExpress.XtraReports.Parameters.Parameter();
+            this.imagen = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -230,7 +231,7 @@
             // 
             // sqlDataSource1
             // 
-            this.sqlDataSource1.ConnectionName = "localhost_sesc_Connection 1";
+            this.sqlDataSource1.ConnectionName = "Dario_Local_perSopytec";
             this.sqlDataSource1.Name = "sqlDataSource1";
             customSqlQuery1.Name = "Query";
             customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
@@ -297,7 +298,12 @@
             this.condicion.Description = "Nombre condicion aplicada a la busqueda";
             this.condicion.Name = "condicion";
             // 
-            // RptResumenProcesov2
+            // imagen
+            // 
+            this.imagen.Description = "Logo guardado en bd";
+            this.imagen.Name = "imagen";
+            // 
+            // rptResumenProcesoDll
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.Detail,
@@ -312,7 +318,8 @@
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.periodo,
             this.empresa,
-            this.condicion});
+            this.condicion,
+            this.imagen});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Grilla,
             this.GrillaSinColor});
@@ -349,5 +356,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel5;
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
         private DevExpress.XtraReports.Parameters.Parameter condicion;
+        private DevExpress.XtraReports.Parameters.Parameter imagen;
     }
 }

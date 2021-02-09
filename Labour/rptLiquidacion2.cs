@@ -34,19 +34,12 @@ namespace Labour
             //regla2.Formatting.
 
             this.Detail.FormattingRules.Add(regla);
-        
+
         }
 
         private void xrSubreport1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             
-        }
-
-      
-
-        private void imgLogo1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-                 
         }
 
         private void xrLabel35_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
@@ -56,9 +49,10 @@ namespace Labour
                 xrLabel35.Visible = false;
         }
 
-        private void imgLogo1_BeforePrint_1(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void imgLogo1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
             Image img = Imagen.GetLogoFromBd();
+
             if (img != null)
             {
                 imgLogo1.Image = img;

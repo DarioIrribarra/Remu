@@ -30,6 +30,14 @@ namespace Labour
         {
             datoCombobox.spLlenaPeriodos("SELECT anomes FROM parametro ORDER BY anomes DESC", txtComboPeriodo, "anomes", "anomes", true);
 
+
+            //Para rellenar el LookUpEdit de orden
+            //Se añaden el nombre de la columna y el nombre a mostrar
+            List<datoCombobox> listadoOrdenarPor = new List<datoCombobox>();
+            listadoOrdenarPor.Add((new datoCombobox() { KeyInfoString = "apepaterno", descInfo = "Apellido" }));
+            listadoOrdenarPor.Add((new datoCombobox() { KeyInfoString = "rut", descInfo = "Rut" }));
+            datoCombobox.LlenaOrdenarPor(lueOrdenPor, listadoOrdenarPor);
+
             cbTodos.Checked = true;
             txtConjunto.Enabled = false;
             btnConjunto.Enabled = false;
@@ -84,8 +92,22 @@ namespace Labour
                 //TODOS LOS REGISTROS DEL PERIODO
                 tb = Persona.GetDataDinamic(Convert.ToInt32(txtComboPeriodo.EditValue), "");
 
+
                 if (tb.Rows.Count > 0)
                 {
+                    //Cambia orden de columnas
+                    fnSistema.CambiarOrdenColumnas(tb, new List<string>() { "rut", "contrato", "apepaterno", "apematerno", "nombre" });
+
+                    //Ordena por valor seleccionado
+                    tb = fnSistema.OrdenarResultadosPor(tb, lueOrdenPor.EditValue.ToString());
+
+                    //Cambia nombre columnas
+                    tb.Columns["apepaterno"].ColumnName = "Apellido Paterno";
+                    tb.Columns["apematerno"].ColumnName = "Apellido Materno";
+                    tb.Columns["nombre"].ColumnName = "Nombres";
+
+                    fnSistema.SetNombreColumnasMayúsculas(tb);
+
                     //GENERAMOS EXCEL
                     if (FileExcel.CrearArchivoExcelDev(tb, FileName))
                     {
@@ -95,7 +117,7 @@ namespace Labour
                     }
                     else
                     {
-                        XtraMessageBox.Show("No se pudo crear archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        XtraMessageBox.Show("No se pudo crear archivo. Asegúrese de no estar utilizando el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 else
@@ -114,6 +136,21 @@ namespace Labour
 
                 if (tb.Rows.Count > 0)
                 {
+
+                    //Cambia orden de columnas
+                    fnSistema.CambiarOrdenColumnas(tb, new List<string>() { "rut", "contrato", "apepaterno", "apematerno", "nombre" });
+
+                    //Ordena por valor seleccionado
+                    tb = fnSistema.OrdenarResultadosPor(tb, lueOrdenPor.EditValue.ToString());
+
+                    //Cambia nombre columnas
+                    tb.Columns["apepaterno"].ColumnName = "Apellido Paterno";
+                    tb.Columns["apematerno"].ColumnName = "Apellido Materno";
+                    tb.Columns["nombre"].ColumnName = "Nombres";
+
+                    //Se cambian los nombres a mayúsculas
+                    fnSistema.SetNombreColumnasMayúsculas(tb);
+
                     //GENERAMOS EXCEL
                     if (FileExcel.CrearArchivoExcelDev(tb, FileName))
                     {

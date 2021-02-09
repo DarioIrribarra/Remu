@@ -142,6 +142,12 @@ namespace Labour
 
             string Name = "";
             Name = Calculo.PeriodoObservado + "-" + pgDatabase + ".bak";
+            //CREA DIRECTORIO SI NO EXISTE
+            if (!Directory.Exists(conf.RutaRespaldo)) 
+            {
+                Directory.CreateDirectory(conf.RutaRespaldo);
+            }
+
             string File = conf.RutaRespaldo + "\\" + Name;
 
             SqlCommand cmd;
@@ -1878,6 +1884,53 @@ namespace Labour
             return cad;
         }
 
+        /// <summary>
+        /// Ordena las tablas por nombre de columna
+        /// </summary>
+        /// <param name="pDataTable"></param>
+        /// <param name="pNombreColumnaParaOrdenar"></param>
+        public static DataTable OrdenarResultadosPor(DataTable pDataTable, string pNombreColumnaParaOrdenar) 
+        {
+            //Cambia orden de filas
+            DataTable ordenada = pDataTable.Select("true", $"{pNombreColumnaParaOrdenar} ASC").CopyToDataTable();
+
+            return ordenada;
+        }
+
+        /// <summary>
+        /// Mueve columnas de la DataTable al inicio por orden en el listado.
+        /// </summary>
+        /// <param name="pDataTable"></param>
+        /// <param name="pColumnas"></param>
+        /// <returns></returns>
+        public static bool CambiarOrdenColumnas(DataTable pDataTable, List<string> pColumnas) 
+        {
+            //Recorre el listado de columnas y asigna su orden prncipal por posición en el listado
+            try
+            {
+                for (int i = 0; i < pColumnas.Count(); i++)
+                {
+                    pDataTable.Columns[pColumnas[i]].SetOrdinal(i);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Cambia nombre de columnas a mayúsculas
+        /// </summary>
+        /// <param name="pDataTable"></param>
+        public static void SetNombreColumnasMayúsculas(DataTable pDataTable) 
+        {
+            //Todas a mayúsculas
+            foreach (DataColumn columna in pDataTable.Columns)
+                columna.ColumnName = columna.ColumnName.ToUpper();
+        }
+
         #region "PROGRAM"
         /// <summary>
         /// Indica si ya se está ejecutando un proceso.
@@ -1960,7 +2013,7 @@ namespace Labour
         /// <summary>
         /// Columna clave
         /// </summary>
-        //public string KeyInfoString { get; set; }
+        public string KeyInfoString { get; set; }
         /// <summary>
         /// Columna clave
         /// </summary>
@@ -2012,18 +2065,22 @@ namespace Labour
             catch (SqlException ex)
             {
               //ERROR DE CONEXION
-            }            
+            }
+
             
+
             //PROPIEDADES COMBOBOX
             pComboBox.Properties.DataSource = datosComboBox.ToList();
             pComboBox.Properties.ValueMember = "KeyInfo";
             pComboBox.Properties.DisplayMember = "descInfo";
 
             pComboBox.Properties.PopulateColumns();
+            //OCULTAR SIEMPRE EL VALOR KEY STRING
+            pComboBox.Properties.Columns[0].Visible = false;
             //SI OCULTAR KEY ES TRUE NO SE DEBE MOSTRAR LA COLUMNA KEY
             if (ocultarKey == true)
             {
-                pComboBox.Properties.Columns[0].Visible = false;
+                pComboBox.Properties.Columns[1].Visible = false;
             }
             pComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;            
             pComboBox.Properties.AutoSearchColumnIndex = 1;
@@ -2089,11 +2146,12 @@ namespace Labour
             pComboBox.Properties.DisplayMember = "descInfo";
 
             pComboBox.Properties.PopulateColumns();
+            //OCULTAR SIEMPRE EL VALOR KEY STRING
+            pComboBox.Properties.Columns[0].Visible = false;
             //SI OCULTAR KEY ES TRUE NO SE DEBE MOSTRAR LA COLUMNA KEY
             if (ocultarKey == true)
             {
-                pComboBox.Properties.Columns[0].Visible = false;
-                //pComboBox.Properties.Columns[1].Visible = false;
+                pComboBox.Properties.Columns[1].Visible = false;
             }
             pComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
             pComboBox.Properties.AutoSearchColumnIndex = 1;
@@ -2117,7 +2175,7 @@ namespace Labour
             lista1.Add(new PruebaCombo() { key = 4, desc = "Cargo" });
 
             //PROPIEDADES COMBOBOX
-            pCombo.Properties.DataSource = lista1.ToList();
+            pCombo.Properties.DataSource = lista1;
             pCombo.Properties.ValueMember = "key";
             pCombo.Properties.DisplayMember = "desc";
 
@@ -2132,6 +2190,36 @@ namespace Labour
 
             if (pCombo.Properties.DataSource != null)
                 pCombo.ItemIndex = 0;
+        }
+
+        /// <summary>
+        /// Rellena selección de ordenar por utilizando KeyInfoString y descInfo solamente. Estos nombres de columnas debe existir en la tabla
+        /// </summary>
+        /// <param name="pComboBox"></param>
+        /// <param name="pValoresCbx"></param>
+        public static void LlenaOrdenarPor(LookUpEdit pComboBox, List<datoCombobox> pValoresCbx) {
+
+            List<datoCombobox> datoOrdenPor = new List<datoCombobox>();
+
+            //Llena el cbx
+            pComboBox.Properties.DataSource = pValoresCbx.ToList();
+            pComboBox.Properties.PopulateColumns();
+            pComboBox.Properties.ValueMember = "KeyInfoString";
+            pComboBox.Properties.DisplayMember = "descInfo";
+
+            //PROPIEDADES COMBOBOX
+            //NO SE DEBE MOSTRAR LA COLUMNA KEY
+            pComboBox.Properties.Columns[0].Visible = false;
+            pComboBox.Properties.Columns[1].Visible = false;
+
+            pComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoComplete;
+            pComboBox.Properties.AutoSearchColumnIndex = 1;
+            pComboBox.Properties.ShowHeader = false;
+
+            if (pComboBox.Properties.DataSource != null)
+            {
+                pComboBox.ItemIndex = 0;
+            }
         }
     }
 

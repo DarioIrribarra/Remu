@@ -119,15 +119,6 @@ namespace Labour
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            CreaTablas(false);
-        }
-
-        private void btnTablasSIISopytec_Click(object sender, EventArgs e)
-        {
-            CreaTablas(true);
-        }
-
-        private void CreaTablas(bool pTablasSoftwareSIISopytec) {
             if (txtYear.Properties.DataSource == null || txtYear.EditValue == null)
             { XtraMessageBox.Show("Por favor selecciona un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); txtYear.Focus(); return; }
 
@@ -136,18 +127,20 @@ namespace Labour
 
             try
             {
-                Tabla = dec.GetInformationYear(Convert.ToInt32(txtYear.EditValue.ToString()));
+                //Para realizar pruebas se da un máximo de 95 ruts
+                if (chkPruebasMax95Ruts.Checked)
+                {
+                    Tabla = dec.GetInformationYear(Convert.ToInt32(txtYear.EditValue.ToString()), true);
+                }
+                else { 
+                    Tabla = dec.GetInformationYear(Convert.ToInt32(txtYear.EditValue.ToString()));
+
+                }
+
+
 
                 if (Tabla == null)
                 { XtraMessageBox.Show("No se encontraron resultados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
-
-
-                if (pTablasSoftwareSIISopytec) {
-                    Tabla.Columns.Remove("nombre");
-                    if (Tabla.Columns.Contains("previsi"))
-                        Tabla.Columns.Remove("previsi");
-                }
-                    
 
                 FileExcel.CrearArchivoExcelDev(Tabla, txtRuta.Text);
                 if (File.Exists(txtRuta.Text))

@@ -36,7 +36,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtRuta = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnTablasSIISopytec = new DevExpress.XtraEditors.SimpleButton();
+            this.chkPruebasMax95Ruts = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRuta.Properties)).BeginInit();
             this.SuspendLayout();
@@ -112,23 +112,22 @@
             this.simpleButton1.TabIndex = 47;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // btnTablasSIISopytec
+            // chkPruebasMax95Ruts
             // 
-            this.btnTablasSIISopytec.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTablasSIISopytec.ImageOptions.Image = global::Labour.Properties.Resources.exporttoxls_32x32;
-            this.btnTablasSIISopytec.Location = new System.Drawing.Point(185, 95);
-            this.btnTablasSIISopytec.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTablasSIISopytec.Name = "btnTablasSIISopytec";
-            this.btnTablasSIISopytec.Size = new System.Drawing.Size(52, 47);
-            this.btnTablasSIISopytec.TabIndex = 48;
-            this.btnTablasSIISopytec.Click += new System.EventHandler(this.btnTablasSIISopytec_Click);
+            this.chkPruebasMax95Ruts.AutoSize = true;
+            this.chkPruebasMax95Ruts.Location = new System.Drawing.Point(186, 95);
+            this.chkPruebasMax95Ruts.Name = "chkPruebasMax95Ruts";
+            this.chkPruebasMax95Ruts.Size = new System.Drawing.Size(155, 21);
+            this.chkPruebasMax95Ruts.TabIndex = 48;
+            this.chkPruebasMax95Ruts.Text = "Solo 95 primeros rut";
+            this.chkPruebasMax95Ruts.UseVisualStyleBackColor = true;
             // 
             // frmMontoAnual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 155);
-            this.Controls.Add(this.btnTablasSIISopytec);
+            this.Controls.Add(this.chkPruebasMax95Ruts);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.labelControl2);
@@ -159,6 +158,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtRuta;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton btnTablasSIISopytec;
+        private System.Windows.Forms.CheckBox chkPruebasMax95Ruts;
     }
 }

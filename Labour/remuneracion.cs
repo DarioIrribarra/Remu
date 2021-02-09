@@ -16008,7 +16008,8 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
         /// <returns></returns>
         public static string GetDescConjunto(string pCode)
         {
-            string desc = "";
+            //Se cambia descripción de conjunto al no existir el código o no seleccionar alguno
+            string desc = "No aplica";
             string sql = "SELECT descripcion FROM conjunto WHERE codigo=@pCodigo";
             SqlCommand cmd;
             SqlConnection cn;
@@ -24120,13 +24121,14 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
         /// Retorna un datatable con toda la informacion encontrada dentro de año.
         /// </summary>
         /// <param name="pYear">Año que se desea consultar</param>
+        /// <param name="pLimite95RutsParaPruebasSII">Para realizar pruebas con SII</param>
         /// <returns></returns>
-        public DataTable GetInformationYear(int pYear)
+        public DataTable GetInformationYear(int pYear, bool pLimite95RutsParaPruebasSII = false)
         {
             #region "SQL"
-            string sql = "select rut, anomes as periodo, rentaneta, IIF(imponible > topeafp, topeafp, imponible) as imponible, impuesto, nombre, /*previsi,*/ " +
+            string sql = "select rut, anomes as periodo, rentaneta, IIF(imponible > topeafp, topeafp, imponible) as imponible, impuesto, nombre, previsi, " +
                 "rentanogravada, mayorrenta, rebajaextrema, rentaexenta, leyessociales " +
-                "FROM( SELECT rut, anomes, SUM(rentaneta) as rentaneta, SUM(imponible) as imponible, SUM(impuesto) as impuesto, nombre, relcon, /*SUM(previsi)as previsi,*/" +
+                "FROM( SELECT rut, anomes, SUM(rentaneta) as rentaneta, SUM(imponible) as imponible, SUM(impuesto) as impuesto, nombre, relcon, SUM(previsi)as previsi," +
                 "SUM(rentanogravada) as rentanogravada, SUM(mayorrenta) mayorrenta, SUM(rebajaextrema) as rebajaextrema, SUM(rentaexenta) as rentaexenta, " +
                 "(SELECT ROUND(topeafp * UF, 0) FROM valoresmes WHERE valoresmes.anomes = data.anomes) as topeafp, " +
                 "SUM(SALUD + AFP + MUTUALI + SANNA + SEGINV + SCEMPLE + SCEMPRE) AS leyessociales " +
@@ -24134,8 +24136,8 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
                 "(SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'IMPUEST' " +
                 "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0) as Impuesto, " +
                 "CONCAT(trabajador.apepaterno, ' ', trabajador.apematerno, ' ', trabajador.nombre) as Nombre,  'C' as relcon, " +
-                "/*(SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND(coditem = 'PREVISI' OR coditem = 'SCEMPLE') " +
-                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0 ) as previsi,*/  " +
+                "(SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND(coditem = 'PREVISI' OR coditem = 'SCEMPLE') " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0 ) as previsi, " +
                 "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SALUD' " +
                 "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SALUD, " +
                 "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'PREVISI' " +
@@ -24156,6 +24158,45 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
                 "FROM calculomensual  INNER JOIN trabajador ON trabajador.contrato = calculomensual.contrato  AND trabajador.anomes = calculomensual.anomes  " +
                 "WHERE(calculomensual.anomes >= @pInicio AND calculoMensual.anomes <= @pTermino)  AND trabajador.contrato = trabajador.contrato " +
                 "AND status = 1) as data  GROUP BY rut, anomes, nombre, relcon) as data2  ORDER BY rut, anomes";
+
+            if (pLimite95RutsParaPruebasSII) { 
+                sql = "select rut, anomes as periodo, rentaneta, IIF(imponible > topeafp, topeafp, imponible) as imponible, impuesto, 0 as impuestoaccesoriasabril, nombre, previsi, " +
+                "rentanogravada, mayorrenta, rebajaextrema, rentaexenta, leyessociales " +
+                "FROM( SELECT rut, anomes, SUM(rentaneta) as rentaneta, SUM(imponible) as imponible, SUM(impuesto) as impuesto, nombre, relcon, SUM(previsi)as previsi," +
+                "SUM(rentanogravada) as rentanogravada, SUM(mayorrenta) mayorrenta, SUM(rebajaextrema) as rebajaextrema, SUM(rentaexenta) as rentaexenta, " +
+                "(SELECT ROUND(topeafp * UF, 0) FROM valoresmes WHERE valoresmes.anomes = data.anomes) as topeafp, " +
+                "SUM(SALUD + AFP + MUTUALI + SANNA + SEGINV + SCEMPLE + SCEMPRE) AS leyessociales " +
+                "FROM(SELECT trabajador.rut, trabajador.contrato, calculomensual.anomes, systributo as RentaNeta, systimp as Imponible, " +
+                "(SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'IMPUEST' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0) as Impuesto, " +
+                "CONCAT(trabajador.apepaterno, ' ', trabajador.apematerno, ' ', trabajador.nombre) as Nombre,  'C' as relcon, " +
+                "(SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND(coditem = 'PREVISI' OR coditem = 'SCEMPLE') " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0 ) as previsi, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SALUD' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SALUD, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'PREVISI' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as AFP, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'MUTUALI' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as MUTUALI, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SANNA' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SANNA, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SEGINV' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SEGINV, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SCEMPLE' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SCEMPLE, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato AND coditem = 'SCEMPRE' " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0),0) as SCEMPRE, " +
+                "ISNULL((SELECT SUM(valorcalculado) FROM itemtrabajador  WHERE itemtrabajador.contrato = trabajador.contrato " +
+                "AND itemtrabajador.anomes = calculomensual.anomes AND itemtrabajador.suspendido = 0 AND(tipo = 2 OR tipo = 3)), 0) as rentanogravada, 0 as mayorrenta, " +
+                "0 as rebajaextrema, 0 as rentaexenta, ROUND(systopeafp, 0) as topeafp " +
+                "FROM calculomensual  INNER JOIN trabajador ON trabajador.contrato = calculomensual.contrato  AND trabajador.anomes = calculomensual.anomes  " +
+                "WHERE(calculomensual.anomes >= @pInicio AND calculoMensual.anomes <= @pTermino)  AND trabajador.contrato = trabajador.contrato " +
+                "AND status = 1" +
+                //Límite de 95 ruts
+                "AND trabajador.rut IN(SELECT distinct TOP 95 rut from trabajador)" +
+                ") as data  GROUP BY rut, anomes, nombre, relcon) as data2  ORDER BY rut, anomes";
+            }
+
             #endregion
 
             SqlConnection cn;

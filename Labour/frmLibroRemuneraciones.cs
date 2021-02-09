@@ -15,6 +15,7 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
 using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 
 namespace Labour
 {
@@ -127,8 +128,9 @@ namespace Labour
                     reporteNuevo.groupFooterBand1.Visible = true;
                     //Create Group 
                     GroupHeaderBand GroupBand = new GroupHeaderBand { HeightF = 10 };
-                    GroupBand.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Left;                   
+                    GroupBand.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Left;
                     reporteNuevo.Bands.Add(GroupBand);
+
 
                     GroupFooterBand Footer = new GroupFooterBand { HeightF = 10 };
                     Footer.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right;
@@ -149,8 +151,9 @@ namespace Labour
                     //    field = "cargo";
 
                     GroupBand.GroupFields.Add(groupField);
+                    
 
-                    XRLabel labelGroup = new XRLabel { ForeColor = System.Drawing.Color.Black, WidthF = 748, TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft };
+                    XRLabel labelGroup = new XRLabel { ForeColor = System.Drawing.Color.Black, WidthF = 748, TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter, /*Font = new Font(reporteNuevo.Font.FontFamily, 9, FontStyle.Underline)*/};
                     XRLabel labelDetail = new XRLabel { LocationF = new System.Drawing.PointF(30, 0) };
 
                     if (Settings.Default.UserDesignerOptions.DataBindingMode == DataBindingMode.Bindings)
@@ -202,6 +205,72 @@ namespace Labour
             //    cargaLibro(periodo, List);
 
             //}
+        }
+
+
+        private void btnTablasExcel_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            Cursor.Current = Cursors.WaitCursor;
+            DataTable reporteDataSet = new DataTable();
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptlibrorem") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+
+            if (Calculo.PeriodoValido(Convert.ToInt32(lookUpEdit1.EditValue.ToString())) == false)
+            { XtraMessageBox.Show("Periodo ingresado no existe", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning); lookUpEdit1.Focus(); return; }
+
+            int periodo = 0;
+            periodo = Convert.ToInt32(lookUpEdit1.EditValue.ToString());
+
+            //Tabla de datos
+            reporteDataSet = GetSQLStringExcel(periodo, cbxSeleccionConjunto.EditValue.ToString(), txtGrupo.Text.ToLower() == "sin agrupar" ? "" : txtGrupo.Text.ToLower()).Tables[0];
+
+            fnSistema.SetNombreColumnasMayúsculas(reporteDataSet);
+
+            if (reporteDataSet.Rows.Count == 0)
+            { XtraMessageBox.Show("No se encontraron registros", "Registros", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            if (reporteDataSet == null)
+            { XtraMessageBox.Show("No se encontraron resultados", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            //OBTIENE RUTA
+            string rutaExcel = FileExcel.OpenDialogExcel(reporteDataSet, periodo, "LibroRemuneraciones");
+
+            if (rutaExcel != null) 
+            {
+                splashScreenManager1.ShowWaitForm();
+                try
+                {
+                    //CREA ARCHIVO EXCEL CON DATOS DE TABLA
+                    if (FileExcel.CrearArchivoExcelDev(reporteDataSet, rutaExcel))
+                    {
+                        if (File.Exists(rutaExcel))
+                        {
+                            splashScreenManager1.CloseWaitForm();
+                            XtraMessageBox.Show($"Archivo creado correctamente en {rutaExcel}", "Documento Pdf", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            DialogResult Pregunta = XtraMessageBox.Show("¿Deseas ver el documento?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (Pregunta == DialogResult.Yes)
+                                System.Diagnostics.Process.Start(rutaExcel);
+                        }
+                    }
+                    else
+                    {
+                        splashScreenManager1.CloseWaitForm();
+                        { XtraMessageBox.Show("Error al crear tablas de datos. Asegúrese de no estar utilizando el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    splashScreenManager1.CloseWaitForm();
+                    { XtraMessageBox.Show("Error al crear tablas de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+                }
+                
+            }
         }
 
         #region "TABLAS ANTIGUAS"
@@ -939,7 +1008,7 @@ namespace Labour
         //    return sql;
         //}
 
-        
+
 
         #endregion
 
@@ -1252,10 +1321,12 @@ namespace Labour
             periodoBusqueda = 0;
         }
 
-        private DataSet GetSQLString(int pPeriodo, string pConjunto)
+        private DataSet GetSQLString(int pPeriodo, string pConjunto, bool pTablasExcel = false)
         {
             SqlTransaction sqltran;
             string sql = "SELECT * FROM libro ORDER BY orden";
+            if (pTablasExcel)
+                sql = "SELECT * FROM libro WHERE visible != 0 ORDER BY orden";
             string cadena = "";
             string header = "";
             string negrita = "";
@@ -1348,6 +1419,123 @@ namespace Labour
                         $"{(ShowPrivadas == false ? " privado=0 AND" : "")} \n" +
                         $"{(pConjunto == "" ? "" : ($"  {Conjunto.GetCondicionFromCode(pConjunto)}"))} AND status = 1 AND anomes={pPeriodo})\n" +
                         $" ORDER BY apepaterno\n";
+                    }
+
+                    using (sqlcmd = new SqlCommand(sql, fnSistema.sqlConn))
+                    {
+                        sqlcmd.Transaction = sqltran;
+
+                        SqlDataAdapter sqldata = new SqlDataAdapter();
+                        sqldata.SelectCommand = sqlcmd;
+                        sqldata.Fill(ds, "prueba");
+                    }
+                    sqltran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.ToString());
+                    sqltran.Rollback();
+                }
+            }
+            return ds;
+
+        }
+
+        private DataSet GetSQLStringExcel(int pPeriodo, string pConjunto, string pOrdenPor)
+        {
+            SqlTransaction sqltran;
+            string sql = "SELECT * FROM libro WHERE visible != 0 AND coditem != '' ORDER BY orden";
+            string cadena = "";
+            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
+            SqlCommand sqlcmd;
+
+            if (fnSistema.ConectarSQLServer())
+            {
+
+                sqltran = fnSistema.sqlConn.BeginTransaction();
+                //1
+                try
+                {
+                    /*Carga informacion de tabla libro*/
+                    using (sqlcmd = new SqlCommand(sql, fnSistema.sqlConn))
+                    {
+                        sqlcmd.Transaction = sqltran;
+                        var datareader = sqlcmd.ExecuteReader();
+                        dt.Load(datareader);
+                    }
+
+                    //2
+                    //FOR PARA RECORRER LA TABLA LIBRO Y SABER QUE ITEMS AGREGAR
+                    /*
+                     * 0 --> VIENE DE TABLE ITEM (CODITEM)
+                     * 1 --> ITEM O VARIABLE SYS DE SISTEMA.
+                     */
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        int variableSistema = dt.Rows[i].Field<int>("tipo");
+                        string item = dt.Rows[i].Field<string>("coditem");
+                        string alias = dt.Rows[i].Field<string>("alias");
+                        //ITEM DE BD
+                        if (variableSistema == 0)
+                        {
+                            cadena = cadena + $"(ISNULL((SELECT SUM(valorcalculado) from itemtrabajador WHERE coditem='{item}' AND itemTrabajador.contrato=trabajador.contrato AND itemTrabajador.anomes=trabajador.anomes AND suspendido=0 ),0)) as '{alias}',\n";
+                        }
+                        //VARIABLE DE SISTEMA
+                        if (variableSistema == 1)
+
+                        {
+                            cadena = cadena + $"(ISNULL((SELECT SUM({item}) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes ),0)) as '{alias}',\n";
+                        }
+                        //FORMULA
+                        if (variableSistema == 2)
+
+                        {
+                            //cadena = cadena + $"(ISNULL((SELECT SUM('{item}') from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes ),0)) as campo{i + 1}, ";
+                        }
+                    }
+                    //string cadenaSinComaFinal = cadena.Remove(cadena.Length - 2, 1);
+                    string cadenaSinComaFinal = cadena.Substring(0, cadena.Length - 2);
+
+                    //Orden por agrupación
+                    string orderBy = " ORDER BY apepaterno, apematerno, nombre";
+                    if (pOrdenPor != "")
+                        orderBy = $" ORDER BY {pOrdenPor}, apepaterno, apematerno, nombre";
+
+                    if (pConjunto == "")
+                    {
+                        sql = $"SELECT rut, contrato, concat(trabajador.apepaterno, ' ', trabajador.apematerno, ' ', trabajador.nombre) as nombre, anomes, \n" +
+                          $"(SELECT SUM(sysdiastr) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes) as diasTrabajados, \n" +
+                          $"cargo.nombre as cargo, " +
+                          $"ccosto.nombre as centrocosto, area.nombre as area, sucursal.descSucursal as sucursal," +
+                          $"{cadenaSinComaFinal} \n" +
+                          $"FROM trabajador \n" +
+                          $"INNER JOIN cargo ON trabajador.cargo = cargo.id \n" +
+                          "INNER JOIN area ON trabajador.area = area.id \n" +
+                          "INNER JOIN sucursal ON sucursal.codSucursal = trabajador.sucursal \n" +
+                          "INNER JOIN ccosto ON ccosto.id = trabajador.ccosto \n" +
+                          $"WHERE ANOMES = {pPeriodo} \n" +
+                          $"AND contrato IN (SELECT contrato FROM trabajador WHERE{(FiltroUsuario != "0" ? ($" {Conjunto.GetCondicionFromCode(FiltroUsuario) + " AND"}") : "")} \n" +
+                          $"{(ShowPrivadas == false ? " privado=0 AND" : "")}  status = 1 AND anomes={pPeriodo})\n" +
+                          $"{orderBy}\n";
+                    }
+                    else
+                    {
+                        sql = $"SELECT rut, contrato, concat(trabajador.apepaterno, ' ', trabajador.apematerno, ' ', trabajador.nombre) as nombre, anomes, \n" +
+                        $"(SELECT SUM(sysdiastr) from calculomensual WHERE calculomensual.contrato=trabajador.contrato AND calculomensual.anomes=trabajador.anomes) as diasTrabajados, \n" +
+                        $"cargo.nombre as cargo, " +
+                        $"ccosto.nombre as centrocosto, area.nombre as area, sucursal.descSucursal as sucursal," +
+                        $"{cadenaSinComaFinal} \n" +
+                        $"FROM trabajador \n" +
+                        $"INNER JOIN cargo ON trabajador.cargo = cargo.id \n" +
+                        "INNER JOIN area ON trabajador.area = area.id \n" +
+                        "INNER JOIN sucursal ON sucursal.codSucursal = trabajador.sucursal \n" +
+                        "INNER JOIN ccosto ON ccosto.id = trabajador.ccosto \n" +
+                        $"WHERE ANOMES = {pPeriodo} \n" +
+                        $"AND contrato IN (SELECT contrato FROM trabajador WHERE{(FiltroUsuario != "0" ? ($" {Conjunto.GetCondicionFromCode(FiltroUsuario) + " AND"}") : "")} \n" +
+                        $"{(ShowPrivadas == false ? " privado=0 AND" : "")} \n" +
+                        $"{(pConjunto == "" ? "" : ($"  {Conjunto.GetCondicionFromCode(pConjunto)}"))} AND status = 1 AND anomes={pPeriodo})\n" +
+                        $"{orderBy}\n";
                     }
 
                     using (sqlcmd = new SqlCommand(sql, fnSistema.sqlConn))
@@ -1557,6 +1745,7 @@ namespace Labour
 
             }
         }
+
 
         private void textEdit1_Properties_BeforeShowMenu(object sender, DevExpress.XtraEditors.Controls.BeforeShowMenuEventArgs e)
         {

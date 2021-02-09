@@ -484,6 +484,7 @@ namespace Labour
                 DataTable pTabla = new DataTable();
                 pTabla = DataSourceReport.Tables[0];
 
+                //rptResumenProcesoDll res = new rptResumenProcesoDll();
                 RptResumenProcesov2 res = new RptResumenProcesov2();
                 //res.DataSource = DataSourceReport.Tables[0];
                 res.DataSource = pTabla;
@@ -493,13 +494,16 @@ namespace Labour
                 emp.SetInfo();
 
                 //PARAMETROS REPORTE
+                foreach (DevExpress.XtraReports.Parameters.Parameter parametro in res.Parameters)
+                {
+                    parametro.Visible = false;
+                }
 
-                res.Parameters["periodo"].Visible = false;
-                res.Parameters["empresa"].Visible = false;
                 res.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo)));
                 res.Parameters["empresa"].Value = emp.Razon;
-                res.Parameters["condicion"].Visible = false;
                 res.Parameters["condicion"].Value = NombreCondicion;
+                //Pasar la imagen al reporte dll como parámetro
+                res.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 Documento d = new Documento("", 0);
 

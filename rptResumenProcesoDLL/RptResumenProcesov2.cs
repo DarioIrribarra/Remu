@@ -4,12 +4,13 @@ using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using System.Windows.Forms;
+using DevExpress.Utils;
 
 namespace Labour
 {
-    public partial class RptResumenProcesov2 : DevExpress.XtraReports.UI.XtraReport
+    public partial class rptResumenProcesoDll : DevExpress.XtraReports.UI.XtraReport
     {
-        public RptResumenProcesov2()
+        public rptResumenProcesoDll()
         {
             InitializeComponent();
             
@@ -66,11 +67,11 @@ namespace Labour
 
         private void PictureLogo_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            //Image img = Imagen.GetLogoFromBd();
+            //Image img = Images.GetLogoFromBd();
 
-            if (Parameters["imagen"] != null)
+            if (Parameters["imagendll"] != null)
             {
-                PictureLogo.Image = (Image)Parameters["imagen"].Value;
+                PictureLogo.Image = (Image)Parameters["imagendll"].Value;
                 PictureLogo.Sizing = DevExpress.XtraPrinting.ImageSizeMode.StretchImage;
             }
         }

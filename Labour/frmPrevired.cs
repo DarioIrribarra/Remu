@@ -442,9 +442,11 @@ namespace Labour
                 { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
 
                 if (txtConjunto.Text.Length > 0 && User.GetUserFilter().Length > 0)
-                    Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter()) + ";" + Conjunto.GetCondicionFromCode(txtConjunto.Text);
+                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter()) + ";" + Conjunto.GetCondicionFromCode(txtConjunto.Text);
+                    Cond = Labour.Conjunto.GetDescConjunto(txtConjunto.Text);
                 else if (User.GetUserFilter().Length > 0)
-                    Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter());
+                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter());
+                    Cond = Labour.Conjunto.GetDescConjunto(User.GetUserFilter());
                 else if (User.GetUserFilter().Length == 0)
                     Cond = "";
 

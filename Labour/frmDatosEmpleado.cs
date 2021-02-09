@@ -44,7 +44,7 @@ namespace Labour
         /// Consulta base.
         /// </summary>
         string sqlConsulta = "SELECT anomes, contrato,  " +
-                             "CONCAT(nombre, ' ', apepaterno, ' ', apematerno) as nombre FROM TRABAJADOR ";
+                             "CONCAT(apepaterno, ' ', apematerno, ' ', nombre) as nombre FROM TRABAJADOR ";
 
         public frmDatosEmpleado()
         {

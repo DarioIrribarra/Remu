@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.IO;
+using System.Diagnostics;
 
 namespace Labour
 {
@@ -43,7 +45,12 @@ namespace Labour
                     resultado = fnSistema.BackUpDataBase();
                     if (resultado)
                     {
-                        XtraMessageBox.Show("Base de datos respaldada correctamente", "Respaldo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DialogResult resp = XtraMessageBox.Show("Base de datos respaldada correctamente\n¿Desea ver carpeta de respaldos?", "Respaldo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resp == DialogResult.Yes)
+                        {
+                            AbrirCarpetaRespaldos();
+                        }
+                            
                     }
                     else
                     {
@@ -58,6 +65,31 @@ namespace Labour
                     XtraMessageBox.Show("No se pudo realizar respaldo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            AbrirCarpetaRespaldos();
+        }
+
+        private void AbrirCarpetaRespaldos() 
+        {
+            try
+            {
+                string ruta = Configuracion.ConfiguracionGlobal.RutaRespaldo;
+                //CREA DIRECTORIO SI NO EXISTE
+                if (!Directory.Exists(ruta))
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+
+                Process.Start(ruta);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error al intentar acceder a carpeta de respaldos", "Respaldo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            
         }
     }
 }

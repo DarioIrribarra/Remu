@@ -98,6 +98,30 @@ namespace Labour
             }
         }
 
+        /// <summary>
+        /// Abre diálogo de directorios con un nombre pre establecido para el archivo
+        /// </summary>
+        /// <param name="tabla"></param>
+        /// <param name="pNameArchivo"></param>
+        /// <returns></returns>
+        public static string OpenDialogExcel(DataTable tabla, int pPeriodo, string pPrefijoNombreArchivo)
+        {
+
+            //OPEN DIALOG PARA LA RUTA
+            SaveFileDialog save = new SaveFileDialog();
+            save.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            save.Filter = "Archivos Excel(*.xlsx)|*.xlsx";
+            save.FileName = $"{pPrefijoNombreArchivo}_{fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo))}";
+            DialogResult dialogo = save.ShowDialog();
+            if (dialogo == DialogResult.OK)
+            {
+
+                return save.FileName;
+            }
+
+            return null;
+        }
+
         //CREAR ARCHIVO EXCEL USANDO DEVEXPRESS
         public static bool CrearArchivoExcelDev(DataTable tabla, string PathFile)
         {

@@ -159,7 +159,10 @@ namespace Labour
         private void FrmPlanillaSueldos_Load(object sender, EventArgs e)
         {
             datoCombobox.spLlenaPeriodos("SELECT anomes FROM parametro ORDER BY ANOMES desc", txtPeriodo, "anomes", "anomes", true);
-          
+            List<datoCombobox> listadoOrdenarPor = new List<datoCombobox>();
+            listadoOrdenarPor.Add((new datoCombobox() { KeyInfoString = "apepaterno", descInfo = "Apellido" }));
+            listadoOrdenarPor.Add((new datoCombobox() { KeyInfoString = "rut", descInfo = "Rut" }));
+            datoCombobox.LlenaOrdenarPor(lueOrdenPor, listadoOrdenarPor);
 
             txtConjunto.Enabled = false;
             txtConjunto.Text = "";
@@ -184,7 +187,9 @@ namespace Labour
             { XtraMessageBox.Show("Periodo no valido", "Periodo", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
 
             if (Calculo.PeriodoValido(Convert.ToInt32(txtPeriodo.EditValue)) == false)
-            { XtraMessageBox.Show("Periodo no valido", "Periodo", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }            
+            { XtraMessageBox.Show("Periodo no valido", "Periodo", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            RecargaListado();
 
             if (cbTodos.Checked)
             {              
@@ -226,13 +231,16 @@ namespace Labour
 
         private void cbTodos_CheckedChanged(object sender, EventArgs e)
         {
-            string sql = "";
+            //string sql = "";
             if (cbTodos.Checked)
             {
                 txtConjunto.Enabled = false;
                 txtConjunto.Text = "";
                 btnConjunto.Enabled = false;
 
+                #region RECARGA DE LISTADO AL HACER CLICK EN CBX
+
+                /*
                 if (txtPeriodo.Properties.DataSource != null)
                 {
                     if (Calculo.PeriodoValido(Convert.ToInt32(txtPeriodo.EditValue)))
@@ -242,6 +250,13 @@ namespace Labour
 
                         sql = SqlConsulta + $" WHERE anomes={Convert.ToInt32(txtPeriodo.EditValue)} {sql}";
 
+                        //Se añade orden por nombre
+                        if (lueOrdenPor.EditValue == null || lueOrdenPor.EditValue.ToString() == "apepaterno")
+                            sql = sql + " ORDER BY apepaterno, apematerno, nombre";
+                        else if (lueOrdenPor.EditValue.ToString() == "rut")
+                            sql = sql + " ORDER BY rut";
+
+
                         ListadoLiq = Persona.ListadoLiquidaciones(sql);
 
                         if (ListadoLiq.Count > 0)
@@ -250,6 +265,8 @@ namespace Labour
                             txtRegistros.Text = "0";
                     }
                 }
+                */
+                #endregion
             }
             else
             {
@@ -274,8 +291,21 @@ namespace Labour
 
         private void txtPeriodo_EditValueChanged(object sender, EventArgs e)
         {
+            //RecargaListado();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Realiza cambios al listado que guarda los datos para realizar liquidaciones
+        /// </summary>
+        private void RecargaListado() 
+        {
             int periodo = 0;
-            string sql = "";            
+            string sql = "";
 
             if (txtPeriodo.Properties.DataSource != null)
             {
@@ -296,6 +326,12 @@ namespace Labour
 
                     sql = SqlConsulta + $" WHERE anomes={Convert.ToInt32(txtPeriodo.EditValue)} {sql}";
 
+                    //Se añade orden por nombre como base
+                    if (lueOrdenPor.EditValue == null || lueOrdenPor.EditValue.ToString() == "apepaterno")
+                        sql = sql + " ORDER BY apepaterno, apematerno, nombre";
+                    else if (lueOrdenPor.EditValue.ToString() == "rut")
+                        sql = sql + " ORDER BY rut";
+
                     ListadoLiq = Persona.ListadoLiquidaciones(sql);
 
                     if (ListadoLiq.Count > 0)
@@ -306,9 +342,7 @@ namespace Labour
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        
+        
     }
 }
