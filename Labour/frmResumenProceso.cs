@@ -484,9 +484,10 @@ namespace Labour
                 DataTable pTabla = new DataTable();
                 pTabla = DataSourceReport.Tables[0];
 
-                //rptResumenProcesoDll res = new rptResumenProcesoDll();
-                RptResumenProcesov2 res = new RptResumenProcesov2();
-                //res.DataSource = DataSourceReport.Tables[0];
+                //TestRptResumenProcesoExterno res = new TestRptResumenProcesoExterno();
+                ResumenProcesoExterno.RptResumenProcesov2 res = new ResumenProcesoExterno.RptResumenProcesov2();
+                //RptResumenProcesov2 res = new RptResumenProcesov2();
+                res.DataSource = DataSourceReport.Tables[0];
                 res.DataSource = pTabla;
                 res.DataMember = "tabla";
 
