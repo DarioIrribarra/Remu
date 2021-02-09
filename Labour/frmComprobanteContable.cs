@@ -1498,7 +1498,15 @@ namespace Labour
                 List<RContable> List = new List<RContable>();
                 List = GetListDataSource(pTabla);
 
-                RptContable2 reporte = new RptContable2();
+                //RptContable2 reporte = new RptContable2();
+                //Reporte externo
+                ReporteContableExterno.RptContable2 reporte =   new ReporteContableExterno.RptContable2(
+                                                                    fnSistema.pgServer, 
+                                                                    fnSistema.pgDatabase, 
+                                                                    fnSistema.pgUser, 
+                                                                    fnSistema.pgPass
+                                                                );
+
                 reporte.DataSource = List;
                 //reporte.DataMember = "data";
 
@@ -1513,6 +1521,7 @@ namespace Labour
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo)));
                 reporte.Parameters["empresa"].Value = emp.Razon;
                 reporte.Parameters["condicion"].Value = CondicionBusqueda;
+                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 Documento doc = new Documento("", 0);
                 doc.ShowDocument(reporte);

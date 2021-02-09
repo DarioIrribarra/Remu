@@ -108,7 +108,9 @@ namespace Labour
             { XtraMessageBox.Show("No se encontraron registros", "Registros", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }    
 
             splashScreenManager1.ShowWaitForm();
-            rptLibroRemuneracionesFormaNueva reporteNuevo = new rptLibroRemuneracionesFormaNueva();
+            //rptLibroRemuneracionesFormaNueva reporteNuevo = new rptLibroRemuneracionesFormaNueva();
+            //Reporte desde DLL
+            LibroRemuneracionesExterno.rptLibroRemuneraciones reporteNuevo = new LibroRemuneracionesExterno.rptLibroRemuneraciones();
             reporteNuevo.Parameters["periodo"].Visible = false;
             reporteNuevo.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
             reporteNuevo.Parameters["condicion"].Visible = false;

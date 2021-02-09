@@ -360,7 +360,10 @@ namespace Labour
         {
             if (lista.Count>0)
             {
-                rptPlanillaAfp reporte = new rptPlanillaAfp();
+
+                //rptPlanillaAfp reporte = new rptPlanillaAfp();
+                //Reporte externo
+                Planillas_PagoAFPExterno.rptPlanillaAfp reporte = new Planillas_PagoAFPExterno.rptPlanillaAfp();
                 reporte.DataSource = lista;               
                 string field = "";
 
@@ -373,8 +376,8 @@ namespace Labour
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodoObservado)));
                 reporte.Parameters["afp"].Value = AfpConsulta;
                 reporte.Parameters["rutemp"].Value = fnSistema.fFormatearRut2(emp.Rut);             
-                reporte.Parameters["condicion"].Visible = false;
                 reporte.Parameters["condicion"].Value = DescripcionCondicion;
+                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 //PARA QUE NO APARESCA LA VENTANA PIDIENTO EL VALOR PARA EL PARAMETRO
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)

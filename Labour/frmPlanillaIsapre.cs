@@ -270,7 +270,7 @@ namespace Labour
 
                 if (lista.Count > 0)
                 {
-                    XtraMessageBox.Show("Operación realizada correctamente", $"{lista.Count} registros encontrados", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    XtraMessageBox.Show("Operación realizada correctamente", $"{lista.Count} registros encontrados", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     btnImprimir.Enabled = true;
                     btnImpresionRapida.Enabled = true;
@@ -460,7 +460,10 @@ namespace Labour
             emp.SetInfo();
             if (lista.Count>0)
             {
-                rptPlanillaIsapre reporte = new rptPlanillaIsapre();
+
+                //rptPlanillaIsapre reporte = new rptPlanillaIsapre();
+                //Reporte externo
+                Planillas_PagoIsapreExterno.rptPlanillaIsapre reporte = new Planillas_PagoIsapreExterno.rptPlanillaIsapre();
                 reporte.DataSource = lista;
 
                 string field = "";
@@ -471,8 +474,8 @@ namespace Labour
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
                 reporte.Parameters["registros"].Value = lista.Count;               
                 reporte.Parameters["isapre"].Value = isapreObservacion;
-                reporte.Parameters["condicion"].Visible = false;
                 reporte.Parameters["condicion"].Value = DescripcionCondicion;
+                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)
                 {

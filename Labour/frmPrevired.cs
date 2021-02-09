@@ -450,7 +450,14 @@ namespace Labour
                 else if (User.GetUserFilter().Length == 0)
                     Cond = "";
 
-                RptPreviredRes r = new RptPreviredRes();
+                //RptPreviredRes r = new RptPreviredRes();
+                //Reporte externo
+                PreviredExterno.RptPreviredRes r = new PreviredExterno.RptPreviredRes();
+
+                foreach (DevExpress.XtraReports.Parameters.Parameter parametro in r.Parameters)
+                {
+                    parametro.Visible = false;
+                }
 
                 r.Parameters["periodo"].Value = txtComboPeriodo.Text;
                 r.Parameters["periodo"].Visible = false;
@@ -458,6 +465,7 @@ namespace Labour
                 r.Parameters["condicion"].Value = Cond;
                 r.Parameters["empresa"].Visible = false;
                 r.Parameters["empresa"].Value = emp.Razon;
+                r.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 r.DataSource = DataSum;
                 Documento doc = new Documento("", 0);

@@ -362,7 +362,9 @@ namespace Labour
           
             if (lista.Count>0)
             {
-                rptPlanillaMutual reporte = new rptPlanillaMutual();
+                //rptPlanillaMutual reporte = new rptPlanillaMutual();
+                //Reporte externo
+                Planillas_PagoMutualExterno.rptPlanillaMutual reporte = new Planillas_PagoMutualExterno.rptPlanillaMutual();
                 reporte.DataSource = lista;
 
                 //PARAMETROS
@@ -371,6 +373,7 @@ namespace Labour
                 reporte.Parameters["totalimponible"].Value = sumImponible;
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
                 reporte.Parameters["condicion"].Value = DescripcionCondicion;
+                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 //FORMA MAS SIMPLE DE OCULTAR LOS PARAMETROS CUANDO SE MOUESTRA EL DOCUMENTO...
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)

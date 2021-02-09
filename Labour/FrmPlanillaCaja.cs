@@ -482,7 +482,9 @@ namespace Labour
             string field = "";
             if (lista.Count > 0)
             {
-                RptPlanillaCaja reporte = new RptPlanillaCaja();
+                //RptPlanillaCaja reporte = new RptPlanillaCaja();
+                //Reporte externo
+                Planillas_PagoCajaExterno.RptPlanillaCaja reporte = new Planillas_PagoCajaExterno.RptPlanillaCaja();
                 reporte.DataSource = lista;
 
                 //PARAMETROS
@@ -497,6 +499,7 @@ namespace Labour
                 reporte.Parameters["sumSimples"].Value = SumaSimple;
                 reporte.Parameters["sumAsig"].Value = SumaAsig;
                 reporte.Parameters["caja"].Value = txtCaja.Text;
+                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                 //PARA TABLA RESUMEN
                 reporte.Parameters["TotalHombreConIsapre"].Value = totalhombreconisapre;
                 reporte.Parameters["TotalMujerConIsapre"].Value = totalmujerconisapre;

@@ -36,6 +36,7 @@
             this.btnSalir = new DevExpress.XtraEditors.SimpleButton();
             this.btnConfLibro = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnTablasExcel = new DevExpress.XtraEditors.SimpleButton();
             this.txtGrupo = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -43,7 +44,6 @@
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.btnConjunto = new DevExpress.XtraEditors.SimpleButton();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
-            this.btnTablasExcel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cbTodos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -109,7 +109,7 @@
             this.btnConfLibro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfLibro.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConfLibro.ImageOptions.Image")));
             this.btnConfLibro.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnConfLibro.Location = new System.Drawing.Point(214, 216);
+            this.btnConfLibro.Location = new System.Drawing.Point(278, 216);
             this.btnConfLibro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConfLibro.Name = "btnConfLibro";
             this.btnConfLibro.Size = new System.Drawing.Size(50, 37);
@@ -138,6 +138,20 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(471, 268);
             this.groupControl1.TabIndex = 40;
+            // 
+            // btnTablasExcel
+            // 
+            this.btnTablasExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTablasExcel.ImageOptions.Image = global::Labour.Properties.Resources.exporttoxls_32x32;
+            this.btnTablasExcel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnTablasExcel.Location = new System.Drawing.Point(139, 215);
+            this.btnTablasExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTablasExcel.Name = "btnTablasExcel";
+            this.btnTablasExcel.Size = new System.Drawing.Size(126, 37);
+            this.btnTablasExcel.TabIndex = 46;
+            this.btnTablasExcel.Text = "Tabla datos";
+            this.btnTablasExcel.ToolTip = "Generar Tablas";
+            this.btnTablasExcel.Click += new System.EventHandler(this.btnTablasExcel_Click);
             // 
             // txtGrupo
             // 
@@ -207,19 +221,6 @@
             this.separatorControl1.Padding = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.separatorControl1.Size = new System.Drawing.Size(457, 26);
             this.separatorControl1.TabIndex = 40;
-            // 
-            // btnTablasExcel
-            // 
-            this.btnTablasExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTablasExcel.ImageOptions.Image = global::Labour.Properties.Resources.exporttoxls_32x32;
-            this.btnTablasExcel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnTablasExcel.Location = new System.Drawing.Point(139, 215);
-            this.btnTablasExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnTablasExcel.Name = "btnTablasExcel";
-            this.btnTablasExcel.Size = new System.Drawing.Size(52, 37);
-            this.btnTablasExcel.TabIndex = 46;
-            this.btnTablasExcel.ToolTip = "Generar Tablas";
-            this.btnTablasExcel.Click += new System.EventHandler(this.btnTablasExcel_Click);
             // 
             // frmLibroRemuneraciones
             // 
