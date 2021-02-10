@@ -227,9 +227,13 @@ namespace Labour
                 "VALUES(@contrato, @salida, @finaliza, @dias, @tipo, @retorna, @pFolio, @perVac)";
             SqlCommand cmd;
             string grilla = "", PerUsados = "";
-            int res = 0, LastFolio = 0;            
+            int res = 0, LastFolio = 0;
 
-            RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+
+            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             vacaciones Vac = new vacaciones();
             Documento Doc = new Documento("", 0);
 
@@ -338,7 +342,11 @@ namespace Labour
             double DiasTomFecha = 0;
 
             vacaciones Vac = new vacaciones();
-            RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+
+            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             //TABLA HASH PRECARGA
@@ -1503,7 +1511,12 @@ namespace Labour
 
                         if (ds.Tables[0].Rows.Count > 0)
                         {
-                            RptComprobanteVacacion vaca = new RptComprobanteVacacion();
+                            //RptComprobanteVacacion vaca = new RptComprobanteVacacion();
+                            //Reporte externo
+                            ReportesExternos.rptComprobanteVacacion vaca = new ReportesExternos.rptComprobanteVacacion();
+
+                            vaca.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+
                             vaca.DataSource = ds.Tables[0];
                             vaca.DataMember = "data";
 
@@ -2411,7 +2424,11 @@ namespace Labour
 
         private void ImprimirComprobante_Click(object sender, EventArgs e)
         {
-            RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+
+            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             if (viewVacaciones.RowCount > 0 && Trabajador != null)
@@ -2436,7 +2453,11 @@ namespace Labour
         //EVENTO QUE SE LANZA CUANDO SE HACE CLICK EN EL CONTEXT MENU
         private void ShowComprobante_Click(object sender, EventArgs e)
         {
-            RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+
+            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             if (viewVacaciones.RowCount>0 && Trabajador != null)

@@ -4400,7 +4400,7 @@ namespace Labour
         }
 
         //GENERA DOCUMENTO COMPROBANTE DE VACACIONES
-        public static RptComprobanteVacacion GeneraComprobante(DateTime salida, DateTime finaliza, string contrato, Hashtable data)
+        public static ReportesExternos.rptComprobanteVacacion GeneraComprobante(DateTime salida, DateTime finaliza, string contrato, Hashtable data)
         {
             string sql = "select DISTINCT rut, concat(nombre, ' ', apepaterno, ' ', apematerno) as name, " +
                 "vacacionDetalle.contrato, vacaciondetalle.salida, finaliza, dias, tipo, retorna, folio, pervac " +
@@ -4412,7 +4412,10 @@ namespace Labour
             SqlCommand cmd;
             SqlDataAdapter ad = new SqlDataAdapter();
             DataSet ds = new DataSet();
-            RptComprobanteVacacion vaca = new RptComprobanteVacacion();
+            //RptComprobanteVacacion vaca = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion vaca = new ReportesExternos.rptComprobanteVacacion();
+            vaca.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             try
             {
                 if (fnSistema.ConectarSQLServer())
@@ -4448,6 +4451,7 @@ namespace Labour
                             vaca.Parameters["progrestante"].Value = Convert.ToDecimal(data["progRestante"]);
                             vaca.Parameters["propUsadosRepo"].Value = Convert.ToDouble(data["propUsados"]);
                             vaca.Parameters["progUsadosRepo"].Value = Convert.ToDouble(data["progUsados"]);
+                            
 
                             //DÍAS TOTALES DE VACACIONES ACUMULADAS ANUALMENTE
                             double diasVacacionesAcumuladas = (double)data["propRestante"] + (double)data["propUsadosTotales"];

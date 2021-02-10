@@ -463,7 +463,7 @@ namespace Labour
 
                 //rptPlanillaIsapre reporte = new rptPlanillaIsapre();
                 //Reporte externo
-                Planillas_PagoIsapreExterno.rptPlanillaIsapre reporte = new Planillas_PagoIsapreExterno.rptPlanillaIsapre();
+                ReportesExternos.rptPlanillaIsapre reporte = new ReportesExternos.rptPlanillaIsapre();
                 reporte.DataSource = lista;
 
                 string field = "";

@@ -363,7 +363,7 @@ namespace Labour
 
                 //rptPlanillaAfp reporte = new rptPlanillaAfp();
                 //Reporte externo
-                Planillas_PagoAFPExterno.rptPlanillaAfp reporte = new Planillas_PagoAFPExterno.rptPlanillaAfp();
+                ReportesExternos.rptPlanillaAfp reporte = new ReportesExternos.rptPlanillaAfp();
                 reporte.DataSource = lista;               
                 string field = "";
 

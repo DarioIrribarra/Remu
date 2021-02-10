@@ -5896,10 +5896,13 @@ namespace Labour
             datosEmpleado = CabeceraEmpleado(txtcontrato.Text, PeriodoEmpleado);
 
             //PASAR COMO DATASOURCE A REPORTE
-            RptLiquidacion reporte = new RptLiquidacion();
+            //RptLiquidacion reporte = new RptLiquidacion();
+            //Report externo
+            ReportesExternos.rptLiquidacion reporte = new ReportesExternos.rptLiquidacion();
             reporte.DataSource = listado;
 
             //SETEAR PARAMETROS...
+            reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             reporte.Parameters["imponible"].Value = varSistema.ObtenerValorLista("systimp");
             reporte.Parameters["descuentos"].Value = varSistema.ObtenerValorLista("systdctos");
             reporte.Parameters["haberes"].Value = varSistema.ObtenerValorLista("systhab");

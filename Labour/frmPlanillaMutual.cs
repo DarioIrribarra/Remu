@@ -364,7 +364,7 @@ namespace Labour
             {
                 //rptPlanillaMutual reporte = new rptPlanillaMutual();
                 //Reporte externo
-                Planillas_PagoMutualExterno.rptPlanillaMutual reporte = new Planillas_PagoMutualExterno.rptPlanillaMutual();
+                ReportesExternos.rptPlanillaMutual reporte = new ReportesExternos.rptPlanillaMutual();
                 reporte.DataSource = lista;
 
                 //PARAMETROS

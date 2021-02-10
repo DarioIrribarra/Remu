@@ -452,7 +452,7 @@ namespace Labour
 
                 //RptPreviredRes r = new RptPreviredRes();
                 //Reporte externo
-                PreviredExterno.RptPreviredRes r = new PreviredExterno.RptPreviredRes();
+                ReportesExternos.rptPreviredRes r = new ReportesExternos.rptPreviredRes();
 
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in r.Parameters)
                 {

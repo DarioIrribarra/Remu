@@ -485,7 +485,7 @@ namespace Labour
                 pTabla = DataSourceReport.Tables[0];
 
                 //TestRptResumenProcesoExterno res = new TestRptResumenProcesoExterno();
-                ResumenProcesoExterno.RptResumenProcesov2 res = new ResumenProcesoExterno.RptResumenProcesov2();
+                ReportesExternos.rptResumenProcesov2 res = new ReportesExternos.rptResumenProcesov2();
                 //RptResumenProcesov2 res = new RptResumenProcesov2();
                 res.DataSource = DataSourceReport.Tables[0];
                 res.DataSource = pTabla;

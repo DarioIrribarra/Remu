@@ -473,7 +473,11 @@ namespace Labour
             SqlConnection cn;
             SqlTransaction Tr;
             Hashtable pData = new Hashtable();
-            RptComprobanteVacacion Report = new RptComprobanteVacacion();
+            //RptComprobanteVacacion Report = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Report = new ReportesExternos.rptComprobanteVacacion();
+
+            Report.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             ReporteUnido.Pages.Clear();
             ReporteUnido.CreateDocument();            
             

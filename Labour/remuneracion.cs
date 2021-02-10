@@ -12211,7 +12211,9 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
                 XtraMessageBox.Show(ex.Message);
             }
 
-            rptLiquidacion2 reporte = new rptLiquidacion2();
+            //rptLiquidacion2 reporte = new rptLiquidacion2();
+            //Reporte externo
+            ReportesExternos.rptLiquidacion2 reporte = new ReportesExternos.rptLiquidacion2();
             //Cargar layout desde una ruta (cambiar layout desde reporte)
             //reporte.LoadLayoutFromXml(@"D:\Sistema remuneraciones\Formatos reporte\Sopytec\rptLiquidacion2.repx");
             reporte.DataSource = listado;
@@ -12238,6 +12240,7 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
             //reporte.Parameters["liquido"].Value = "$" + (Math.Round(Calculo.GetValueFromCalculoMensaul(Contrato, periodoEmpleado, "sysliq"))).ToString("N0");
             //reporte.Parameters["pago"].Value = "$" + (Math.Round(Calculo.GetValueFromCalculoMensaul(Contrato, periodoEmpleado, "syspago"))).ToString("N0");
 
+            reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             reporte.Parameters["imponible"].Value = "$" + (Math.Round(systimp)).ToString("N0");
             reporte.Parameters["descuentos"].Value = "$" + (Math.Round(systdctos)).ToString("N0");
             reporte.Parameters["haberes"].Value = "$" + (Math.Round(systhab)).ToString("N0");

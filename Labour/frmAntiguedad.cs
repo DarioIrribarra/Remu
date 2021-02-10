@@ -85,7 +85,9 @@ namespace Labour
             if (ds.Tables[0].Rows.Count > 0)
             {
                 //PASAMOS COMO DATASOURCE EL DATASET A REPORTE
-                rptAntiguedad antiguedad = new rptAntiguedad();
+                //rptAntiguedad antiguedad = new rptAntiguedad();
+                //Reporte externo
+                ReportesExternos.rptAntiguedad antiguedad = new ReportesExternos.rptAntiguedad();
                 antiguedad.DataSource = ds.Tables[0];
                 antiguedad.DataMember = "antiguedad";
 
@@ -99,6 +101,7 @@ namespace Labour
                 antiguedad.Parameters["rutTrabajador"].Value = fnSistema.fFormatearRut2(Trabajador.Rut);
                 antiguedad.Parameters["antiguedad"].Value = Trabajador.Ingreso.ToString("dd 'de' MMMM 'de' yyyy");
                 antiguedad.Parameters["cargo"].Value = Trabajador.Cargo;
+                antiguedad.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 if (Trabajador.Tipocontrato == 0)
                     tipoContrato = "INDEFINIDO";

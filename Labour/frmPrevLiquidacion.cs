@@ -1452,10 +1452,13 @@ namespace Labour
             datosEmpresa = ConsultaDatosEmpresa();
 
             //PASAR COMO DATASOURCE A REPORTE
-            RptLiquidacion reporte = new RptLiquidacion();
+            //RptLiquidacion reporte = new RptLiquidacion();
+            //Report externo
+            ReportesExternos.rptLiquidacion reporte = new ReportesExternos.rptLiquidacion();
             reporte.DataSource = listado;
 
             //SETEAR PARAMETROS...
+            reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             reporte.Parameters["imponible"].Value = "$" + (Math.Round(varSistema.ObtenerValorLista("systimp"))).ToString("N0");
             reporte.Parameters["descuentos"].Value =(Math.Round(varSistema.ObtenerValorLista("systdctos"))).ToString("N0");
             reporte.Parameters["haberes"].Value =(Math.Round(varSistema.ObtenerValorLista("systhab"))).ToString("N0");

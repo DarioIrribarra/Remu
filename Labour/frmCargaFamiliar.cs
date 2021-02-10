@@ -685,7 +685,9 @@ namespace Labour
                                 }    
                             }
 
-                            rptCargaFamiliar reporte = new rptCargaFamiliar();
+                            //rptCargaFamiliar reporte = new rptCargaFamiliar();
+                            //Reporte externo
+                            ReportesExternos.rptCargaFamiliar reporte = new ReportesExternos.rptCargaFamiliar();
                             reporte.DataSource = ds.Tables[0];
                             reporte.DataMember = "data";
 
@@ -699,6 +701,7 @@ namespace Labour
 
                             reporte.Parameters["empresa"].Value = emp.Razon;
                             reporte.Parameters["rutEmpresa"].Value = fnSistema.fFormatearRut2(emp.Rut);
+                            reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                             Documento docu = new Documento("", 0);
 

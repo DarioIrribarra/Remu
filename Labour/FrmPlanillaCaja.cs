@@ -484,7 +484,7 @@ namespace Labour
             {
                 //RptPlanillaCaja reporte = new RptPlanillaCaja();
                 //Reporte externo
-                Planillas_PagoCajaExterno.RptPlanillaCaja reporte = new Planillas_PagoCajaExterno.RptPlanillaCaja();
+                ReportesExternos.rptPlanillaCaja reporte = new ReportesExternos.rptPlanillaCaja();
                 reporte.DataSource = lista;
 
                 //PARAMETROS

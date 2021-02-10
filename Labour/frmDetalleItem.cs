@@ -699,7 +699,9 @@ namespace Labour
                 fecha = fnSistema.FechaPeriodo(periodo);
                 descripcion = DescripcionItem(itemBusqueda);
                 //rptDetalleItem rpt = new rptDetalleItem();
-                RptDetalleItemv2 rpt = new RptDetalleItemv2();
+                //RptDetalleItemv2 rpt = new RptDetalleItemv2();
+                //Reporte externo
+                ReportesExternos.rptDetalleItemv2 rpt = new ReportesExternos.rptDetalleItemv2();
 
                 rpt.DataSource = data.Tables[0];               
                 rpt.DataMember = "itemtrabajador";
@@ -712,9 +714,8 @@ namespace Labour
                 rpt.Parameters["item"].Value = descripcion;
                 rpt.Parameters["registros"].Value = data.Tables[0].Rows.Count;
                 rpt.Parameters["empresa"].Value = emp.Razon;
-                rpt.Parameters["condicion"].Visible = false;
-                rpt.Parameters["condicion"].Value = DescripcionCondicion;                
-
+                rpt.Parameters["condicion"].Value = DescripcionCondicion;
+                rpt.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                 
 
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in rpt.Parameters)
@@ -724,7 +725,6 @@ namespace Labour
 
                 if (txtAgrupa.Properties.DataSource != null)
                 {
-                    rpt.Parameters["agrupacion"].Visible = false;
                     rpt.Parameters["agrupacion"].Value = txtAgrupa.Text;
 
                     if (txtAgrupa.EditValue.ToString() != "0")

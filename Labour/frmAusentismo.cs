@@ -2049,7 +2049,9 @@ namespace Labour
                             if (ds.Tables[0].Rows.Count > 0)
                             {
                                 //PASAMOS DATASET COMO DATASOURCE A REPORTE
-                                rptAusentismo aus = new rptAusentismo();
+                                //rptAusentismo aus = new rptAusentismo();
+                                //Reporte externo
+                                ReportesExternos.rptAusentismo aus = new ReportesExternos.rptAusentismo();
                                 aus.DataSource = ds.Tables[0];
                                 aus.DataMember = "ausentismos";
 
@@ -2061,6 +2063,7 @@ namespace Labour
                                 aus.Parameters["rutTrabajador"].Value = fnSistema.fFormatearRut2(Trabajador.Rut);
                                 aus.Parameters["empresa"].Value = emp.Razon;
                                 aus.Parameters["rutEmpresa"].Value = fnSistema.fFormatearRut2(emp.Rut);
+                                aus.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in aus.Parameters)
                                     parametro.Visible = false;                                
@@ -2433,7 +2436,9 @@ namespace Labour
             SqlConnection cn;
             SqlDataAdapter ad = new SqlDataAdapter();
             DataSet ds = new DataSet();
-            rptComprobanteAusentismo repo = new rptComprobanteAusentismo();
+            //rptComprobanteAusentismo repo = new rptComprobanteAusentismo();
+            //Reporte externo
+            ReportesExternos.rptComprobanteAusentismo repo = new ReportesExternos.rptComprobanteAusentismo();
             
             try
             {
@@ -2469,6 +2474,7 @@ namespace Labour
 
                             repo.Parameters["empresa"].Value = emp.Razon;
                             repo.Parameters["rutEmpresa"].Value = fnSistema.fFormatearRut2(emp.Rut);
+                            repo.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                         }
                         cmd.Dispose();
                     }

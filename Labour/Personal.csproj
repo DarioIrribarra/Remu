@@ -72,9 +72,8 @@
     <ApplicationIcon>People2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BancoItau, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\BancoItau.dll</HintPath>
+    <Reference Include="BancoItau">
+      <HintPath>bin\DLLsPropias\BancoItau.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -117,39 +116,11 @@
     <Reference Include="DevExpress.XtraScheduler.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="LibroRemuneracionesExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\LibroRemuneracionesExterno.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Planillas_PagoAFPExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Planillas_PagoAFPExterno.dll</HintPath>
-    </Reference>
-    <Reference Include="Planillas_PagoCajaExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Planillas_PagoCajaExterno.dll</HintPath>
-    </Reference>
-    <Reference Include="Planillas_PagoIsapreExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\ReposVisualStudio\SlnReportesDLL\Planillas_PagoIsapreExterno\bin\Debug\Planillas_PagoIsapreExterno.dll</HintPath>
-    </Reference>
-    <Reference Include="Planillas_PagoMutualExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Planillas_PagoMutualExterno.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="PreviredExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ReportesExternos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\PreviredExterno.dll</HintPath>
-    </Reference>
-    <Reference Include="ReporteContableExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ReporteContableExterno.dll</HintPath>
-    </Reference>
-    <Reference Include="ResumenProcesoExterno, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\ResumenProcesoExterno.dll</HintPath>
+      <HintPath>bin\DLLsPropias\ReportesExternos.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

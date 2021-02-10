@@ -110,7 +110,7 @@ namespace Labour
             splashScreenManager1.ShowWaitForm();
             //rptLibroRemuneracionesFormaNueva reporteNuevo = new rptLibroRemuneracionesFormaNueva();
             //Reporte desde DLL
-            LibroRemuneracionesExterno.rptLibroRemuneraciones reporteNuevo = new LibroRemuneracionesExterno.rptLibroRemuneraciones();
+            ReportesExternos.rptLibroRemuneraciones reporteNuevo = new ReportesExternos.rptLibroRemuneraciones();
             reporteNuevo.Parameters["periodo"].Visible = false;
             reporteNuevo.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
             reporteNuevo.Parameters["condicion"].Visible = false;

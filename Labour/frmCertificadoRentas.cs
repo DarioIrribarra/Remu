@@ -283,10 +283,18 @@ namespace Labour
                     if (data.Rows.Count > 0)
                     {
                         //Obtener nombre a través del rut
-                        
-                        RptCertificadoRentas crt = new RptCertificadoRentas();
+
+                        //RptCertificadoRentas crt = new RptCertificadoRentas();
+                        //Reporte externo
+                        ReportesExternos.rptCertificadoRentas crt = new ReportesExternos.rptCertificadoRentas();
                         crt.DataSource = data;
                         crt.DataMember = "data";
+
+                        foreach (var parametro in crt.Parameters)
+                        {
+                            parametro.Visible = false;
+                        }
+                        crt.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                         SetParameters(crt, emp);                                          
 

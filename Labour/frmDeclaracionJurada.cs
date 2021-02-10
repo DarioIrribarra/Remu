@@ -819,7 +819,9 @@ namespace Labour
                 {
                     Documento doc = new Documento("", 0);
 
-                    rptDeclaracionJurada dec = new rptDeclaracionJurada();
+                    //rptDeclaracionJurada dec = new rptDeclaracionJurada();
+                    //Reporte externo
+                    ReportesExternos.rptDeclaracionJurada dec = new ReportesExternos.rptDeclaracionJurada();
                     dec.DataSource = tabla;
                     dec.DataMember = "data";
 
