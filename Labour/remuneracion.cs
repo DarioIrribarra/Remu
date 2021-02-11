@@ -12214,6 +12214,7 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
             //rptLiquidacion2 reporte = new rptLiquidacion2();
             //Reporte externo
             ReportesExternos.rptLiquidacion2 reporte = new ReportesExternos.rptLiquidacion2();
+            var directorio = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
             //Cargar layout desde una ruta (cambiar layout desde reporte)
             //reporte.LoadLayoutFromXml(@"D:\Sistema remuneraciones\Formatos reporte\Sopytec\rptLiquidacion2.repx");
             reporte.DataSource = listado;
