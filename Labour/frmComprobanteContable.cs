@@ -1500,12 +1500,7 @@ namespace Labour
 
                 //RptContable2 reporte = new RptContable2();
                 //Reporte externo
-                ReportesExternos.rptContable2 reporte =   new ReportesExternos.rptContable2(
-                                                                    fnSistema.pgServer, 
-                                                                    fnSistema.pgDatabase, 
-                                                                    fnSistema.pgUser, 
-                                                                    fnSistema.pgPass
-                                                                );
+                ReportesExternos.rptContable2 reporte =   new ReportesExternos.rptContable2();
 
                 reporte.DataSource = List;
                 //reporte.DataMember = "data";

@@ -72,7 +72,7 @@ namespace Labour
         }
 
         //FICHA EMPLEADO ARCHIVO PDF
-        private void AntiguedadEmpleado(string contrato, int periodo, bool? ImpresionRapida = false, bool? GeneraPdf = false)
+        private void AntiguedadEmpleado(string contrato, int periodo, bool? ImpresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
             string tipoContrato = "";
             //LLAMAR A LA CLASE EMPRESA PARA LOS DATOS DE LA EMPRESA
@@ -88,9 +88,8 @@ namespace Labour
                 //PASAMOS COMO DATASOURCE EL DATASET A REPORTE
                 //rptAntiguedad antiguedad = new rptAntiguedad();
                 //Reporte externo
-                //ReportesExternos.rptAntiguedad antiguedad = new ReportesExternos.rptAntiguedad();
-                XtraReport antiguedad = new XtraReport();
-                antiguedad.LoadLayout(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAntiguedad.repx"));
+                ReportesExternos.rptAntiguedad antiguedad = new ReportesExternos.rptAntiguedad();
+                antiguedad.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAntiguedad.repx"));
 
                 antiguedad.DataSource = ds.Tables[0];
                 antiguedad.DataMember = "antiguedad";
@@ -101,13 +100,10 @@ namespace Labour
                 {
                     parametro.Visible = false;
                 }
-                
 
-                
                 antiguedad.Parameters["rutTrabajador"].Value = fnSistema.fFormatearRut2(Trabajador.Rut);
                 antiguedad.Parameters["antiguedad"].Value = Trabajador.Ingreso.ToString("dd 'de' MMMM 'de' yyyy");
                 antiguedad.Parameters["cargo"].Value = Trabajador.Cargo;
-                antiguedad.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                 antiguedad.Parameters["nombreTrabajador2"].Value = Trabajador.NombreCompleto;
 
                 if (Trabajador.Tipocontrato == 0)
@@ -154,12 +150,22 @@ namespace Labour
 
                 //antiguedad.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAntiguedad.repx"));
 
-                if ((bool)ImpresionRapida)
-                    d.PrintDocument(antiguedad);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(antiguedad, $"Antiguedad_{contrato}");
-                else
-                    d.ShowDocument(antiguedad);
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(antiguedad, "rptAntiguedad.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)ImpresionRapida)
+                        d.PrintDocument(antiguedad);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(antiguedad, $"Antiguedad_{contrato}");
+                    else
+                        d.ShowDocument(antiguedad);
+                }
+
             }
 
         }
@@ -202,13 +208,15 @@ namespace Labour
 
         private void btnEditarReporte_Click(object sender, EventArgs e)
         {
-            splashScreenManager1.ShowWaitForm();
-            //Prueba de edición de certificado
-            XtraReport reporte = new XtraReport();
-            reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAntiguedad.repx"));
+            //splashScreenManager1.ShowWaitForm();
+            ////Prueba de edición de certificado
+            //XtraReport reporte = new XtraReport();
+            //reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAntiguedad.repx"));
 
-            //Se le pasa el waitform para que se cierre una vez cargado
-            DiseñadorReportes.MostrarEditorLimitado(reporte, "rptAntiguedad.repx", splashScreenManager1);
+            ////Se le pasa el waitform para que se cierre una vez cargado
+            //DiseñadorReportes.MostrarEditorLimitado(reporte, "rptAntiguedad.repx", splashScreenManager1);
+
+            AntiguedadEmpleado(NumeroContrato, Periodo, editar:true);
 
         }
     }

@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace Labour
 {
@@ -647,7 +648,7 @@ namespace Labour
         }
 
         //MOSTRAR DOCUMENTO PDF
-        private void ImprimirPdf(string contrato, bool? ImpresionRapida = false, bool? GeneraPdf = false)
+        private void ImprimirPdf(string contrato, bool? ImpresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
             string sql = "select DISTINCT CONCAT(trabajador.nombre, ' ', apepaterno, ' ', apematerno) as trabajador," +
                 " cargafamiliar.contrato, rutcarga, CargaFamiliar.nombre, CargaFamiliar.sexo, cargafamiliar.fechanac," +
@@ -673,7 +674,7 @@ namespace Labour
                         cmd.Dispose();
                         fnSistema.sqlConn.Close();                        
 
-                        if (ds.Tables[0].Rows.Count>0)
+                        if (ds.Tables[0].Rows.Count>0 || editar)
                         {                            
                             //RECORREMOS DATATABLE Y FORMATEAMOS CON PUNTO Y GUION EL RUT
                             foreach (DataRow fila in ds.Tables[0].Rows)
@@ -688,6 +689,7 @@ namespace Labour
                             //rptCargaFamiliar reporte = new rptCargaFamiliar();
                             //Reporte externo
                             ReportesExternos.rptCargaFamiliar reporte = new ReportesExternos.rptCargaFamiliar();
+                            reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptCargaFamiliar.repx"));
                             reporte.DataSource = ds.Tables[0];
                             reporte.DataMember = "data";
 
@@ -705,12 +707,22 @@ namespace Labour
 
                             Documento docu = new Documento("", 0);
 
-                            if ((bool)ImpresionRapida)
-                                docu.PrintDocument(reporte);
-                            else if ((bool)GeneraPdf)
-                                docu.ExportToPdf(reporte, $"Cargas_{contrato}");
+                            if (editar)
+                            {
+                                splashScreenManager1.ShowWaitForm();
+                                //Se le pasa el waitform para que se cierre una vez cargado
+                                DiseñadorReportes.MostrarEditorLimitado(reporte, "rptCargaFamiliar.repx", splashScreenManager1);
+                            }
                             else
-                                docu.ShowDocument(reporte);
+                            {
+                                //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptCargaFamiliar.repx"));
+                                if ((bool)ImpresionRapida)
+                                    docu.PrintDocument(reporte);
+                                else if ((bool)GeneraPdf)
+                                    docu.ExportToPdf(reporte, $"Cargas_{contrato}");
+                                else
+                                    docu.ShowDocument(reporte);
+                            }
 
                         }
                     }
@@ -1771,6 +1783,18 @@ namespace Labour
         private void txtRut_Leave(object sender, EventArgs e)
         {
             ValidaCajaRut();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            Sesion.NuevaActividad();
+
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptcargas") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            ImprimirPdf(contratoTitular, editar: true);
+
         }
     }
 }

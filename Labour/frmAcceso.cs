@@ -181,6 +181,11 @@ namespace Labour
             fnSistema.pgDatabase = configuracion[1];
             fnSistema.pgUser = configuracion[2];
             fnSistema.pgPass = cif.DesencriptaTripleDesc(configuracion[3]);
+            //Conexión para reportes externos
+            ReportesExternos.fnSistema.pgServer = configuracion[0];
+            ReportesExternos.fnSistema.pgDatabase = configuracion[1];
+            ReportesExternos.fnSistema.pgUser = configuracion[2];
+            ReportesExternos.fnSistema.pgPass = cif.DesencriptaTripleDesc(configuracion[3]);
 
             //USAMOS EL MISMO SERVERNAME QUE EL JUEGO DE DATOS SELECCIONADO
             Licencia.ServerName = configuracion[0];

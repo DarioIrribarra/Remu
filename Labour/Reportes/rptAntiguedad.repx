@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rptAntiguedad" Margins="49, 39, 25, 70" PageWidth="850" PageHeight="1100" Version="18.1" DataMember="antiguedad">
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptAntiguedad, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptAntiguedad" Margins="49, 39, 25, 70" PageWidth="850" PageHeight="1100" Version="18.1" EventsInfo="imgLogo,BeforePrint,imgLogo_BeforePrint" DataMember="antiguedad" DataSource="#Ref-0">
   <Parameters>
-    <Item1 Ref="2" Visible="false" Description="Nombre Empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
-    <Item2 Ref="3" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
-    <Item3 Ref="4" Visible="false" Description="Rut Trabajador" ValueInfo="14.391.703-7" Name="rutTrabajador" />
-    <Item4 Ref="5" Visible="false" Description="Fecha inicio Contrato" ValueInfo="01 de agosto de 2012" Name="antiguedad" />
-    <Item5 Ref="6" Visible="false" Description="Cargo Trabajador" ValueInfo="TECNICO EN REDES" Name="cargo" />
-    <Item6 Ref="7" Visible="false" Description="Dirección Empresa" ValueInfo="PEDRO DE LA GASCA # 19" Name="direccion" />
-    <Item7 Ref="8" Visible="false" Description="Ciudad Empresa" ValueInfo="CONCEPCIÓN" Name="ciudad" />
-    <Item8 Ref="9" Visible="false" Description="Nombre completo trabajador" ValueInfo="JEAN PIERRE ALEXIS ALMENDRAS PACHECO" Name="nombreTrabajador2" />
-    <Item9 Ref="10" Visible="false" Description="Texto del tipo de contrato" ValueInfo="INDEFINIDO" Name="tipoContratoTexto" />
-    <Item10 Ref="12" Visible="false" Description="Imagen BD" ValueInfo="System.Drawing.Bitmap" Name="imagen" Type="#Ref-11" />
+    <Item1 Ref="3" Visible="false" Description="Nombre Empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
+    <Item2 Ref="4" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
+    <Item3 Ref="5" Visible="false" Description="Rut Trabajador" ValueInfo="13.953.284-8" Name="rutTrabajador" />
+    <Item4 Ref="6" Visible="false" Description="Fecha inicio Contrato" ValueInfo="24 de junio de 2019" Name="antiguedad" />
+    <Item5 Ref="7" Visible="false" Description="Cargo Trabajador" ValueInfo="EJECUTIVO DE VENTAS" Name="cargo" />
+    <Item6 Ref="8" Visible="false" Description="Dirección Empresa" ValueInfo="PEDRO DE LA GASCA # 19" Name="direccion" />
+    <Item7 Ref="9" Visible="false" Description="Ciudad Empresa" ValueInfo="CONCEPCIÓN" Name="ciudad" />
+    <Item8 Ref="10" Visible="false" Description="Nombre completo trabajador" ValueInfo="VERONICA DEL PILAR  CARROSA NAVARRETE" Name="nombreTrabajador2" />
+    <Item9 Ref="11" Visible="false" Description="Texto del tipo de contrato" ValueInfo="PLAZO FIJO" Name="tipoContratoTexto" />
+    <Item10 Ref="12" Visible="false" Description="Imagen BD" ValueInfo="0" Name="imagen" />
   </Parameters>
   <Bands>
     <Item1 Ref="13" ControlType="DetailBand" Name="Detail" HeightF="246.875" TextAlignment="TopLeft" Padding="0,0,0,0,100">
@@ -37,7 +37,7 @@
           <StylePriority Ref="24" UseFont="false" />
         </Item2>
         <Item3 Ref="25" ControlType="XRPictureBox" Name="imgLogo" Sizing="StretchImage" ImageAlignment="MiddleLeft" SizeF="74.42728,55.26196" LocationFloat="0, 0" />
-        <Item4 Ref="26" ControlType="XRLabel" Name="xrLabel8" Text="Antiguedad" AnchorHorizontal="Both" TextAlignment="TopCenter" SizeF="762,26.69272" LocationFloat="0.000111262, 141.041687" Font="Times New Roman, 15.99pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+        <Item4 Ref="26" ControlType="XRLabel" Name="xrLabel8" Text="Certificado de Antigüedad" AnchorHorizontal="Both" TextAlignment="TopCenter" SizeF="762,26.69272" LocationFloat="0, 141.0417" Font="Times New Roman, 15.99pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
           <StylePriority Ref="27" UseFont="false" UseBorders="false" UseTextAlignment="false" />
         </Item4>
         <Item5 Ref="28" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="xrLabel2" SizeF="472.9166,12.65774" LocationFloat="0, 81.54469" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
@@ -72,6 +72,6 @@
     <Item1 Ref="41" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
   </ComponentStorage>
   <ObjectStorage>
-    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="11" Content="System.Int32" Type="System.Type" />
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
   </ObjectStorage>
 </XtraReportsLayoutSerializer>

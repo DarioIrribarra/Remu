@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptCargaFamiliar, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptCargaFamiliar" Landscape="true" PageWidth="1100" PageHeight="850" Version="18.1" EventsInfo="rptCargaFamiliar,BeforePrint,rptCargaFamiliar_BeforePrint;xrLabel11,BeforePrint,xrLabel11_BeforePrint;xrLabel10,BeforePrint,xrLabel10_BeforePrint;xrLabel8,BeforePrint,xrLabel8_BeforePrint;xrLabel15,BeforePrint,xrLabel15_BeforePrint;imgLogo,BeforePrint,imgLogo_BeforePrint;ReportHeader,BeforePrint,ReportHeader_BeforePrint" DataMember="data" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="Nombre Empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
+    <Item2 Ref="4" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
+    <Item3 Ref="6" Visible="false" Description="Imagen BD" ValueInfo="System.Drawing.Bitmap" Name="imagen" Type="#Ref-5" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="23" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRLabel" Name="xrLabel13" Text="xrLabel13" TextAlignment="TopLeft" SizeF="88.54169,23" LocationFloat="811.4583, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="9" FormatString="{0:dd-MM-yyyy}" PropertyName="Text" DataMember="Query.fechatermino" />
+          </DataBindings>
+          <StylePriority Ref="10" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="11" ControlType="XRLabel" Name="xrLabel12" Text="xrLabel12" TextAlignment="TopLeft" SizeF="85.41663,23" LocationFloat="726.0417, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="12" FormatString="{0:dd-MM-yyyy}" PropertyName="Text" DataMember="Query.fechaingreso" />
+          </DataBindings>
+          <StylePriority Ref="13" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="14" ControlType="XRLabel" Name="xrLabel11" Text="xrLabel11" TextAlignment="TopLeft" SizeF="93.75012,23" LocationFloat="632.2916, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="15" PropertyName="Text" DataMember="Query.relacionlegal" />
+          </DataBindings>
+          <StylePriority Ref="16" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="17" ControlType="XRLabel" Name="xrLabel10" Text="xrLabel10" TextAlignment="TopLeft" SizeF="75.00006,23" LocationFloat="557.2916, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="18" PropertyName="Text" DataMember="Query.parentesco" />
+          </DataBindings>
+          <StylePriority Ref="19" UseBorders="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="20" ControlType="XRLabel" Name="xrLabel9" Text="xrLabel9" TextAlignment="TopLeft" SizeF="80.20847,23" LocationFloat="477.0832, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="21" FormatString="{0:dd-MM-yyyy}" PropertyName="Text" DataMember="Query.fechanac" />
+          </DataBindings>
+          <StylePriority Ref="22" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="23" ControlType="XRLabel" Name="xrLabel8" Text="Masculino" TextAlignment="TopLeft" SizeF="62.7977,23" LocationFloat="414.2855, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="24" PropertyName="Text" DataMember="Query.sexo" />
+          </DataBindings>
+          <StylePriority Ref="25" UseBorders="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="26" ControlType="XRLabel" Name="xrLabel7" Text="xrLabel7" TextAlignment="TopLeft" SizeF="89.28571,23" LocationFloat="0, 0" Padding="2,2,0,0,100" Borders="Left, Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="27" PropertyName="Text" DataMember="Query.rutcarga" />
+          </DataBindings>
+          <StylePriority Ref="28" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="29" ControlType="XRLabel" Name="xrLabel6" Text="xrLabel6" TextAlignment="TopLeft" SizeF="324.9998,23" LocationFloat="89.28571, 0" Padding="2,2,0,0,100" Borders="Right, Bottom">
+          <DataBindings>
+            <Item1 Ref="30" PropertyName="Text" DataMember="Query.nombre" />
+          </DataBindings>
+          <StylePriority Ref="31" UseBorders="false" UseTextAlignment="false" />
+        </Item8>
+      </Controls>
+    </Item1>
+    <Item2 Ref="32" ControlType="TopMarginBand" Name="TopMargin" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="33" ControlType="BottomMarginBand" Name="BottomMargin" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item4 Ref="34" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="113.5417">
+      <Controls>
+        <Item1 Ref="35" ControlType="XRLabel" Name="xrLabel20" Multiline="true" Text="xrLabel20" SizeF="100,12.91669" LocationFloat="78.125, 36" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="37" Parameter="#Ref-4" PropertyName="Text" DataMember="rutEmpresa" />
+          </DataBindings>
+          <StylePriority Ref="38" UseFont="false" />
+        </Item1>
+        <Item2 Ref="39" ControlType="XRLabel" Name="xrLabel19" Multiline="true" Text="xrLabel19" SizeF="251.0417,12.99998" LocationFloat="78.125, 23.00002" Font="Times New Roman, 7pt, charSet=0" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="40" Parameter="#Ref-3" PropertyName="Text" DataMember="empresa" />
+          </DataBindings>
+          <StylePriority Ref="41" UseFont="false" />
+        </Item2>
+        <Item3 Ref="42" ControlType="XRLabel" Name="xrLabel16" Multiline="true" Text=":" SizeF="10.41667,23" LocationFloat="67.70834, 67.00001" Padding="2,2,0,0,100" />
+        <Item4 Ref="43" ControlType="XRLabel" Name="xrLabel15" Multiline="true" SizeF="333.3332,23" LocationFloat="78.125, 90.54171" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="44" PropertyName="Text" DataMember="Query.rutTrabajador" />
+          </DataBindings>
+        </Item4>
+        <Item5 Ref="45" ControlType="XRPictureBox" Name="imgLogo" SizeF="67.70834,56.33335" LocationFloat="0, 0" />
+        <Item6 Ref="46" ControlType="XRLabel" Name="xrLabel5" Text="xrLabel5" SizeF="333.3332,23" LocationFloat="78.125, 67.00001" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="47" PropertyName="Text" DataMember="Query.trabajador" />
+          </DataBindings>
+        </Item6>
+        <Item7 Ref="48" ControlType="XRLabel" Name="xrLabel4" Text="xrLabel4" SizeF="100,23" LocationFloat="799.9999, 67.00001" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="49" PropertyName="Text" DataMember="Query.contrato" />
+          </DataBindings>
+        </Item7>
+        <Item8 Ref="50" ControlType="XRLabel" Name="xrLabel3" Text="N° Contrato" SizeF="71.875,23" LocationFloat="717.7082, 67.00001" Padding="2,2,0,0,100" />
+        <Item9 Ref="51" ControlType="XRLabel" Name="xrLabel1" Text="Cargas Familiares Autorizadas" TextAlignment="TopCenter" SizeF="286.4583,23" LocationFloat="330.2083, 0" Font="Times New Roman, 16pt" Padding="2,2,0,0,100" Borders="Bottom">
+          <StylePriority Ref="52" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item9>
+        <Item10 Ref="53" ControlType="XRLabel" Name="xrLabel2" Text="Trabajador" SizeF="67.70834,23" LocationFloat="0, 67.00001" Padding="2,2,0,0,100" />
+        <Item11 Ref="54" ControlType="XRLabel" Name="xrLabel14" Text="Rut" SizeF="67.70834,23" LocationFloat="0, 90.00002" Padding="2,2,0,0,100" />
+        <Item12 Ref="55" ControlType="XRLabel" Name="xrLabel17" Multiline="true" Text=":" SizeF="10.41667,23" LocationFloat="67.70834, 90.00002" Padding="2,2,0,0,100" />
+        <Item13 Ref="56" ControlType="XRLabel" Name="xrLabel18" Multiline="true" Text=":" SizeF="10.41667,23" LocationFloat="789.5832, 67.00001" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item4>
+    <Item5 Ref="57" ControlType="ReportFooterBand" Name="ReportFooter" PrintAtBottom="true">
+      <Controls>
+        <Item1 Ref="58" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="Pagia {0} de {1}" SizeF="100,23" LocationFloat="799.9999, 76.99998" Padding="2,2,0,0,100" />
+        <Item2 Ref="59" ControlType="XRPageInfo" Name="xrPageInfo2" PageInfo="DateTime" SizeF="212.5,23" LocationFloat="0, 76.99997" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item5>
+    <Item6 Ref="60" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="35">
+      <Controls>
+        <Item1 Ref="61" ControlType="XRTable" Name="xrTable1" TextAlignment="TopCenter" SizeF="899.9999,25" LocationFloat="0, 10" Font="Times New Roman, 9.75pt, style=Bold" Borders="All">
+          <Rows>
+            <Item1 Ref="62" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="63" ControlType="XRTableCell" Name="xrTableCell1" Weight="0.41208784657678582" Text="Rut" />
+                <Item2 Ref="64" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.4999988828288651" Text="Nombre" />
+                <Item3 Ref="65" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.28983540812763331" Text="Sexo" />
+                <Item4 Ref="66" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.37019264829836257" Text="Nacimiento" />
+                <Item5 Ref="67" ControlType="XRTableCell" Name="xrTableCell5" Weight="0.34615385677677579" Text="Parentesco" />
+                <Item6 Ref="68" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.43269256607838213" Text="Relacion Legal" />
+                <Item7 Ref="69" ControlType="XRTableCell" Name="xrTableCell6" Weight="0.3942305601573185" Text="Fecha Ingreso" />
+                <Item8 Ref="70" ControlType="XRTableCell" Name="xrTableCell8" Weight="0.40865388280289405" Text="Fecha Termino" />
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="71" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item6>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="72" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9ImxvY2FsaG9zdF9zZXNjX0Nvbm5lY3Rpb24gMSIgRnJvbUFwcENvbmZpZz0idHJ1ZSIgLz48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IlF1ZXJ5Ij48U3FsPnNlbGVjdCBESVNUSU5DVCBDT05DQVQodHJhYmFqYWRvci5ub21icmUsICcgJywgYXBlcGF0ZXJubywgJyAnLCBhcGVtYXRlcm5vKSBhcyB0cmFiYWphZG9yLCANCmNhcmdhZmFtaWxpYXIuY29udHJhdG8sIHJ1dGNhcmdhLCBDYXJnYUZhbWlsaWFyLm5vbWJyZSwgQ2FyZ2FGYW1pbGlhci5zZXhvLCBjYXJnYWZhbWlsaWFyLmZlY2hhbmFjLA0KIHBhcmVudGVzY28sIHJlbGFjaW9ubGVnYWwsIGZlY2hhaW5ncmVzbywgZmVjaGF0ZXJtaW5vLCB0cmFiYWphZG9yLnJ1dCBhcyBydXRUcmFiYWphZG9yIA0KRlJPTSBjYXJnYWZhbWlsaWFyIElOTkVSIEpPSU4gdHJhYmFqYWRvciBPTiB0cmFiYWphZG9yLmNvbnRyYXRvID0gY2FyZ2FmYW1pbGlhci5jb250cmF0bw0Kd2hlcmUgQ2FyZ2FGYW1pbGlhci5jb250cmF0byA9ICcxNzg0MTc0MzYnPC9TcWw+PC9RdWVyeT48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IkVtcHJlc2EiPjxTcWw+c2VsZWN0ICogZnJvbSBlbXByZXNhPC9TcWw+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJRdWVyeSI+PEZpZWxkIE5hbWU9InRyYWJhamFkb3IiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY29udHJhdG8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0icnV0Y2FyZ2EiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ibm9tYnJlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InNleG8iIFR5cGU9IkludDE2IiAvPjxGaWVsZCBOYW1lPSJmZWNoYW5hYyIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9InBhcmVudGVzY28iIFR5cGU9IkludDE2IiAvPjxGaWVsZCBOYW1lPSJyZWxhY2lvbmxlZ2FsIiBUeXBlPSJJbnQxNiIgLz48RmllbGQgTmFtZT0iZmVjaGFpbmdyZXNvIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iZmVjaGF0ZXJtaW5vIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0icnV0VHJhYmFqYWRvciIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJFbXByZXNhIj48RmllbGQgTmFtZT0icnV0RW1wIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJhem9uIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Imdpcm8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iZGlyZWNjaW9uIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNpdWRhZCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9InRlbGVmb25vIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImVtYWlsRW1wIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJ1dFJlcCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJub21icmVSZXAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0icnV0UlJISCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJub21icmVSUkhIIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNhcmdvUlJISCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJlbWFpbFJSSEgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY29kQWN0aXZpZGFkIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImluaWNpb0FjdGl2aWRhZGVzIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iY29kQWZpbGlhY2lvbiIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9ImNvZE11dCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjb3RNdXQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9ImxvZ28iIFR5cGU9IkJ5dGVBcnJheSIgLz48RmllbGQgTmFtZT0ibm9tYnJlTXV0IiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0ibm9tYnJlQ0NBRiIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9ImxlbXAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iY29kZW1wcmVzYSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJ2cyIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+PC9SZXN1bHRTY2hlbWE+PENvbm5lY3Rpb25PcHRpb25zIENsb3NlQ29ubmVjdGlvbj0idHJ1ZSIgLz48L1NxbERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="5" Content="System.Int32" Type="System.Type" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

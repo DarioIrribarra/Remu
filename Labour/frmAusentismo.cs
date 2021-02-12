@@ -17,6 +17,7 @@ using DevExpress.XtraReports.UI;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.Skins;
+using System.IO;
 
 namespace Labour
 {
@@ -2019,9 +2020,9 @@ namespace Labour
         }
 
         //IMPRIME DOCUMENTO
-        private void ImprimeDocument(string contrato, bool? ImpresionRapida = false, bool? GeneraPdf = false)
+        private void ImprimeDocument(string contrato, bool? ImpresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
-            if (viewAusentismo.RowCount>0)
+            if (viewAusentismo.RowCount>0 || editar)
             {
                 string sql = "SELECT contrato, motivo.nombre as descripcion, fechaEvento as 'Fecha Inicio', fecFin as 'Fecha Termino', numdias as dias " +
                              "FROM ausentismo INNER JOIN motivo ON motivo.id = ausentismo.motivo " +
@@ -2046,12 +2047,13 @@ namespace Labour
                             ad.Dispose();
                             cmd.Dispose();
 
-                            if (ds.Tables[0].Rows.Count > 0)
+                            if (ds.Tables[0].Rows.Count > 0 || editar)
                             {
                                 //PASAMOS DATASET COMO DATASOURCE A REPORTE
                                 //rptAusentismo aus = new rptAusentismo();
                                 //Reporte externo
                                 ReportesExternos.rptAusentismo aus = new ReportesExternos.rptAusentismo();
+                                aus.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptAusentismo.repx"));
                                 aus.DataSource = ds.Tables[0];
                                 aus.DataMember = "ausentismos";
 
@@ -2063,7 +2065,6 @@ namespace Labour
                                 aus.Parameters["rutTrabajador"].Value = fnSistema.fFormatearRut2(Trabajador.Rut);
                                 aus.Parameters["empresa"].Value = emp.Razon;
                                 aus.Parameters["rutEmpresa"].Value = fnSistema.fFormatearRut2(emp.Rut);
-                                aus.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in aus.Parameters)
                                     parametro.Visible = false;                                
@@ -2076,14 +2077,25 @@ namespace Labour
                                 aus.Parameters["totalaus"].Value = totalAus;                               
                                 aus.Parameters["totalPermi"].Value = totalPermi;                               
 
-                                Documento d = new Documento("", 0);                                
+                                Documento d = new Documento("", 0);
 
-                                if ((bool)ImpresionRapida)
-                                    d.PrintDocument(aus);
-                                else if ((bool)GeneraPdf)
-                                    d.ExportToPdf(aus, $"Ausentismo_{contrato}");
+                                if (editar)
+                                {
+                                    splashScreenManager1.ShowWaitForm();
+                                    //Se le pasa el waitform para que se cierre una vez cargado
+                                    DiseñadorReportes.MostrarEditorLimitado(aus, "rptAusentismo.repx", splashScreenManager1);
+                                }
                                 else
-                                    d.ShowDocument(aus);
+                                {
+                                    if ((bool)ImpresionRapida)
+                                        d.PrintDocument(aus);
+                                    else if ((bool)GeneraPdf)
+                                        d.ExportToPdf(aus, $"Ausentismo_{contrato}");
+                                    else
+                                        d.ShowDocument(aus);
+                                }
+
+                                
                             }
                             else
                             {
@@ -3426,6 +3438,11 @@ namespace Labour
         private void dtFin_Leave(object sender, EventArgs e)
         {
             ValidadtFin();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            ImprimeDocument(Contrato, editar:true);
         }
     }
 }

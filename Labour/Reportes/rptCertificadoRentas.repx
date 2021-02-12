@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptCertificadoRentas, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptCertificadoRentas" Landscape="true" Margins="29, 35, 25, 88" PageWidth="1100" PageHeight="850" Version="18.1" EventsInfo="imgLogo,BeforePrint,imgLogo_BeforePrint" DataMember="data" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="Representante legal" ValueInfo="ENRIONE FUENTES RODRIGO FERNANDO" Name="Representante" />
+    <Item2 Ref="4" Visible="false" Description="Rut representante legal" ValueInfo="Rut: 08.624.552-3" Name="RutRepresentante" />
+    <Item3 Ref="5" Visible="false" Description="Nombre empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="Empresa" />
+    <Item4 Ref="6" Visible="false" Description="rut de la empresa" ValueInfo="76.008.781-5" Name="RutEmpresa" />
+    <Item5 Ref="7" Visible="false" Description="direccion empresa" ValueInfo="PEDRO DE LA GASCA # 19" Name="direccion" />
+    <Item6 Ref="8" Visible="false" Description="periodo consultado" ValueInfo="2019" Name="periodo" />
+    <Item7 Ref="9" Visible="false" Description="ciudad empresa" ValueInfo="Concepción" Name="ciudad" />
+    <Item8 Ref="11" Visible="false" Description="Imagen BD" ValueInfo="System.Drawing.Bitmap" Name="imagen" Type="#Ref-10" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="12" ControlType="DetailBand" Name="Detail" HeightF="14.58333" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="13" ControlType="XRTable" Name="xrTable4" SizeF="1036,14" LocationFloat="0, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="14" ControlType="XRTableRow" Name="xrTableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="15" ControlType="XRTableCell" Name="xrTableCell51" Weight="0.70317527924447154" Multiline="true" Text="xrTableCell51" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="16" Expression="[anomes]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="17" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="18" ControlType="XRTableCell" Name="xrTableCell36" Weight="0.648238458761471" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell36" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="19" Expression="[SueldoBruto]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="20" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="21" ControlType="XRTableCell" Name="xrTableCell37" Weight="0.64823897963021482" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell37" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="22" Expression="[PrevisionTrabajador]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="23" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="24" ControlType="XRTableCell" Name="xrTableCell38" Weight="0.64823849482151208" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell38" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="25" Expression="[RentaImpAfectaImpto]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="26" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="27" ControlType="XRTableCell" Name="xrTableCell39" Weight="0.64823752520410638" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell39" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="28" Expression="[ImpuestoUnico]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="29" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="30" ControlType="XRTableCell" Name="xrTableCell40" Weight="0.6372503744843413" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell40" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="31" Expression="[MayorRenta]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="32" UseBorders="false" />
+                </Item6>
+                <Item7 Ref="33" ControlType="XRTableCell" Name="xrTableCell41" Weight="0.71466038197268134" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell41" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="34" Expression="[RentaNoGravada]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="35" UseBorders="false" />
+                </Item7>
+                <Item8 Ref="36" ControlType="XRTableCell" Name="xrTableCell42" Weight="0.651550603690474" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell42" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" Expression="[RentaTotalExenta]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="38" UseBorders="false" />
+                </Item8>
+                <Item9 Ref="39" ControlType="XRTableCell" Name="xrTableCell43" Weight="0.63398177297368452" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell43" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="40" Expression="[RebajasZonaExtrema]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="41" UseBorders="false" />
+                </Item9>
+                <Item10 Ref="42" ControlType="XRTableCell" Name="xrTableCell44" Weight="0.67669857640915965" Multiline="true" Text="xrTableCell44" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="43" Expression="[FactorActualizacion]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="44" UseBorders="false" />
+                </Item10>
+                <Item11 Ref="45" ControlType="XRTableCell" Name="xrTableCell50" Weight="0.80660598474016876" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell50" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="46" Expression="[RentaAfectaImptoReajustada]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="47" UseBorders="false" />
+                </Item11>
+                <Item12 Ref="48" ControlType="XRTableCell" Name="xrTableCell45" Weight="0.68115235516674688" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell45" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" Expression="[ImpoReajustado]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="50" UseBorders="false" />
+                </Item12>
+                <Item13 Ref="51" ControlType="XRTableCell" Name="xrTableCell46" Weight="0.76923112659498771" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell46" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="52" Expression="[MayorRetdelimpto]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="53" UseBorders="false" />
+                </Item13>
+                <Item14 Ref="54" ControlType="XRTableCell" Name="xrTableCell47" Weight="0.65475808203025887" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell47" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="55" Expression="[RentaTotalNoGravada]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="56" UseBorders="false" />
+                </Item14>
+                <Item15 Ref="57" ControlType="XRTableCell" Name="xrTableCell48" Weight="0.64765598633511723" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell48" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="58" Expression="[RentaTotalExenta_1]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="59" UseBorders="false" />
+                </Item15>
+                <Item16 Ref="60" ControlType="XRTableCell" Name="xrTableCell49" Weight="0.80240281159954174" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell49" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="61" Expression="[RebajasExtrema]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="62" UseBorders="false" />
+                </Item16>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="63" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item1>
+    <Item2 Ref="64" ControlType="TopMarginBand" Name="TopMargin" HeightF="25" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="65" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="88" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item4 Ref="66" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="297.0834">
+      <Controls>
+        <Item1 Ref="67" ControlType="XRLabel" Name="xrLabel17" Multiline="true" Text="xrLabel17" TextAlignment="TopRight" SizeF="158.6043,23" LocationFloat="662.8124, 80.54167" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="68" Expression="[Parameters].[ciudad]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="69" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="70" ControlType="XRLabel" Name="xrLabel16" Multiline="true" Text="indican y sobre las cuales se le practicaron las retenciones de impuestos que se señalan:" SizeF="939.4027,21.95836" LocationFloat="0, 147.7917" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="71" UseFont="false" />
+        </Item2>
+        <Item3 Ref="72" ControlType="XRLabel" Name="xrLabel15" Multiline="true" Text="se le han pagado las rentas que " SizeF="209.2366,12.58334" LocationFloat="780.8883, 135.2084" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="73" UseFont="false" />
+        </Item3>
+        <Item4 Ref="74" ControlType="XRLabel" Name="xrLabel14" Multiline="true" Text="xrLabel14" SizeF="56.25,12.58336" LocationFloat="724.6383, 133.7917" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="75" Expression="[Parameters].[periodo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="76" UseFont="false" />
+        </Item4>
+        <Item5 Ref="77" ControlType="XRLabel" Name="xrLabel13" Multiline="true" Text="en su calidad de empleado dependiente, jubilado, pensionado o montepiado, segun corresponda, durante el " SizeF="583.4582,12.58334" LocationFloat="141.1801, 135.2084" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="78" UseFont="false" />
+        </Item5>
+        <Item6 Ref="79" ControlType="XRLabel" Name="xrLabel12" Multiline="true" Text="xrLabel12" SizeF="97.43004,12.58334" LocationFloat="43.75, 135.2084" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="80" Expression="[rut]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="81" UseFont="false" />
+        </Item6>
+        <Item7 Ref="82" ControlType="XRLabel" Name="xrLabel11" Multiline="true" Text="Rut N° " SizeF="43.75,12.58334" LocationFloat="0, 135.2084" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="83" UseFont="false" />
+        </Item7>
+        <Item8 Ref="84" ControlType="XRLabel" Name="xrLabel10" Multiline="true" Text="xrLabel10" SizeF="404.0283,16.75" LocationFloat="586.0966, 117.0417" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="85" Expression="[Trabajador]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="86" UseFont="false" />
+        </Item8>
+        <Item9 Ref="87" ControlType="XRLabel" Name="xrLabel9" Multiline="true" Text="certifica que a" SizeF="85.70178,16.75" LocationFloat="500.3949, 117.0417" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="88" UseFont="false" />
+        </Item9>
+        <Item10 Ref="89" ControlType="XRLabel" Name="xrLabel8" Multiline="true" Text="xrLabel8" SizeF="292.9783,16.75" LocationFloat="207.4166, 117.0417" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="90" Expression="[Parameters].[Empresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="91" UseFont="false" />
+        </Item10>
+        <Item11 Ref="92" ControlType="XRLabel" Name="xrLabel7" Multiline="true" Text="xrLabel7" SizeF="292.7083,13" LocationFloat="0, 26" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="93" Expression="[Parameters].[direccion]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="94" UseFont="false" />
+        </Item11>
+        <Item12 Ref="95" ControlType="XRLabel" Name="xrLabel6" Multiline="true" Text="xrLabel6" SizeF="250.0176,13" LocationFloat="0, 13" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="96" Expression="[Parameters].[RutEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="97" UseFont="false" />
+        </Item12>
+        <Item13 Ref="98" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="xrLabel5" SizeF="250.0177,13" LocationFloat="0, 0" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="99" Expression="[Parameters].[Empresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="100" UseFont="false" />
+        </Item13>
+        <Item14 Ref="101" ControlType="XRPictureBox" Name="imgLogo" Image="/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAQCAwMDAgQDAwMEBAQEBQkGBQUFBQsICAYJDQsNDQ0LDAwOEBQRDg8TDwwMEhgSExUWFxcXDhEZGxkWGhQWFxb/2wBDAQQEBAUFBQoGBgoWDwwPFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhb/wAARCAEsASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7+ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiig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UUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFNoA//9k=" Sizing="StretchImage" SizeF="87.5,51.04167" LocationFloat="909.4999, 0" />
+        <Item15 Ref="102" ControlType="XRTable" Name="xrTable2" SizeF="1036,25" LocationFloat="0.0001271566, 193.4376" Font="Times New Roman, 8pt" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="103" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="104" ControlType="XRTableCell" Name="xrTableCell17" Weight="6.2415130617538948" Multiline="true" Borders="Left, Top, Bottom">
+                  <StylePriority Ref="105" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="106" ControlType="XRTableCell" Name="xrTableCell18" Weight="4.1184869621214837" Multiline="true" Text="Montos Actualizados" TextAlignment="TopCenter" Borders="Left, Top, Right">
+                  <StylePriority Ref="107" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="108" UseFont="false" />
+        </Item15>
+        <Item16 Ref="109" ControlType="XRTable" Name="xrTable1" SizeF="1036,78.6458" LocationFloat="0.0001271566, 218.4376" Font="Times New Roman, 8pt" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="110" ControlType="XRTableRow" Name="xrTableRow1" Weight="1.5578944739006504">
+              <Cells>
+                <Item1 Ref="111" ControlType="XRTableCell" Name="xrTableCell1" Weight="0.66666664123535158" Multiline="true" Text="Periodo" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="112" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="113" ControlType="XRTableCell" Name="xrTableCell2" Weight="0.614583282470703" Multiline="true" Text="Sueldo jubilacion o pension bruta" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="114" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="115" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.61458351135253908" Multiline="true" Text="Cotización previsional de cargo del trabajador o pensionado" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="116" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="117" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.61458351135253908" Multiline="true" Text="Renta impble. afecta impto. único de 2da. categoría" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="118" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="119" ControlType="XRTableCell" Name="xrTableCell5" Weight="0.61458351135253908" Multiline="true" Text="Impuesto único retenido" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="120" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="121" ControlType="XRTableCell" Name="xrTableCell6" Weight="0.6041657213207" Multiline="true" Text="Mayor Ret. del impto. solicitada Art. 88 l.i.r." Borders="Left, Right, Bottom">
+                  <StylePriority Ref="122" UseBorders="false" />
+                </Item6>
+                <Item7 Ref="123" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.67755372847895623" Multiline="true" Text="Renta total no gravada" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="124" UseBorders="false" />
+                </Item7>
+                <Item8 Ref="125" ControlType="XRTableCell" Name="xrTableCell8" Weight="0.61772357147906387" Multiline="true" Text="Rebaja total exenta" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="126" UseBorders="false" />
+                </Item8>
+                <Item9 Ref="127" ControlType="XRTableCell" Name="xrTableCell9" Weight="0.60106932145428815" Multiline="true" Text="Rebajas por zonas extremas" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="128" UseBorders="false" />
+                </Item9>
+                <Item10 Ref="129" ControlType="XRTableCell" Name="xrTableCell10" Weight="0.64156348740013236" Multiline="true" Text="Factor actualización" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="130" UseBorders="false" />
+                </Item10>
+                <Item11 Ref="131" ControlType="XRTableCell" Name="xrTableCell11" Weight="0.76472880990012893" Multiline="true" Text="Renta Afecta impto. único 2da. categoría" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="132" UseBorders="false" />
+                </Item11>
+                <Item12 Ref="133" ControlType="XRTableCell" Name="xrTableCell12" Weight="0.64578970654597412" Multiline="true" Text="Impto único retenido" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="134" UseBorders="false" />
+                </Item12>
+                <Item13 Ref="135" ControlType="XRTableCell" Name="xrTableCell13" Weight="0.72929563667677" Multiline="true" Text="Mayor Ret. del impto. solicitada Art. 88 l.i.r" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="136" UseBorders="false" />
+                </Item13>
+                <Item14 Ref="137" ControlType="XRTableCell" Name="xrTableCell14" Weight="0.6207657222980949" Multiline="true" Text="Renta total no gravada" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="138" UseBorders="false" />
+                </Item14>
+                <Item15 Ref="139" ControlType="XRTableCell" Name="xrTableCell15" Weight="0.614031110225443" Multiline="true" Text="Renta total exenta" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="140" UseBorders="false" />
+                </Item15>
+                <Item16 Ref="141" ControlType="XRTableCell" Name="xrTableCell16" Weight="0.76074313666090276" Multiline="true" Text="Rebajas por zonas extremas" Borders="Top, Right, Bottom">
+                  <StylePriority Ref="142" UseBorders="false" />
+                </Item16>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="143" UseFont="false" />
+        </Item16>
+        <Item17 Ref="144" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="El empleador, Habilitado o pagador, " SizeF="207.4165,18.16667" LocationFloat="0, 117.0417" Font="Microsoft Sans Serif, 8.25pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="145" UseFont="false" />
+        </Item17>
+        <Item18 Ref="146" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="DateTime" SizeF="214.5833,23" LocationFloat="821.4167, 80.54167" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="147" UseFont="false" />
+        </Item18>
+        <Item19 Ref="148" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="CERTIFICADO SOBRE SUELDOS, PENSIONES O JUBILACIONES Y OTRAS RENTAS SIMILARES" TextAlignment="TopCenter" SizeF="740.6251,23" LocationFloat="98.456955, 39.0000038" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="149" UseFont="false" UseTextAlignment="false" />
+        </Item19>
+      </Controls>
+    </Item4>
+    <Item5 Ref="150" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="169.7917">
+      <Controls>
+        <Item1 Ref="151" ControlType="XRTable" Name="xrTable3" SizeF="1036,14" LocationFloat="0.0001271566, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="152" ControlType="XRTableRow" Name="xrTableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="153" ControlType="XRTableCell" Name="xrTableCell20" Weight="0.66394737243652346" Multiline="true" Text="Total" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="154" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="155" ControlType="XRTableCell" Name="xrTableCell21" Weight="0.61207587599747348" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell21" Borders="Left, Right, Bottom">
+                  <Summary Ref="156" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="157" Expression="sumSum([SueldoBruto])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="158" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="159" ControlType="XRTableCell" Name="xrTableCell22" Weight="0.61207526564584092" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell22" Borders="Left, Right, Bottom">
+                  <Summary Ref="160" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="161" Expression="sumSum([PrevisionTrabajador])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="162" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="163" ControlType="XRTableCell" Name="xrTableCell19" Weight="0.61207526564584092" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell19" Borders="Left, Right, Bottom">
+                  <Summary Ref="164" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="165" Expression="sumSum([RentaImpAfectaImpto])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="166" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="167" ControlType="XRTableCell" Name="xrTableCell23" Weight="0.61207526564584092" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell23" Borders="Left, Right, Bottom">
+                  <Summary Ref="168" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="169" Expression="sumSum([ImpuestoUnico])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="170" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="171" ControlType="XRTableCell" Name="xrTableCell24" Weight="0.60170630665028024" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell24" Borders="Left, Right, Bottom">
+                  <Summary Ref="172" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="173" Expression="sumSum([MayorRenta])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="174" UseBorders="false" />
+                </Item6>
+                <Item7 Ref="175" ControlType="XRTableCell" Name="xrTableCell25" Weight="0.67479072867499834" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell25" Borders="Left, Right, Bottom">
+                  <Summary Ref="176" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="177" Expression="sumSum([RentaNoGravada])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="178" UseBorders="false" />
+                </Item7>
+                <Item8 Ref="179" ControlType="XRTableCell" Name="xrTableCell26" Weight="0.61520392820058345" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell26" Borders="Left, Right, Bottom">
+                  <Summary Ref="180" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="181" Expression="sumSum([RentaTotalExenta])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="182" UseBorders="false" />
+                </Item8>
+                <Item9 Ref="183" ControlType="XRTableCell" Name="xrTableCell27" Weight="0.59861762212857239" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell27" Borders="Left, Right, Bottom">
+                  <Summary Ref="184" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="185" Expression="sumSum([RebajasZonaExtrema])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="186" UseBorders="false" />
+                </Item9>
+                <Item10 Ref="187" ControlType="XRTableCell" Name="xrTableCell28" Weight="0.63894599094676319" Multiline="true" Text="xrTableCell28" Borders="Left, Right, Bottom">
+                  <Summary Ref="188" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="189" Expression="sumSum([FactorActualizacion])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="190" UseBorders="false" />
+                </Item10>
+                <Item11 Ref="191" ControlType="XRTableCell" Name="xrTableCell29" Weight="0.76160894425710823" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell29" Borders="Left, Right, Bottom">
+                  <Summary Ref="192" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="193" Expression="sumSum([RentaAfectaImptoReajustada])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="194" UseBorders="false" />
+                </Item11>
+                <Item12 Ref="195" ControlType="XRTableCell" Name="xrTableCell30" Weight="0.64315437204148318" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell30" Borders="Left, Right, Bottom">
+                  <Summary Ref="196" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="197" Expression="sumSum([ImpoReajustado])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="198" UseBorders="false" />
+                </Item12>
+                <Item13 Ref="199" ControlType="XRTableCell" Name="xrTableCell31" Weight="0.72631841163281119" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell31" Borders="Left, Right, Bottom">
+                  <Summary Ref="200" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="201" Expression="sumSum([MayorRetdelimpto])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="202" UseBorders="false" />
+                </Item13>
+                <Item14 Ref="203" ControlType="XRTableCell" Name="xrTableCell32" Weight="0.618234331963336" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell32" Borders="Left, Right, Bottom">
+                  <Summary Ref="204" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="205" Expression="sumSum([RentaTotalNoGravada])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="206" UseBorders="false" />
+                </Item14>
+                <Item15 Ref="207" ControlType="XRTableCell" Name="xrTableCell33" Weight="0.61152595986577984" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell33" Borders="Left, Right, Bottom">
+                  <Summary Ref="208" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="209" Expression="sumSum([RentaTotalExenta_1])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="210" UseBorders="false" />
+                </Item15>
+                <Item16 Ref="211" ControlType="XRTableCell" Name="xrTableCell34" Weight="0.75763980445836165" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell34" Borders="Left, Right, Bottom">
+                  <Summary Ref="212" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="213" Expression="sumSum([RebajasExtrema])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="214" UseBorders="false" />
+                </Item16>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="215" UseFont="false" />
+        </Item1>
+        <Item2 Ref="216" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="xrLabel4" TextAlignment="TopCenter" SizeF="239.1249,13" LocationFloat="731.9894, 123.2084" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="217" Expression="[Parameters].[RutRepresentante]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="218" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="219" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="xrLabel3" TextAlignment="TopCenter" SizeF="239.1249,13" LocationFloat="731.9894, 110.2084" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="220" Expression="[Parameters].[Representante]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="221" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="222" ControlType="XRLine" Name="xrLine1" SizeF="239.1249,13" LocationFloat="731.9894, 97.20834" />
+        <Item5 Ref="223" ControlType="XRLabel" Name="xrLabel19" Multiline="true" Text="Se extiende el presente certificado en cumplimiento a lo dispuesto en la resolución Ex. N° 6.509 del Servicio de Impuestos internos, publicada en el Diario Oficial de fecha 20 de Diciembre de 1993." SizeF="589.0643,34.45835" LocationFloat="250.0178, 52.70831" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="224" UseFont="false" />
+        </Item5>
+      </Controls>
+    </Item5>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="225" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IkZVTkNJT05BX0NPTl9SRVBPUlRFX0xJQlJPUkVNVSIgRnJvbUFwcENvbmZpZz0idHJ1ZSIgLz48UXVlcnkgVHlwZT0iQ3VzdG9tU3FsUXVlcnkiIE5hbWU9IlF1ZXJ5Ij48U3FsPkRFQ0xBUkUgQHJ1dCBhcyB2YXJjaGFyKDUwKQ0KU0VUIEBydXQgPSAnMDg2MjQ1NTIzJw0KDQpTRUxFQ1QgYW5vbWVzIGFzIGFub21lcywgDQooU0VMRUNUIFNVTSh2YWxvcmNhbGN1bGFkbykgRlJPTSBpdGVtdHJhYmFqYWRvciBXSEVSRSB0aXBvID0gMSBBTkQgc3VzcGVuZGlkbyA9IDAgQU5EIGl0ZW10cmFiYWphZG9yLmFub21lcz10cmFiYWphZG9yLmFub21lcyBBTkQgcnV0PUBydXQpIGFzICdTdWVsZG9CcnV0bycsDQooU0VMRUNUIFNVTSh2YWxvcmNhbGN1bGFkbykgRlJPTSBpdGVtdHJhYmFqYWRvciBXSEVSRSAoY29kaXRlbSA9ICdTQ0VNUExFJyBPUiBjb2RpdGVtID0gJ1NBTFVEJyBPUiBjb2RpdGVtID0gJ1BSRVZJU0knKSANCkFORCBzdXNwZW5kaWRvID0gMCBBTkQgaXRlbXRyYWJhamFkb3IuYW5vbWVzPXRyYWJhamFkb3IuYW5vbWVzIEFORCBpdGVtdHJhYmFqYWRvci5ydXQgPSBAcnV0KSBhcyAnUHJldmlzaW9uVHJhYmFqYWRvcicsDQooU0VMRUNUIFNVTShzeXN0cmlidXRvKSBGUk9NIGNhbGN1bG9tZW5zdWFsIFdIRVJFIGNhbGN1bG9NZW5zdWFsLmFub21lcyA9IHRyYWJhamFkb3IuYW5vbWVzIEFORCBjYWxjdWxvbWVuc3VhbC5jb250cmF0byA9IHRyYWJhamFkb3IuY29udHJhdG8pIGFzICdSZW50YUltcEFmZWN0YUltcHRvJywNCihTRUxFQ1QgU1VNKHZhbG9yY2FsY3VsYWRvKSBGUk9NIGl0ZW10cmFiYWphZG9yIFdIRVJFIGNvZGl0ZW0gPSAnSU1QVUVTVCcgYW5kIHN1c3BlbmRpZG89MCBBTkQgcnV0PUBydXQgQU5EIGl0ZW10cmFiYWphZG9yLmFub21lcz10cmFiYWphZG9yLmFub21lcykgYXMgJ0ltcHVlc3RvVW5pY28nLA0KMCBhcyBNYXlvclJlbnRhLCAwIGFzIFJlbnRhTm9HcmF2YWRhLCAwIGFzIFJlbnRhVG90YWxFeGVudGEsIDAgYXMgUmViYWphc1pvbmFFeHRyZW1hLCANCihTRUxFQ1QgZmFjdG9yaW1wIEZST00gdmFsb3Jlc21lcyBXSEVSRSBhbm9tZXM9dHJhYmFqYWRvci5hbm9tZXMpIGFzICdGYWN0b3JBY3R1YWxpemFjaW9uJywNCjEyMzQ1Njc4OSBhcyAnUmVudGFBZmVjdGFJbXB0b1JlYWp1c3RhZGEnLA0KMTIzNDU2Nzg5IGFzICdJbXBvUmVhanVzdGFkbycsDQowIGFzJ01heW9yUmV0ZGVsaW1wdG8nLCAwIGFzICdSZW50YVRvdGFsTm9HcmF2YWRhJywgMCBhcyAnUmVudGFUb3RhbEV4ZW50YScsIDAgYXMgJ1JlYmFqYXNFeHRyZW1hJywNCkNPTkNBVChub21icmUsICcgJywgYXBlcGF0ZXJubywgJyAnLCBhcGVtYXRlcm5vKSBhcyBUcmFiYWphZG9yLA0KdHJhYmFqYWRvci5ydXQNCkZST00gdHJhYmFqYWRvciBXSEVSRSBydXQgPSBAcnV0IEFORCBzdGF0dXMgPSAxPC9TcWw+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJRdWVyeSI+PEZpZWxkIE5hbWU9ImFub21lcyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlN1ZWxkb0JydXRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJQcmV2aXNpb25UcmFiYWphZG9yIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJSZW50YUltcEFmZWN0YUltcHRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJJbXB1ZXN0b1VuaWNvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJNYXlvclJlbnRhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUmVudGFOb0dyYXZhZGEiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJSZW50YVRvdGFsRXhlbnRhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUmViYWphc1pvbmFFeHRyZW1hIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iRmFjdG9yQWN0dWFsaXphY2lvbiIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iUmVudGFBZmVjdGFJbXB0b1JlYWp1c3RhZGEiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJJbXBvUmVhanVzdGFkbyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9Ik1heW9yUmV0ZGVsaW1wdG8iIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJSZW50YVRvdGFsTm9HcmF2YWRhIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUmVudGFUb3RhbEV4ZW50YV8xIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iUmViYWphc0V4dHJlbWEiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJUcmFiYWphZG9yIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InJ1dCIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+PC9SZXN1bHRTY2hlbWE+PENvbm5lY3Rpb25PcHRpb25zIENsb3NlQ29ubmVjdGlvbj0idHJ1ZSIgLz48L1NxbERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="10" Content="System.Int32" Type="System.Type" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

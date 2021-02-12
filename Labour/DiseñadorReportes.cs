@@ -1,8 +1,14 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports;
+using DevExpress.XtraReports.Configuration;
+using DevExpress.XtraReports.Extensions;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.UserDesigner;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +24,7 @@ namespace Labour
     {
 
         public static string rutaReportes = fnSistema.RutaCarpetaReportesExterno;
+        private const string ExtensionName = "Custom";
 
         /// <summary>
         /// Precarga las dependencias del designer con un reporte vacío
@@ -42,6 +49,17 @@ namespace Labour
             //Ruta por defecto para guardar reportes
             //DevExpress.XtraReports.Configuration.Settings.Default.StorageOptions.RootDirectory = rutaReportes;
 
+            /*
+            // The following code is required to support serialization of multiple custom objects.
+            TypeDescriptor.AddAttributes(typeof(DataSet), new ReportAssociatedComponentAttribute());
+            TypeDescriptor.AddAttributes(typeof(OleDbDataAdapter), new ReportAssociatedComponentAttribute());
+
+            // The following code is required to serialize custom objects.
+            ReportExtension.RegisterExtensionGlobal(new ReportExtension());
+            ReportDesignExtension.RegisterExtension(new DesignExtension(), ExtensionName);
+            */
+
+            
             //Oculta parámetros
             foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)
             {
@@ -55,8 +73,9 @@ namespace Labour
 
             #region Manejo Evento Guardado
             //Se usa el controlador de reportes para asignar evento de diseño
-            mdiController.DesignPanelLoaded +=
-                new DesignerLoadedEventHandler(mdiController_DesignPanelLoaded);
+            mdiController.DesignPanelLoaded += new DesignerLoadedEventHandler(mdiController_DesignPanelLoaded);
+
+            //mdiController.DesignPanelLoaded += OnDesignPanelLoaded;
 
             //Método que le pasa el panel de diseño a la clase que maneja el evento de guardado
             void mdiController_DesignPanelLoaded(object sender, DesignerLoadedEventArgs e)
@@ -64,6 +83,11 @@ namespace Labour
                 XRDesignPanel panel = (XRDesignPanel)sender;
                 panel.AddCommandHandler(new SaveCommandHandler(panel, reportName));
             }
+
+            //void OnDesignPanelLoaded(object sender, DevExpress.XtraReports.UserDesigner.DesignerLoadedEventArgs e)
+            //{
+            //    ReportDesignExtension.AssociateReportWithExtension((XtraReport)e.DesignerHost.RootComponent, ExtensionName);
+            //}
 
             #endregion
 
@@ -91,6 +115,9 @@ namespace Labour
             };
 
             mdiController.SetCommandVisibility(controles, CommandVisibility.None);
+
+            //Se bloquean popups referentes a transformación de Bindings a expresiones
+            Settings.Default.UserDesignerOptions.ConvertBindingsToExpressions = DevExpress.XtraReports.UI.PromptBoolean.False;
 
             //Visibilidad de los paneles con información referente a sql
             ReportExplorerDockPanel reportExplorer =
@@ -163,7 +190,61 @@ namespace Labour
         }
 
     }
+    #region Prueba Exportacion Estructura SQL
+    /*
+    class ReportExtension : ReportStorageExtension
+    {
+        public override void SetData(XtraReport report, Stream stream)
+        {
+            report.SaveLayoutToXml(stream);
+        }
+    }
 
+    class DesignExtension : ReportDesignExtension
+    {
+        protected override bool CanSerialize(object data)
+        {
+            return data is DataSet || data is OleDbDataAdapter;
+        }
+        protected override string SerializeData(object data, XtraReport report)
+        {
+            if (data is DataSet)
+                return (data as DataSet).GetXmlSchema();
+            if (data is OleDbDataAdapter)
+            {
+                OleDbDataAdapter adapter = data as OleDbDataAdapter;
+                return adapter.SelectCommand.Connection.ConnectionString +
+                    "\r\n" + adapter.SelectCommand.CommandText;
+            }
+
+            return base.SerializeData(data, report);
+        }
+
+        protected override bool CanDeserialize(string value, string typeName)
+        {
+            return typeof(DataSet).FullName ==
+                typeName || typeof(OleDbDataAdapter).FullName == typeName;
+        }
+        protected override object DeserializeData(string value, string typeName, XtraReport report)
+        {
+            if (typeof(DataSet).FullName == typeName)
+            {
+                DataSet dataSet = new DataSet();
+                dataSet.ReadXmlSchema(new StringReader(value));
+                return dataSet;
+            }
+            if (typeof(OleDbDataAdapter).FullName == typeName)
+            {
+                OleDbDataAdapter adapter = new OleDbDataAdapter();
+                string[] values = value.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                adapter.SelectCommand = new OleDbCommand(values[1], new OleDbConnection(values[0]));
+                return adapter;
+            }
+            return base.DeserializeData(value, typeName, report);
+        }
+    }
+    */
+    #endregion
     /// <summary>
     /// Clase que maneja eventos propios del ReportDesigner
     /// </summary>

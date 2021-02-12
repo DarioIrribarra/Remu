@@ -261,6 +261,31 @@ namespace Labour
             return tabla;
         }
 
+        private void EditarCertificado() 
+        {
+            DataTable data = new DataTable();
+            Empresa emp = new Empresa();
+            emp.SetInfo();
+
+            ReportesExternos.rptCertificadoRentas crt = new ReportesExternos.rptCertificadoRentas();
+            crt.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptCertificadoRentas.repx"));
+            crt.DataSource = data;
+            crt.DataMember = "data";
+
+            foreach (var parametro in crt.Parameters)
+            {
+                parametro.Visible = false;
+            }
+            crt.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+
+            SetParameters(crt, emp);
+
+            crt.CreateDocument();
+
+            splashScreenManager1.ShowWaitForm();
+            //Se le pasa el waitform para que se cierre una vez cargado
+            DiseñadorReportes.MostrarEditorLimitado(crt, "rptCertificadoRentas.repx", splashScreenManager1);
+        }
 
         private void Calcular(bool pdf)
         {
@@ -287,6 +312,7 @@ namespace Labour
                         //RptCertificadoRentas crt = new RptCertificadoRentas();
                         //Reporte externo
                         ReportesExternos.rptCertificadoRentas crt = new ReportesExternos.rptCertificadoRentas();
+                        crt.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptCertificadoRentas.repx"));
                         crt.DataSource = data;
                         crt.DataMember = "data";
 
@@ -299,6 +325,8 @@ namespace Labour
                         SetParameters(crt, emp);                                          
 
                         crt.CreateDocument();
+
+                        //crt.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptCertificadoRentas.repx"));
 
                         //MostrarTrabajador(per.ApellidoNombre);
                         Barra.Increase();
@@ -314,6 +342,7 @@ namespace Labour
 
                 //Guardar archivo
                 Documento doc = new Documento("", 0);
+                
                 if (reporteAux.Pages.Count > 0) {
                     if (pdf)
                         doc.ExportToPdf(reporteAux, $"Certificado_Rentas");
@@ -431,6 +460,9 @@ namespace Labour
             hilo.Start();
         }
 
-        
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            EditarCertificado();
+        }
     }
 }

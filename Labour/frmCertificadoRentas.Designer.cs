@@ -43,6 +43,8 @@
             this.btnSalida = new DevExpress.XtraEditors.SimpleButton();
             this.guardarPdf = new DevExpress.XtraEditors.SimpleButton();
             this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Labour.WaitFormRemuneraciones), true, true);
+            this.btnEditarReporte = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbTodos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCondicion.Properties)).BeginInit();
@@ -191,11 +193,28 @@
             this.btnImprimir.ToolTip = "Generar Documento";
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // btnEditarReporte
+            // 
+            this.btnEditarReporte.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarReporte.ImageOptions.Image")));
+            this.btnEditarReporte.Location = new System.Drawing.Point(181, 153);
+            this.btnEditarReporte.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEditarReporte.Name = "btnEditarReporte";
+            this.btnEditarReporte.Size = new System.Drawing.Size(114, 37);
+            this.btnEditarReporte.TabIndex = 25;
+            this.btnEditarReporte.Text = "Editar\r\nReporte\r\n";
+            this.btnEditarReporte.Click += new System.EventHandler(this.btnEditarReporte_Click);
+            // 
             // frmCertificadoRentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 249);
+            this.Controls.Add(this.btnEditarReporte);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.guardarPdf);
             this.Controls.Add(this.btnSalida);
@@ -243,5 +262,7 @@
         private DevExpress.XtraEditors.SimpleButton btnSalida;
         private DevExpress.XtraEditors.SimpleButton guardarPdf;
         private DevExpress.XtraEditors.SimpleButton btnImprimir;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.SimpleButton btnEditarReporte;
     }
 }
