@@ -59,9 +59,10 @@
             this.groupControl1.Controls.Add(this.cbDatos);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(334, 210);
+            this.groupControl1.Size = new System.Drawing.Size(390, 258);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Acceso";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
@@ -71,9 +72,10 @@
             this.btnBD.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBD.ImageOptions.Image = global::Labour.Properties.Resources.editdatasource_16x16;
             this.btnBD.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnBD.Location = new System.Drawing.Point(289, 31);
+            this.btnBD.Location = new System.Drawing.Point(337, 38);
+            this.btnBD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBD.Name = "btnBD";
-            this.btnBD.Size = new System.Drawing.Size(24, 22);
+            this.btnBD.Size = new System.Drawing.Size(28, 27);
             this.btnBD.TabIndex = 5;
             this.btnBD.ToolTip = "Ver Configuracion";
             this.btnBD.Click += new System.EventHandler(this.btnBD_Click);
@@ -83,9 +85,10 @@
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnSalir.ImageOptions.ImageUri.Uri = "Delete;Office2013";
-            this.btnSalir.Location = new System.Drawing.Point(180, 134);
+            this.btnSalir.Location = new System.Drawing.Point(210, 165);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(87, 32);
+            this.btnSalir.Size = new System.Drawing.Size(101, 39);
             this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -95,9 +98,10 @@
             this.btnIngreso.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngreso.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.btnIngreso.ImageOptions.ImageUri.Uri = "Apply;Office2013";
-            this.btnIngreso.Location = new System.Drawing.Point(77, 133);
+            this.btnIngreso.Location = new System.Drawing.Point(90, 164);
+            this.btnIngreso.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIngreso.Name = "btnIngreso";
-            this.btnIngreso.Size = new System.Drawing.Size(87, 32);
+            this.btnIngreso.Size = new System.Drawing.Size(101, 39);
             this.btnIngreso.TabIndex = 3;
             this.btnIngreso.Text = "Ingreso";
             this.btnIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
@@ -105,58 +109,64 @@
             // txtpass
             // 
             this.txtpass.EnterMoveNextControl = true;
-            this.txtpass.Location = new System.Drawing.Point(68, 96);
+            this.txtpass.Location = new System.Drawing.Point(79, 118);
+            this.txtpass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtpass.Name = "txtpass";
             this.txtpass.Properties.PasswordChar = '*';
             this.txtpass.Properties.BeforeShowMenu += new DevExpress.XtraEditors.Controls.BeforeShowMenuEventHandler(this.txtpass_Properties_BeforeShowMenu);
-            this.txtpass.Size = new System.Drawing.Size(212, 20);
+            this.txtpass.Size = new System.Drawing.Size(247, 22);
             this.txtpass.TabIndex = 2;
             this.txtpass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpass_KeyPress);
             // 
             // txtuser
             // 
             this.txtuser.EnterMoveNextControl = true;
-            this.txtuser.Location = new System.Drawing.Point(68, 63);
+            this.txtuser.Location = new System.Drawing.Point(79, 78);
+            this.txtuser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtuser.Name = "txtuser";
             this.txtuser.Properties.BeforeShowMenu += new DevExpress.XtraEditors.Controls.BeforeShowMenuEventHandler(this.txtuser_Properties_BeforeShowMenu);
-            this.txtuser.Size = new System.Drawing.Size(212, 20);
+            this.txtuser.Size = new System.Drawing.Size(247, 22);
             this.txtuser.TabIndex = 1;
             this.txtuser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtuser_KeyPress);
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(31, 100);
+            this.labelControl3.Location = new System.Drawing.Point(36, 123);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(31, 13);
+            this.labelControl3.Size = new System.Drawing.Size(36, 16);
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Clave:";
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(22, 65);
+            this.labelControl2.Location = new System.Drawing.Point(26, 80);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(40, 13);
+            this.labelControl2.Size = new System.Drawing.Size(48, 16);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Usuario:";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(30, 34);
+            this.labelControl1.Location = new System.Drawing.Point(35, 42);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(32, 13);
+            this.labelControl1.Size = new System.Drawing.Size(37, 16);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Datos:";
             // 
             // cbDatos
             // 
             this.cbDatos.EnterMoveNextControl = true;
-            this.cbDatos.Location = new System.Drawing.Point(68, 32);
+            this.cbDatos.Location = new System.Drawing.Point(79, 39);
+            this.cbDatos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbDatos.Name = "cbDatos";
             this.cbDatos.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbDatos.Properties.NullText = "[Vacío]";
             this.cbDatos.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbDatos.Size = new System.Drawing.Size(212, 20);
+            this.cbDatos.Size = new System.Drawing.Size(247, 22);
             this.cbDatos.TabIndex = 0;
             this.cbDatos.SelectedIndexChanged += new System.EventHandler(this.cbDatos_SelectedIndexChanged);
             this.cbDatos.DoubleClick += new System.EventHandler(this.cbDatos_DoubleClick);
@@ -167,13 +177,14 @@
             // 
             // frmAcceso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(334, 210);
+            this.ClientSize = new System.Drawing.Size(390, 258);
             this.ControlBox = false;
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAcceso";

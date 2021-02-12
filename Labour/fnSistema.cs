@@ -63,6 +63,11 @@ namespace Labour
         public static string ContratoVisualizado = "";
 
         /// <summary>
+        /// Variable que almacena la ruta de reportes en AppData\Roaming
+        /// </summary>
+        public static string RutaCarpetaReportesExterno = "";
+
+        /// <summary>
         /// Version actual del sistema
         /// </summary>
         public static string VersionSistema = "0.2.8";
@@ -107,6 +112,43 @@ namespace Labour
             }
         }
         #endregion
+
+        public static string setRutaCarpetaReportesExternos() 
+        {
+            RutaCarpetaReportesExterno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"RemuneracionesSopytec\Reportes");
+            if (!Directory.Exists(RutaCarpetaReportesExterno)) 
+            {
+                Directory.CreateDirectory(RutaCarpetaReportesExterno);
+                //Acá se deben copiar los archivos de reportes que vengan por defecto
+                string RutaCarpetaReportesPorDefecto = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reportes");
+
+                if (!Directory.Exists(RutaCarpetaReportesPorDefecto)) 
+                {
+                    return "No existe carpeta de reportes por defecto";
+                }
+                string[] reportes = Directory.GetFiles(RutaCarpetaReportesPorDefecto);
+
+                try
+                {
+                    foreach (string reporte in reportes)
+                    {
+                        //Se remueve la ruta del nombre
+                        string nombreReporte = reporte.Substring(RutaCarpetaReportesPorDefecto.Length + 1);
+
+                        //Se copian los archivos y se permite el sobreescribir
+                        File.Copy(Path.Combine(RutaCarpetaReportesPorDefecto, nombreReporte), Path.Combine(RutaCarpetaReportesExterno, nombreReporte), true);
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return "Error al copiar reportes por defecto";
+                }
+                
+            }
+            return "";
+        }
+
         /// <summary>
         /// Abre una conexion a la base de datos y devuelve un objeto sqlconnection.
         /// <para>Util para procesos en otros hilos de ejecución.</para>

@@ -16,6 +16,7 @@ using System.Threading;
 using System.Timers;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraBars.Alerter;
+using DevExpress.XtraReports.UI;
 
 namespace Labour
 {
@@ -251,7 +252,7 @@ namespace Labour
                     }
                     else
                     {
-                        XtraMessageBox.Show("Por favor ingrese los datos de su empresa antes de comenzar a trabajador", "Informacion Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);                                                   
+                        XtraMessageBox.Show("Por favor ingrese los datos de su empresa antes de comenzar a trabajar", "Informacion Importante", MessageBoxButtons.OK, MessageBoxIcon.Information);                                                   
                     }
 
                     //GENERAMOS LICENCIA PARA VER SI CONCUERDA CON LA LICENCIA GUARDADA EN TABLA 
@@ -369,6 +370,9 @@ namespace Labour
                         //fnSistema.IniciarServicio("myservice01");
 
                         //USUARIO EXISTE
+                        //Se precarga un reporte para acelerar el ReportDesigner
+                        //DiseñadorReportes.PreCargarDependenciasDiseñador();
+
                         //SI SON CORRECTAS MOSTRAMOS MENUS   
                         this.Close();
                         this.open.ShowMenu();

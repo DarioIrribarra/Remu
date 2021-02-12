@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="rptAntiguedad" Margins="49, 39, 25, 70" PageWidth="850" PageHeight="1100" Version="18.1" DataMember="antiguedad">
+  <Parameters>
+    <Item1 Ref="2" Visible="false" Description="Nombre Empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
+    <Item2 Ref="3" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
+    <Item3 Ref="4" Visible="false" Description="Rut Trabajador" ValueInfo="14.391.703-7" Name="rutTrabajador" />
+    <Item4 Ref="5" Visible="false" Description="Fecha inicio Contrato" ValueInfo="01 de agosto de 2012" Name="antiguedad" />
+    <Item5 Ref="6" Visible="false" Description="Cargo Trabajador" ValueInfo="TECNICO EN REDES" Name="cargo" />
+    <Item6 Ref="7" Visible="false" Description="Dirección Empresa" ValueInfo="PEDRO DE LA GASCA # 19" Name="direccion" />
+    <Item7 Ref="8" Visible="false" Description="Ciudad Empresa" ValueInfo="CONCEPCIÓN" Name="ciudad" />
+    <Item8 Ref="9" Visible="false" Description="Nombre completo trabajador" ValueInfo="JEAN PIERRE ALEXIS ALMENDRAS PACHECO" Name="nombreTrabajador2" />
+    <Item9 Ref="10" Visible="false" Description="Texto del tipo de contrato" ValueInfo="INDEFINIDO" Name="tipoContratoTexto" />
+    <Item10 Ref="12" Visible="false" Description="Imagen BD" ValueInfo="System.Drawing.Bitmap" Name="imagen" Type="#Ref-11" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="13" ControlType="DetailBand" Name="Detail" HeightF="246.875" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="14" ControlType="XRRichText" Name="xrRichText1" CanGrow="false" SerializableRtfString="ewBcAHIAdABmADEAXABkAGUAZgBmADAAewBcAGYAbwBuAHQAdABiAGwAewBcAGYAMAAgAEMAYQBsAGkAYgByAGkAOwB9AHsAXABmADEAIABUAGkAbQBlAHMAIABOAGUAdwAgAFIAbwBtAGEAbgA7AH0AfQB7AFwAYwBvAGwAbwByAHQAYgBsACAAOwBcAHIAZQBkADAAXABnAHIAZQBlAG4AMABcAGIAbAB1AGUAMAAgADsAXAByAGUAZAAwAFwAZwByAGUAZQBuADAAXABiAGwAdQBlADIANQA1ACAAOwB9AHsAXAAqAFwAZABlAGYAYwBoAHAAIABcAGYAMQBcAGYAcwAyADQAfQB7AFwAcwB0AHkAbABlAHMAaABlAGUAdAAgAHsAXABxAGwAXABmADEAXABmAHMAMgA0ACAATgBvAHIAbQBhAGwAOwB9AHsAXAAqAFwAYwBzADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABEAGUAZgBhAHUAbAB0ACAAUABhAHIAYQBnAHIAYQBwAGgAIABGAG8AbgB0ADsAfQB7AFwAKgBcAGMAcwAyAFwAcwBiAGEAcwBlAGQAbwBuADEAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABMAGkAbgBlACAATgB1AG0AYgBlAHIAOwB9AHsAXAAqAFwAYwBzADMAXAB1AGwAXABmADEAXABmAHMAMgA0AFwAYwBmADIAIABIAHkAcABlAHIAbABpAG4AawA7AH0AewBcACoAXAB0AHMANABcAHQAcwByAG8AdwBkAFwAZgAxAFwAZgBzADIANABcAHEAbABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgBsADMAXAB0AHMAYwBlAGwAbABwAGEAZABkAGwAMQAwADgAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAYgAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwBjAGUAbABsAHAAYQBkAGQAZgB0ADMAXAB0AHMAdgBlAHIAdABhAGwAdABcAGMAbAB0AHgAbAByAHQAYgAgAE4AbwByAG0AYQBsACAAVABhAGIAbABlADsAfQB7AFwAKgBcAHQAcwA1AFwAdABzAHIAbwB3AGQAXABzAGIAYQBzAGUAZABvAG4ANABcAGYAMQBcAGYAcwAyADQAXABxAGwAXAB0AHIAYgByAGQAcgB0AFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGwAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAYgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHIAYgByAGQAcgByAFwAYgByAGQAcgBzAFwAYgByAGQAcgB3ADEAMABcAHQAcgBiAHIAZAByAGgAXABiAHIAZAByAHMAXABiAHIAZAByAHcAMQAwAFwAdAByAGIAcgBkAHIAdgBcAGIAcgBkAHIAcwBcAGIAcgBkAHIAdwAxADAAXAB0AHMAYwBlAGwAbABwAGEAZABkAGYAbAAzAFwAdABzAGMAZQBsAGwAcABhAGQAZABsADEAMAA4AFwAdABzAGMAZQBsAGwAcABhAGQAZABmAHIAMwBcAHQAcwBjAGUAbABsAHAAYQBkAGQAcgAxADAAOABcAHQAcwB2AGUAcgB0AGEAbAB0AFwAYwBsAHQAeABsAHIAdABiACAAVABhAGIAbABlACAAUwBpAG0AcABsAGUAIAAxADsAfQB9AHsAXAAqAFwAbABpAHMAdABvAHYAZQByAHIAaQBkAGUAdABhAGIAbABlAH0AXABuAG8AdQBpAGMAbwBtAHAAYQB0AFwAcwBwAGwAeQB0AHcAbgBpAG4AZQBcAGgAdABtAGEAdQB0AHMAcABcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGwAewBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgAEUAbAAgAHEAdQBlACAAcwB1AHMAYwByAGkAYgBlACwAIABjAGUAcgB0AGkAZgBpAGMAYQAgAHEAdQBlACAAZQBsACAAdAByAGEAYgBhAGoAYQBkAG8AcgB9AHsAXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAALAAgAGQAbwBuACgAYQApACAAfQBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAXABwAGEAcgBcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGwAXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAZgAxAFwAZgBzADIANABcAGMAZgAxAFwAcABhAHIAXABwAGEAcgBkAFwAcABsAGEAaQBuAFwAcQBjAHsAXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAYgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgAFsAUABhAHIAYQBtAGUAdABlAHIAcwAuAG4AbwBtAGIAcgBlAFQAcgBhAGIAYQBqAGEAZABvAHIAMgBdAH0AXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAYgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQBcAHAAYQByAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAYwBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAXABwAGEAcgBcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGoAewBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABDAFwAdQAyADMAMwBcACcAZQA5AGQAdQBsAGEAIABkAGUAIABpAGQAZQBuAHQAaQBkAGEAZAA6ACAAfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABbAFAAYQByAGEAbQBlAHQAZQByAHMALgByAHUAdABUAHIAYQBiAGEAagBhAGQAbwByAF0AfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgACwAIABlAHMAIABmAHUAbgBjAGkAbwBuAGEAcgBpAG8AIABhAGMAdABpAHYAbwAgAGQAZQAgAGwAYQAgAEUAbQBwAHIAZQBzAGEALAAgAH0AewBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABiAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAAWwBQAGEAcgBhAG0AZQB0AGUAcgBzAC4AZQBtAHAAcgBlAHMAYQBdAH0AewBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIAAsACAAZABlAHMAZABlACAAZQBsACAAfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABbAFAAYQByAGEAbQBlAHQAZQByAHMALgBhAG4AdABpAGcAdQBlAGQAYQBkAF0AfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgACwAIABvAGMAdQBwAGEAbgBkAG8AIABlAGwAIABjAGEAcgBnAG8AIABkAGUAIAB9AHsAXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAYgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgAFsAUABhAHIAYQBtAGUAdABlAHIAcwAuAGMAYQByAGcAbwBdAH0AewBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIAAsACAAYwBvAG4AIABjAG8AbgB0AHIAYQB0AG8AIABkAGUAIAB0AGkAcABvACAAfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABbAFAAYQByAGEAbQBlAHQAZQByAHMALgB0AGkAcABvAEMAbwBuAHQAcgBhAHQAbwBUAGUAeAB0AG8AXQB9AHsAXABsAGEAbgBnADMAMAA4ADIAXABsAGEAbgBnAGYAZQAzADAAOAAyAFwAZgAxAFwAZgBzADIANABcAGMAZgAxACAALgB9AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQBcAHAAYQByAFwAcABhAHIAZABcAHAAbABhAGkAbgBcAHEAbABcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAXABwAGEAcgBcAHAAYQByAGQAXABwAGwAYQBpAG4AXABxAGoAewBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAIABTAGUAIABvAHQAbwByAGcAYQAgAGUAbAAgAHAAcgBlAHMAZQBuAHQAZQAgAGMAZQByAHQAaQBmAGkAYwBhAGQAbwAgAGEAIABwAGUAZABpAGQAbwAgAGQAZQBsACAAaQBuAHQAZQByAGUAcwBhAGQAbwAgAHAAYQByAGEAIABsAG8AcwAgAGYAaQBuAGUAfQB7AFwAbABhAG4AZwAzADAAOAAyAFwAbABhAG4AZwBmAGUAMwAwADgAMgBcAGYAMQBcAGYAcwAyADQAXABjAGYAMQAgAHMAIABxAHUAZQAgAGUAcwB0AGkAbQBlACAAYwBvAG4AdgBlAG4AaQBlAG4AdABlAC4AfQBcAGwAYQBuAGcAMwAwADgAMgBcAGwAYQBuAGcAZgBlADMAMAA4ADIAXABmADEAXABmAHMAMgA0AFwAYwBmADEAXABwAGEAcgB9AA==" AnchorVertical="Both" AnchorHorizontal="Both" SizeF="762,189.3751" LocationFloat="9.536743E-05, 57.49989" Font="Times New Roman, 12pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="15" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item1>
+    <Item2 Ref="16" ControlType="TopMarginBand" Name="TopMargin" HeightF="25" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="17" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="70" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item4 Ref="18" ControlType="PageHeaderBand" Name="PageHeader" HeightF="167.7344">
+      <Controls>
+        <Item1 Ref="19" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="xrLabel2" SizeF="472.9166,12.65775" LocationFloat="0, 68.88696" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="20" Expression="[Parameters].[rutEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="21" UseFont="false" />
+        </Item1>
+        <Item2 Ref="22" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="xrLabel1" SizeF="472.9167,13.625" LocationFloat="0, 55.26196" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="23" Expression="[Parameters].[empresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="24" UseFont="false" />
+        </Item2>
+        <Item3 Ref="25" ControlType="XRPictureBox" Name="imgLogo" Sizing="StretchImage" ImageAlignment="MiddleLeft" SizeF="74.42728,55.26196" LocationFloat="0, 0" />
+        <Item4 Ref="26" ControlType="XRLabel" Name="xrLabel8" Text="Antiguedad" AnchorHorizontal="Both" TextAlignment="TopCenter" SizeF="762,26.69272" LocationFloat="0.000111262, 141.041687" Font="Times New Roman, 15.99pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+          <StylePriority Ref="27" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="28" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="xrLabel2" SizeF="472.9166,12.65774" LocationFloat="0, 81.54469" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="29" Expression="[Parameters].[direccion]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="30" UseFont="false" />
+        </Item5>
+        <Item6 Ref="31" ControlType="XRLabel" Name="xrLabel10" Multiline="true" Text="xrLabel2" SizeF="472.9166,12.65776" LocationFloat="0, 94.20244" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="32" Expression="[Parameters].[ciudad]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="33" UseFont="false" />
+        </Item6>
+      </Controls>
+    </Item4>
+    <Item5 Ref="34" ControlType="PageFooterBand" Name="PageFooter">
+      <Controls>
+        <Item1 Ref="35" ControlType="XRLabel" Name="xrLabel22" Multiline="true" Text="Firma Encargado Recursos Humanos" TextAlignment="TopCenter" SizeF="762.0001,22.99998" LocationFloat="0, 8.416538" Font="Times New Roman, 12pt" Padding="2,2,0,0,100" Borders="None">
+          <StylePriority Ref="36" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="37" ControlType="XRLabel" Name="xrLabel21" Multiline="true" SizeF="252.4305,8.416687" LocationFloat="255.404, 0" Padding="2,2,0,0,100" Borders="Top">
+          <StylePriority Ref="38" UseBorders="false" />
+        </Item2>
+        <Item3 Ref="39" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="DateTime" TextAlignment="TopRight" SizeF="206.2501,23" LocationFloat="555.7498, 67.00001" Font="Times New Roman, 12pt" Padding="2,2,0,0,100" Borders="None">
+          <StylePriority Ref="40" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item3>
+      </Controls>
+    </Item5>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="41" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="11" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

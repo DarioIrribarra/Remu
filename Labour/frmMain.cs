@@ -16,6 +16,7 @@ using DevExpress.XtraBars;
 using System.IO;
 using System.Globalization;
 using System.Threading;
+using DevExpress.XtraReports.UI;
 
 namespace Labour
 {
@@ -134,6 +135,10 @@ namespace Labour
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("es-ES");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            //SE SETEA LA RUTA DE LA CARPETA DE REPORTES
+            string resultadoCopiaReportes = fnSistema.setRutaCarpetaReportesExternos();
+            if (resultadoCopiaReportes!= "")
+                { XtraMessageBox.Show(resultadoCopiaReportes, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }            
         }        
 
         private void frmAcceso_Load(object sender, EventArgs e)

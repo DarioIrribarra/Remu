@@ -163,6 +163,7 @@
     <Compile Include="demo.Designer.cs">
       <DependentUpon>demo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiseñadorReportes.cs" />
     <Compile Include="Encriptacion.cs" />
     <Compile Include="ExcelConverter.cs" />
     <Compile Include="Expresion.cs" />
@@ -1607,6 +1608,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reportes\rptAntiguedad.repx" />
+    <None Include="Reportes\rptLiquidacion2.repx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\user.png" />
     <None Include="Resources\warning.png" />
     <None Include="Resources\warningX16.png" />

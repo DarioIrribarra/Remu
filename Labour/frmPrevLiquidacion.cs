@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Base;
 using System.Collections;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.Utils;
+using System.IO;
 
 namespace Labour
 {
@@ -1863,6 +1864,17 @@ namespace Labour
             e.Info.ToolTipType = ToolTipType.SuperTip;
             e.Info.SuperTip = new SuperToolTip();
             e.Info.SuperTip.Setup(toolTipArgs);
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            splashScreenManager1.ShowWaitForm();
+            //Prueba de edición de certificado
+            XtraReport reporte = new XtraReport();
+            reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacion2.repx"));
+
+            //Se le pasa el waitform para que se cierre una vez cargado
+            DiseñadorReportes.MostrarEditorLimitado(reporte, "rptLiquidacion2.repx", splashScreenManager1);
         }
     }
 
