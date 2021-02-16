@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using DevExpress.XtraReports.UI;
 using DevExpress.Utils.Menu;
 using System.Threading;
+using System.IO;
 
 namespace Labour
 {
@@ -388,11 +389,16 @@ namespace Labour
 
 
         //IMPRIME USANDO FORMATO 2
-        private void ImprimeDocu(int? pPeriodoInicio = 0, int? pPeriodoTermino = 0, bool? impresionRapida = false, bool? pdfFile = false)
+        private void ImprimeDocu(int? pPeriodoInicio = 0, int? pPeriodoTermino = 0, bool? impresionRapida = false, bool? pdfFile = false, bool editar = false)
         {
             int contador = 0;
             double Pago = 0;
             XtraReport reporteAux = new XtraReport();
+
+            //Reporte que se le entrega al editor como plantilla
+            ReportesExternos.rptLiquidacion2 reporteParaEditor = new ReportesExternos.rptLiquidacion2();
+            reporteParaEditor.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacion2.repx"));
+
             reporteAux.CreateDocument();
             
             if (Liquidaciones.Count > 0 && Contrato != "")
@@ -406,10 +412,9 @@ namespace Labour
                     if (Pago > 0)
                     {
                         Documento d = new Documento(liquidacion.Contrato, liquidacion.Periodo);
-                        XtraReport reporte = new XtraReport();
 
-                        reporte = d.SoloHaberesAnteriores();
-
+                        ReportesExternos.rptLiquidacion2 reporte = (ReportesExternos.rptLiquidacion2)d.SoloHaberesAnteriores();
+                        reporteParaEditor = reporte;
                         reporte.CreateDocument();
 
                         contador++;
@@ -425,12 +430,22 @@ namespace Labour
                 splashScreenManager1.CloseWaitForm();
                 //MOSTRAMOS REPORTE
                 Documento d1 = new Documento("", 0);
-                if ((bool)impresionRapida)
-                    d1.PrintDocument(reporteAux);
-                else if ((bool)pdfFile)
-                    d1.ExportToPdf(reporteAux, $"Liquidaciones{((pPeriodoInicio > 0 && pPeriodoTermino > 0)? $"[{pPeriodoInicio}-{pPeriodoTermino}]":"")}[{Contrato}]");
-                else
-                    d1.ShowDocument(reporteAux);            
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(reporteParaEditor, "rptLiquidacion2.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)impresionRapida)
+                        d1.PrintDocument(reporteAux);
+                    else if ((bool)pdfFile)
+                        d1.ExportToPdf(reporteAux, $"Liquidaciones{((pPeriodoInicio > 0 && pPeriodoTermino > 0) ? $"[{pPeriodoInicio}-{pPeriodoTermino}]" : "")}[{Contrato}]");
+                    else
+                        d1.ShowDocument(reporteAux);
+                }
+                        
             }
             else
             {
@@ -776,6 +791,20 @@ namespace Labour
 
         private void txtHasta_EditValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD
+            Sesion.NuevaActividad();
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptliqhistorico") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            ImprimeDocu(editar:true);
 
         }
     }

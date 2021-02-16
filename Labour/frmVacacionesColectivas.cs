@@ -13,6 +13,7 @@ using System.Collections;
 using System.Transactions;
 using DevExpress.XtraReports.UI;
 using System.Threading;
+using System.IO;
 
 namespace Labour
 {
@@ -331,6 +332,64 @@ namespace Labour
             {
                 try
                 {
+                    //RECORREMOS E INGRESAMOS DATOS PARA TRABAJADOR DEL LISTADO
+                    foreach (LiquidacionHistorico item in pListado)
+                    {
+                        foreach (vacaciones vac in ListadoInfoVacaciones)
+                        {
+                            //ULTIMO FOLIO
+                            LastFolio = vacaciones.GetLastFolio(item.Contrato) + 1;
+
+                            if (vac.contrato == item.Contrato) 
+                            {
+                                person = Persona.GetInfo(item.Contrato, item.Periodo);
+
+                                if (pTipo == 1)
+                                    per = vacaciones.PeriodoDiasTomados(person.FechaVacacion, vac.FechaLimiteVacacionesLegales, vac.DiasPropTomados, pDias);
+                                else
+                                    per = vacaciones.MesProgresivoUsado(vac.FechaBaseProgresivos, person.FechaProgresivo, vac.diasProgTomados, pDias, true);
+
+                                using (cn = fnSistema.OpenConnection())
+                                {
+                                    if (cn != null) 
+                                    {
+                                        using (cmd = new SqlCommand(sql, cn))
+                                        {
+                                            cmd.Parameters.Add(new SqlParameter("@pContrato", item.Contrato));
+                                            cmd.Parameters.Add(new SqlParameter("@pSalida", pSalida));
+                                            cmd.Parameters.Add(new SqlParameter("@pFinaliza", pFinaliza));
+                                            cmd.Parameters.Add(new SqlParameter("@pDias", pDias));
+                                            cmd.Parameters.Add(new SqlParameter("@pTipo", pTipo));
+                                            cmd.Parameters.Add(new SqlParameter("@pRetorna", pRetorna));
+                                            cmd.Parameters.Add(new SqlParameter("@perVac", per));
+                                            cmd.Parameters.Add(new SqlParameter("@pFolio", LastFolio));
+
+                                            //cmd.Transaction = tr;
+                                            cmd.ExecuteNonQuery();
+
+                                            //No sé porqué está este rollback acá
+                                            //SqlRollBack($"DELETE from VacacionDetalle WHERE contrato='{item.Contrato}' AND salida='{pSalida.ToString("yyyy-MM-dd")}' AND finaliza='{pFinaliza.ToString("yyyy-MM-dd")}'");
+                                        }
+
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    TransaccionCorrecta = true;
+                }
+                catch (Exception ex)
+                {
+
+                    TransaccionCorrecta = false;
+                }
+                
+                #region INSERCION ORGINAL, ME DABA DEADLOCK
+                /*
+                try
+                {
                     cn = fnSistema.OpenConnection();
                     if (cn != null)
                     {
@@ -345,15 +404,18 @@ namespace Labour
                                 {
                                     foreach (vacaciones vac in ListadoInfoVacaciones)
                                     {
+                                        //ULTIMO FOLIO
+                                        LastFolio = vacaciones.GetLastFolio(item.Contrato) + 1;
                                         if (vac.contrato == item.Contrato)
                                         {
+                                            
                                             person = Persona.GetInfo(item.Contrato, item.Periodo);
 
                                             if (pTipo == 1)
                                               per = vacaciones.PeriodoDiasTomados(person.FechaVacacion, vac.FechaLimiteVacacionesLegales, vac.DiasPropTomados, pDias);
                                             else
                                               per = vacaciones.MesProgresivoUsado(vac.FechaBaseProgresivos, person.FechaProgresivo, vac.diasProgTomados, pDias, true);
-
+                                            
                                             using (cmd = new SqlCommand(sql, cn))
                                             {
                                                 cmd.Parameters.Add(new SqlParameter("@pContrato", item.Contrato));
@@ -363,8 +425,6 @@ namespace Labour
                                                 cmd.Parameters.Add(new SqlParameter("@pTipo", pTipo));
                                                 cmd.Parameters.Add(new SqlParameter("@pRetorna", pRetorna));
                                                 cmd.Parameters.Add(new SqlParameter("@perVac", per));
-                                                //ULTIMO FOLIO
-                                                LastFolio = vacaciones.GetLastFolio(item.Contrato) + 1;
                                                 cmd.Parameters.Add(new SqlParameter("@pFolio", LastFolio));
 
                                                 cmd.Transaction = tr;
@@ -395,6 +455,8 @@ namespace Labour
                     //ERROR..
                     TransaccionCorrecta = false;
                 }
+                */
+                #endregion
             }
 
             return TransaccionCorrecta;
@@ -466,7 +528,7 @@ namespace Labour
         /// Actualiza datos de vacaciones.
         /// </summary>
         /// <param name="pListado"></param>
-        private void UpdateCalculo(List<LiquidacionHistorico> pListado, DateTime pSalida, DateTime pFinaliza, bool? Reporte = false)
+        private void UpdateCalculo(List<LiquidacionHistorico> pListado, DateTime pSalida, DateTime pFinaliza, bool? Reporte = false, bool editar = false)
         {
             Persona person = new Persona();
             vacaciones Vac = new vacaciones();
@@ -476,8 +538,8 @@ namespace Labour
             //RptComprobanteVacacion Report = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion Report = new ReportesExternos.rptComprobanteVacacion();
+            //Report.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
-            Report.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             ReporteUnido.Pages.Clear();
             ReporteUnido.CreateDocument();            
             
@@ -523,7 +585,7 @@ namespace Labour
                                             //GENERAMOS REPORTE
                                             if (pData.Count > 0 && (bool)Reporte)
                                             {
-                                                Report = vacaciones.GeneraComprobante(pSalida, pFinaliza, item.Contrato, pData);
+                                                Report = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(pSalida, pFinaliza, item.Contrato, pData);
 
                                                 //MERGE REPORT
                                                 UnirReportes(Report);
@@ -915,6 +977,90 @@ namespace Labour
 
                 lblError.Visible = false;
             }
+        }
+
+        private void ShowEditor(List<LiquidacionHistorico> pListado, DateTime pSalida, DateTime pFinaliza) 
+        {
+            Persona person = new Persona();
+            vacaciones Vac = new vacaciones();
+            SqlConnection cn;
+            SqlTransaction Tr;
+            Hashtable pData = new Hashtable();
+            ReportesExternos.rptComprobanteVacacion Report = new ReportesExternos.rptComprobanteVacacion();
+            Report.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
+
+            foreach (LiquidacionHistorico item in pListado)
+            {
+                //OBTENEMOS TODOS LOS DATOS DE LA PERSONA
+                person = Persona.GetInfo(item.Contrato, item.Periodo);
+
+                if (person.Contrato != "")
+                {
+                    //Con solo 1 reporte se muestra el editor
+                    Report = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(pSalida, pFinaliza, item.Contrato, pData);
+                    break;
+                    //OBTENEMOS LOS DATOS ACTUALIZADOS DE VACACIONES PARA PERSONA.
+                    //Vac = vacaciones.PrimerIngreso(person, pData, true, pFinaliza);
+                    //if (Vac != null)
+                    //{
+                    //    ////CON LOS DATOS DEL OBJETO HACEMOS INSERT O UPDATE DEPENDIENDO
+                    //    //if (vacaciones.ExistenRegistros(person.Contrato))
+                    //    //    UpdateInfo(Vac, cn, Tr);
+                    //    //else
+                    //    //    InsertInfo(Vac, cn, Tr);
+
+                    //    Report = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(pSalida, pFinaliza, item.Contrato, pData);
+                    //}
+                }
+
+            }
+           
+            splashScreenManager1.ShowWaitForm();
+            //Se le pasa el waitform para que se cierre una vez cargado
+            DiseñadorReportes.MostrarEditorLimitado(Report, "rptComprobanteVacacion.repx", splashScreenManager1);
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            Sesion.NuevaActividad();
+
+            if (txtTipo.EditValue == null || txtTipo.Properties.DataSource == null)
+            { XtraMessageBox.Show("Por favor selecciona un tipo de vacacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            if (txtComboPeriodo.Properties.DataSource == null)
+            { XtraMessageBox.Show("Por favor selecciona un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            string Filtro = "";
+            List<LiquidacionHistorico> ListadoPersonas = new List<LiquidacionHistorico>();
+
+            if (fnDecimal(txtDiasVac.Text) == false)
+            { XtraMessageBox.Show("Por favor ingresa un dia válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); txtDiasVac.Focus(); return; }
+
+            if (cbTodos.Checked)
+            {
+                //TODOS LOS REGISTROS DEL PERIODO
+                //GENERAR LISTADO DE CONTRATOS DE acuerdo a filtro
+                Filtro = Calculo.GetSqlFiltro(User.GetUserFilter(), "", User.ShowPrivadas());
+                ListadoPersonas = Getlistado(Filtro, Convert.ToInt32(txtComboPeriodo.EditValue));
+            }
+            else
+            {
+                //CONJUNTO
+                if (Conjunto.ExisteConjunto(txtConjunto.Text) == false)
+                { XtraMessageBox.Show("Por favor ingresa un conjunto válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); txtConjunto.Focus(); return; }
+
+                //GENERAR LISTADO DE CONTRATOS DE acuerdo a filtro
+                Filtro = Calculo.GetSqlFiltro(User.GetUserFilter(), txtConjunto.Text, User.ShowPrivadas());
+                ListadoPersonas = Getlistado(Filtro, Convert.ToInt32(txtComboPeriodo.EditValue));
+            }
+
+            //SETEAMOS PROPIEDADES PARA PODER ACCEDER DESDE HILO
+            DateTime fechaInicio = Convert.ToDateTime(dtFinaliza.EditValue);
+            DateTime fechaTermino = Convert.ToDateTime(dtSalida.EditValue);
+
+
+
+            ShowEditor(ListadoPersonas, fechaInicio, fechaTermino);
         }
     }
 }

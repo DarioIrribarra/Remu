@@ -13,6 +13,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using DevExpress.XtraReports.Configuration;
 using DevExpress.XtraReports.UI;
+using System.IO;
 
 namespace Labour
 {
@@ -82,6 +83,7 @@ namespace Labour
             
             btnImpresionRapida.Enabled = false;
             btnImprimir.Enabled = false;
+            btnEditarReporte.Enabled = false;
             btnPdf.Enabled = false;
 
             if (txtComboPeriodo.Properties.DataSource != null)
@@ -267,6 +269,7 @@ namespace Labour
 
                     btnImprimir.Enabled = true;
                     btnImpresionRapida.Enabled = true;
+                    btnEditarReporte.Enabled = true;
                     btnPdf.Enabled = true;
                     periodoObservado = pPeriodo;
                 }
@@ -274,6 +277,7 @@ namespace Labour
                 {
                     XtraMessageBox.Show("No se encontró información para la afp consultada", "Sin Información", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnImprimir.Enabled = false;
+                    btnEditarReporte.Enabled = false;
                     btnImpresionRapida.Enabled = false;
                     btnPdf.Enabled = false;
                 }
@@ -356,7 +360,7 @@ namespace Labour
         }
 
         //IMPRIME DOCUMENTO
-        private void ImprimeDocumento(bool? impresionRapida = false, bool? GeneraPdf = false)
+        private void ImprimeDocumento(bool? impresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
             if (lista.Count>0)
             {
@@ -364,6 +368,7 @@ namespace Labour
                 //rptPlanillaAfp reporte = new rptPlanillaAfp();
                 //Reporte externo
                 ReportesExternos.rptPlanillaAfp reporte = new ReportesExternos.rptPlanillaAfp();
+                reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaAfp.repx"));
                 reporte.DataSource = lista;               
                 string field = "";
 
@@ -377,7 +382,6 @@ namespace Labour
                 reporte.Parameters["afp"].Value = AfpConsulta;
                 reporte.Parameters["rutemp"].Value = fnSistema.fFormatearRut2(emp.Rut);             
                 reporte.Parameters["condicion"].Value = DescripcionCondicion;
-                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 //PARA QUE NO APARESCA LA VENTANA PIDIENTO EL VALOR PARA EL PARAMETRO
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)
@@ -420,12 +424,25 @@ namespace Labour
                 }
 
                 Documento d = new Documento("", 0);
-                if ((bool)impresionRapida)
-                    d.PrintDocument(reporte);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(reporte, $"Planilla{AfpConsulta}_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodoObservado)))}");
-                else
-                    d.ShowDocument(reporte);
+                //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaAfp.repx"));
+
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(reporte, "rptPlanillaAfp.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)impresionRapida)
+                        d.PrintDocument(reporte);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(reporte, $"Planilla{AfpConsulta}_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodoObservado)))}");
+                    else
+                        d.ShowDocument(reporte);
+                }
+
+                
             }
         }
    
@@ -559,6 +576,17 @@ namespace Labour
         private void txtConjunto_KeyPress(object sender, KeyPressEventArgs e)
         {
             
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptplanillaafp") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            ImprimeDocumento(editar:true);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

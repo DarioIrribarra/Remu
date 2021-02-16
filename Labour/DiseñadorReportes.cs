@@ -75,6 +75,7 @@ namespace Labour
             //Se usa el controlador de reportes para asignar evento de diseño
             mdiController.DesignPanelLoaded += new DesignerLoadedEventHandler(mdiController_DesignPanelLoaded);
 
+            //Se asigna el evento load
             //mdiController.DesignPanelLoaded += OnDesignPanelLoaded;
 
             //Método que le pasa el panel de diseño a la clase que maneja el evento de guardado
@@ -84,9 +85,17 @@ namespace Labour
                 panel.AddCommandHandler(new SaveCommandHandler(panel, reportName));
             }
 
+            //Evento al terminar de cargar
             //void OnDesignPanelLoaded(object sender, DevExpress.XtraReports.UserDesigner.DesignerLoadedEventArgs e)
             //{
-            //    ReportDesignExtension.AssociateReportWithExtension((XtraReport)e.DesignerHost.RootComponent, ExtensionName);
+            //    //ReportDesignExtension.AssociateReportWithExtension((XtraReport)e.DesignerHost.RootComponent, ExtensionName);
+            //    //Cierra popup
+
+            //    //if (!e.DesignerHost.Loading) 
+            //    //{
+            //    //    if (popUpWait != null)
+            //    //        popUpWait.CloseWaitForm();
+            //    //}
             //}
 
             #endregion
@@ -137,12 +146,11 @@ namespace Labour
                 (ErrorListDockPanel)designForm.DesignDockManager[DesignDockPanelType.ErrorList];
             errorList.Hide();
 
-            //Cierra popup
-            if (popUpWait != null) 
+            if (popUpWait != null)
                 popUpWait.CloseWaitForm();
 
-            //Abre el diseñador
-            diseñador.ShowRibbonDesignerDialog();
+                //Abre el diseñador
+                diseñador.ShowRibbonDesignerDialog();
         }
 
         /// <summary>

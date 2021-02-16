@@ -1487,9 +1487,9 @@ namespace Labour
             }
         }
 
-        private void GeneraReporte(DataTable pTabla, int pPeriodo)
+        private void GeneraReporte(DataTable pTabla, int pPeriodo, bool editar = false)
         {
-            if (pTabla.Rows.Count > 0)
+            if (pTabla.Rows.Count > 0 || editar)
             {
                 //rptContable reporte = new rptContable(pTabla);
                 //reporte.DataSource = pTabla;
@@ -1501,6 +1501,7 @@ namespace Labour
                 //RptContable2 reporte = new RptContable2();
                 //Reporte externo
                 ReportesExternos.rptContable2 reporte =   new ReportesExternos.rptContable2();
+                reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptContable2.repx"));
 
                 reporte.DataSource = List;
                 //reporte.DataMember = "data";
@@ -1516,10 +1517,21 @@ namespace Labour
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo)));
                 reporte.Parameters["empresa"].Value = emp.Razon;
                 reporte.Parameters["condicion"].Value = CondicionBusqueda;
-                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 Documento doc = new Documento("", 0);
-                doc.ShowDocument(reporte);
+                //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptContable2.repx"));
+
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(reporte, "rptContable2.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    doc.ShowDocument(reporte);
+                }
+                
             }
         }
 
@@ -1903,6 +1915,30 @@ namespace Labour
             filtro.opener = this;
             filtro.StartPosition = FormStartPosition.CenterParent;
             filtro.Show();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            Sesion.NuevaActividad();
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            //PERIODO...
+            if (txtPeriodo.Properties.DataSource == null || txtPeriodo.EditValue == null)
+            { XtraMessageBox.Show("Por favor ingresa un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            try
+            {
+                //if (TablaDataSource.Rows.Count > 0)
+                //{
+                //    //GENERAMOS REPORTE
+                GeneraReporte(TablaDataSource, Convert.ToInt32(txtPeriodo.EditValue), editar: true);
+                //}
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("No se pudo generar documento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }           
         }
     }
 }

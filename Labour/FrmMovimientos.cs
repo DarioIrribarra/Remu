@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Labour
 {
@@ -44,7 +45,7 @@ namespace Labour
             Cursor = Cursors.Default;
         }
 
-        private void GetDataSource(int pPeriodo)
+        private void GetDataSource(int pPeriodo, bool editar = false)
         {
             SqlCommand cmd;
             SqlConnection cn;
@@ -64,7 +65,9 @@ namespace Labour
                         "WHERE t.status = 1 AND t.anomes = @pPeriodo AND it.suspendido = 0) as t " +
                         "GROUP BY item, descripcion ";
 
-            RptMovimiento re = new RptMovimiento();
+            //RptMovimiento re = new RptMovimiento();
+            ReportesExternos.rptMovimiento re = new ReportesExternos.rptMovimiento();
+            re.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptMovimiento.repx"));
             Empresa em = new Empresa();
             em.SetInfo();
 
@@ -91,7 +94,18 @@ namespace Labour
                             re.Parameters["empresa"].Value = em.Razon;
 
                             Documento doc = new Documento("", 0);
-                            doc.ShowDocument(re);
+                            //re.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptMovimiento.repx"));
+                            if (editar)
+                            {
+                                splashScreenManager1.ShowWaitForm();
+                                //Se le pasa el waitform para que se cierre una vez cargado
+                                DiseñadorReportes.MostrarEditorLimitado(re, "rptMovimiento.repx", splashScreenManager1);
+                            }
+                            else 
+                            {
+                                doc.ShowDocument(re);
+                            }
+                            
                         }
                         else
                         {
@@ -106,6 +120,16 @@ namespace Labour
                 XtraMessageBox.Show("No se pudo generar la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            if (txtPeriodo.Properties.DataSource == null || txtPeriodo.EditValue == null)
+            {
+                XtraMessageBox.Show("Por favor selecciona un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            GetDataSource(Convert.ToInt32(txtPeriodo.EditValue), editar: true);
         }
     }
 }

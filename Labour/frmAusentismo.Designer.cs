@@ -70,6 +70,7 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEditarComprobante = new DevExpress.XtraEditors.SimpleButton();
             this.btnEditarReporte = new DevExpress.XtraEditors.SimpleButton();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Labour.WaitFormRemuneraciones), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.separador1)).BeginInit();
@@ -478,7 +479,7 @@
             this.calendarioAusentismo.Location = new System.Drawing.Point(26, 42);
             this.calendarioAusentismo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.calendarioAusentismo.Name = "calendarioAusentismo";
-            this.calendarioAusentismo.Size = new System.Drawing.Size(308, 270);
+            this.calendarioAusentismo.Size = new System.Drawing.Size(297, 270);
             this.calendarioAusentismo.TabIndex = 117;
             this.calendarioAusentismo.CustomDrawDayNumberCell += new DevExpress.XtraEditors.Calendar.CustomDrawDayNumberCellEventHandler(this.calendarioAusentismo_CustomDrawDayNumberCell);
             // 
@@ -615,6 +616,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEditarComprobante);
             this.groupBox4.Controls.Add(this.btnEditarReporte);
             this.groupBox4.Controls.Add(this.btnExcel);
             this.groupBox4.Controls.Add(this.btnImprimir);
@@ -628,11 +630,23 @@
             this.groupBox4.TabIndex = 123;
             this.groupBox4.TabStop = false;
             // 
+            // btnEditarComprobante
+            // 
+            this.btnEditarComprobante.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarComprobante.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnEditarComprobante.Location = new System.Drawing.Point(339, 18);
+            this.btnEditarComprobante.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEditarComprobante.Name = "btnEditarComprobante";
+            this.btnEditarComprobante.Size = new System.Drawing.Size(142, 37);
+            this.btnEditarComprobante.TabIndex = 125;
+            this.btnEditarComprobante.Text = "Editar\r\nComprobante\r\n";
+            this.btnEditarComprobante.Click += new System.EventHandler(this.btnEditarComprobante_Click);
+            // 
             // btnEditarReporte
             // 
             this.btnEditarReporte.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarReporte.ImageOptions.Image")));
-            this.btnEditarReporte.Location = new System.Drawing.Point(219, 23);
+            this.btnEditarReporte.Location = new System.Drawing.Point(219, 18);
             this.btnEditarReporte.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditarReporte.Name = "btnEditarReporte";
             this.btnEditarReporte.Size = new System.Drawing.Size(114, 37);
@@ -741,5 +755,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnEditarReporte;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.SimpleButton btnEditarComprobante;
     }
 }

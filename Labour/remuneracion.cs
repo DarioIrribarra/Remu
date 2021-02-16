@@ -12241,7 +12241,6 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
             //reporte.Parameters["liquido"].Value = "$" + (Math.Round(Calculo.GetValueFromCalculoMensaul(Contrato, periodoEmpleado, "sysliq"))).ToString("N0");
             //reporte.Parameters["pago"].Value = "$" + (Math.Round(Calculo.GetValueFromCalculoMensaul(Contrato, periodoEmpleado, "syspago"))).ToString("N0");
 
-            reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             reporte.Parameters["imponible"].Value = "$" + (Math.Round(systimp)).ToString("N0");
             reporte.Parameters["descuentos"].Value = "$" + (Math.Round(systdctos)).ToString("N0");
             reporte.Parameters["haberes"].Value = "$" + (Math.Round(systhab)).ToString("N0");
@@ -12543,7 +12542,7 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
                 XtraMessageBox.Show(ex.Message);
             }
 
-            XtraReport reporte = new rptSubDescuentosLiq();
+            XtraReport reporte = new ReportesExternos.rptSubDescuentosLiq();
             reporte.DataSource = listado;
 
             return reporte;
@@ -12774,7 +12773,7 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
             if (d4.Item != "")
                 listado.Add(d4);
 
-            XtraReport reporte = new rptSubAportesLiq();
+            XtraReport reporte = new ReportesExternos.rptSubAportesLiq();
             reporte.DataSource = listado;
 
             return reporte;
@@ -14898,7 +14897,7 @@ double pDias15, StringBuilder Builder, ItemTrabajador pObjeto, int pCount)
         public static DataSet GetInfoDataset(string pContrato, int pPeriodo)
         {
             DataSet info = new DataSet();
-            string sql = "SELECT contrato, anomes, trabajador.rut, CONCAT(trabajador.nombre, ' ', apepaterno, ' ', apematerno) as nombre, fechanac, " +
+            string sql = "SELECT contrato, anomes, trabajador.rut, CONCAT(trabajador.nombre, ' ', apepaterno, ' ', apematerno) as nombre, fechanac, (SELECT DATEDIFF(YY, fechanac, GETDATE())) as edad, " +
                          "cargo.nombre as cargo, ciudad.descCiudad as ciudad, direccion, ecivil.nombre as ecivil, nacion.nombre as nacionalidad, sexo, " +
                          " pasaporte, status, trabajador.nombre as NombreTrabajador, apepaterno, apematerno, " +
                          " ciudad as codciudad, sucursal as codSucursal, sucursal.descSucursal as nombreSucursal, area as codArea, ccosto, ccosto.nombre as centro, telefono, " +

@@ -84,8 +84,7 @@ namespace Labour
             Sesion.NuevaActividad();
 
             Cursor.Current = Cursors.WaitCursor;
-            string field = "";
-            DataTable reporteDataSet = new DataTable();
+            
 
             if (objeto.ValidaAcceso(User.GetUserGroup(), "rptlibrorem") == false)
             { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
@@ -98,82 +97,9 @@ namespace Labour
 
             //List<string> List = new List<string>();
 
-            int periodo = 0;
-            periodo = Convert.ToInt32(lookUpEdit1.EditValue.ToString());
-            //string contrato = "";
 
-            
-            reporteDataSet = GetSQLString(periodo, cbxSeleccionConjunto.EditValue.ToString()).Tables[0];
-            if (reporteDataSet.Rows.Count == 0)
-            { XtraMessageBox.Show("No se encontraron registros", "Registros", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }    
+            GenerarReporte();
 
-            splashScreenManager1.ShowWaitForm();
-            //rptLibroRemuneracionesFormaNueva reporteNuevo = new rptLibroRemuneracionesFormaNueva();
-            //Reporte desde DLL
-            ReportesExternos.rptLibroRemuneraciones reporteNuevo = new ReportesExternos.rptLibroRemuneraciones();
-            reporteNuevo.Parameters["periodo"].Visible = false;
-            reporteNuevo.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
-            reporteNuevo.Parameters["condicion"].Visible = false;
-            reporteNuevo.Parameters["condicion"].Value = Conjunto.GetCondicionReporte(cbxSeleccionConjunto.EditValue.ToString(), FiltroUsuario);
-            splashScreenManager1.CloseWaitForm();
-            reporteNuevo.DataSource = reporteDataSet;
-            reporteNuevo.DataMember = "prueba";
-            
-
-            if (txtGrupo.Properties.DataSource != null)
-            {
-                reporteNuevo.Parameters["agrupacion"].Visible = false;
-                reporteNuevo.Parameters["agrupacion"].Value = txtGrupo.Text;              
-
-                if (txtGrupo.EditValue.ToString() != "0")
-                {
-                    reporteNuevo.groupFooterBand1.Visible = true;
-                    //Create Group 
-                    GroupHeaderBand GroupBand = new GroupHeaderBand { HeightF = 10 };
-                    GroupBand.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Left;
-                    reporteNuevo.Bands.Add(GroupBand);
-
-
-                    GroupFooterBand Footer = new GroupFooterBand { HeightF = 10 };
-                    Footer.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right;
-                    reporteNuevo.Bands.Add(Footer);
-
-                    GroupField groupField = new GroupField();
-                    field = txtGrupo.Text.ToLower();
-                    groupField.FieldName = field;                    
-                    
-                    //Centro de costo
-                    //if (txtGrupo.EditValue.ToString() == "1")
-                    //    field = "centrocosto";
-                    //else if (txtGrupo.EditValue.ToString() == "2")
-                    //    field = "sucursal";
-                    //else if (txtGrupo.EditValue.ToString() == "3")
-                    //    field = "area";
-                    //else if (txtGrupo.EditValue.ToString() == "4")
-                    //    field = "cargo";
-
-                    GroupBand.GroupFields.Add(groupField);
-                    
-
-                    XRLabel labelGroup = new XRLabel { ForeColor = System.Drawing.Color.Black, WidthF = 748, TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter, /*Font = new Font(reporteNuevo.Font.FontFamily, 9, FontStyle.Underline)*/};
-                    XRLabel labelDetail = new XRLabel { LocationF = new System.Drawing.PointF(30, 0) };
-
-                    if (Settings.Default.UserDesignerOptions.DataBindingMode == DataBindingMode.Bindings)
-                    {
-                        labelGroup.DataBindings.Add("Text", null, $"prueba.{field}");
-                    }
-                    else
-                    {
-                        labelGroup.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", $"[prueba.{field}]"));
-                    }
-                    GroupBand.Controls.Add(labelGroup);
-                }
-
-          
-            }         
-
-            Documento doc = new Documento("", 0);
-            doc.ShowDocument(reporteNuevo);
 
             //ReportPrintTool print = new ReportPrintTool(reporteNuevo);
             //print.ShowPreview();
@@ -1754,6 +1680,11 @@ namespace Labour
             e.Menu.Items.Clear();
         }
 
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            GenerarReporte(editar: true);
+        }
+
         private void txtPeriodo_Properties_BeforeShowMenu(object sender, DevExpress.XtraEditors.Controls.BeforeShowMenuEventArgs e)
         {
             e.Menu.Items.Clear();
@@ -1776,6 +1707,103 @@ namespace Labour
             {
                // ImprimeDocumentoIndividual();
             }
+        }
+
+        private void GenerarReporte(bool editar = false) 
+        {
+            string field = "";
+            DataTable reporteDataSet = new DataTable();
+            int periodo = 0;
+            periodo = Convert.ToInt32(lookUpEdit1.EditValue.ToString());
+            //string contrato = "";
+
+
+            reporteDataSet = GetSQLString(periodo, cbxSeleccionConjunto.EditValue.ToString()).Tables[0];
+            if (reporteDataSet.Rows.Count == 0 && !editar)
+            { XtraMessageBox.Show("No se encontraron registros", "Registros", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            splashScreenManager1.ShowWaitForm();
+            //rptLibroRemuneracionesFormaNueva reporteNuevo = new rptLibroRemuneracionesFormaNueva();
+            //Reporte desde DLL
+            ReportesExternos.rptLibroRemuneraciones reporteNuevo = new ReportesExternos.rptLibroRemuneraciones();
+            reporteNuevo.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLibroRemuneraciones.repx"));
+
+            reporteNuevo.Parameters["periodo"].Visible = false;
+            reporteNuevo.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
+            reporteNuevo.Parameters["condicion"].Visible = false;
+            reporteNuevo.Parameters["condicion"].Value = Conjunto.GetCondicionReporte(cbxSeleccionConjunto.EditValue.ToString(), FiltroUsuario);
+            splashScreenManager1.CloseWaitForm();
+            reporteNuevo.DataSource = reporteDataSet;
+            reporteNuevo.DataMember = "prueba";
+
+
+            if (txtGrupo.Properties.DataSource != null)
+            {
+                reporteNuevo.Parameters["agrupacion"].Visible = false;
+                reporteNuevo.Parameters["agrupacion"].Value = txtGrupo.Text;
+
+                if (txtGrupo.EditValue.ToString() != "0")
+                {
+                    reporteNuevo.groupFooterBand1.Visible = true;
+                    //Create Group 
+                    GroupHeaderBand GroupBand = new GroupHeaderBand { HeightF = 10 };
+                    GroupBand.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Left;
+                    reporteNuevo.Bands.Add(GroupBand);
+
+
+                    GroupFooterBand Footer = new GroupFooterBand { HeightF = 10 };
+                    Footer.Borders = DevExpress.XtraPrinting.BorderSide.Bottom | DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right;
+                    reporteNuevo.Bands.Add(Footer);
+
+                    GroupField groupField = new GroupField();
+                    field = txtGrupo.Text.ToLower();
+                    groupField.FieldName = field;
+
+                    //Centro de costo
+                    //if (txtGrupo.EditValue.ToString() == "1")
+                    //    field = "centrocosto";
+                    //else if (txtGrupo.EditValue.ToString() == "2")
+                    //    field = "sucursal";
+                    //else if (txtGrupo.EditValue.ToString() == "3")
+                    //    field = "area";
+                    //else if (txtGrupo.EditValue.ToString() == "4")
+                    //    field = "cargo";
+
+                    GroupBand.GroupFields.Add(groupField);
+
+
+                    XRLabel labelGroup = new XRLabel { ForeColor = System.Drawing.Color.Black, WidthF = 748, TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter, /*Font = new Font(reporteNuevo.Font.FontFamily, 9, FontStyle.Underline)*/};
+                    XRLabel labelDetail = new XRLabel { LocationF = new System.Drawing.PointF(30, 0) };
+
+                    if (Settings.Default.UserDesignerOptions.DataBindingMode == DataBindingMode.Bindings)
+                    {
+                        labelGroup.DataBindings.Add("Text", null, $"prueba.{field}");
+                    }
+                    else
+                    {
+                        labelGroup.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", $"[prueba.{field}]"));
+                    }
+                    GroupBand.Controls.Add(labelGroup);
+                }
+
+
+            }
+
+            Documento doc = new Documento("", 0);
+            //reporteNuevo.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLibroRemuneraciones.repx"));
+
+            if (editar)
+            {
+                splashScreenManager1.ShowWaitForm();
+                //Se le pasa el waitform para que se cierre una vez cargado
+                DiseñadorReportes.MostrarEditorLimitado(reporteNuevo, "rptLibroRemuneraciones.repx", splashScreenManager1);
+            }
+            else
+            {
+                doc.ShowDocument(reporteNuevo);
+            }
+
+            
         }
 
 

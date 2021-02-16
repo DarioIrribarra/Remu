@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
+using System.IO;
 
 namespace Labour
 {
@@ -60,6 +61,20 @@ namespace Labour
         int SimpleTram2 = 0, InvalTram2 = 0, MatTram2 = 0, RetroTram2 = 0, totalPersonas2 = 0;
         int SimpleTram3 = 0, InvalTram3 = 0, MatTram3 = 0, RetroTram3 = 0, totalPersonas3 = 0;
         int SimpleTram4 = 0, InvalTram4 = 0, MatTram4 = 0, RetroTram4 = 0, totalPersonas4 = 0;
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            if (txtComboPeriodo.Properties.DataSource != null)
+            {
+                if (Calculo.PeriodoValido(Convert.ToInt32(txtComboPeriodo.EditValue)) == false)
+                { XtraMessageBox.Show("Por favor ingresa un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+                ImprimeDocumento(Convert.ToInt32(txtComboPeriodo.EditValue), editar: true);
+            }
+        }
 
         private void btnConjunto_Click(object sender, EventArgs e)
         {
@@ -420,6 +435,7 @@ namespace Labour
                     
 
                     btnImprimir.Enabled = true;
+                    btnEditarReporte.Enabled = true;
                     btnImpresionRapida.Enabled = true;
                     btnPdf.Enabled = true;
                     XtraMessageBox.Show($"{lista.Count} registros encontrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -430,6 +446,7 @@ namespace Labour
                 {
 
                     btnImprimir.Enabled = false;
+                    btnEditarReporte.Enabled = false;
                     btnImpresionRapida.Enabled = false;
                     btnPdf.Enabled = false;
                     XtraMessageBox.Show("No se encontró información", "Información", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -475,7 +492,7 @@ namespace Labour
      
 
         //IMPRIME
-        private void ImprimeDocumento(int periodo, bool? impresionRapida = false, bool? GeneraPdf = false)
+        private void ImprimeDocumento(int periodo, bool? impresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
             Empresa emp = new Empresa();
             emp.SetInfo();
@@ -485,6 +502,7 @@ namespace Labour
                 //RptPlanillaCaja reporte = new RptPlanillaCaja();
                 //Reporte externo
                 ReportesExternos.rptPlanillaCaja reporte = new ReportesExternos.rptPlanillaCaja();
+                reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaCaja.repx"));
                 reporte.DataSource = lista;
 
                 //PARAMETROS
@@ -499,7 +517,6 @@ namespace Labour
                 reporte.Parameters["sumSimples"].Value = SumaSimple;
                 reporte.Parameters["sumAsig"].Value = SumaAsig;
                 reporte.Parameters["caja"].Value = txtCaja.Text;
-                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                 //PARA TABLA RESUMEN
                 reporte.Parameters["TotalHombreConIsapre"].Value = totalhombreconisapre;
                 reporte.Parameters["TotalMujerConIsapre"].Value = totalmujerconisapre;
@@ -587,12 +604,23 @@ namespace Labour
                     reporte.groupFooterBand2.Visible = false;
 
                 Documento d = new Documento("", 0);
-                if ((bool)impresionRapida)
-                    d.PrintDocument(reporte);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(reporte, $"Planilla{fnSistema.PrimerMayuscula(txtCaja.Text.ToLower())}_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)))}");
-                else
-                    d.ShowDocument(reporte);
+                //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaCaja.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(reporte, "rptPlanillaCaja.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)impresionRapida)
+                        d.PrintDocument(reporte);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(reporte, $"Planilla{fnSistema.PrimerMayuscula(txtCaja.Text.ToLower())}_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)))}");
+                    else
+                        d.ShowDocument(reporte);
+                }
+                
 
             }
         }
@@ -639,6 +667,7 @@ namespace Labour
 
             datoCombobox.spLlenaPeriodos("SELECT anomes FROM parametro ORDER BY anomes DESC", txtComboPeriodo, "anomes", "anomes", true);
             btnImprimir.Enabled = false;
+            btnEditarReporte.Enabled = false;
             btnImpresionRapida.Enabled = false;
             btnPdf.Enabled = false;
 

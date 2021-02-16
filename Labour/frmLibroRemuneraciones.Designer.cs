@@ -44,6 +44,7 @@
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.btnConjunto = new DevExpress.XtraEditors.SimpleButton();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
+            this.btnEditarReporte = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.cbTodos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -109,7 +110,7 @@
             this.btnConfLibro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfLibro.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnConfLibro.ImageOptions.Image")));
             this.btnConfLibro.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnConfLibro.Location = new System.Drawing.Point(278, 216);
+            this.btnConfLibro.Location = new System.Drawing.Point(242, 215);
             this.btnConfLibro.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConfLibro.Name = "btnConfLibro";
             this.btnConfLibro.Size = new System.Drawing.Size(50, 37);
@@ -119,6 +120,7 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.btnEditarReporte);
             this.groupControl1.Controls.Add(this.btnTablasExcel);
             this.groupControl1.Controls.Add(this.txtGrupo);
             this.groupControl1.Controls.Add(this.labelControl3);
@@ -147,9 +149,9 @@
             this.btnTablasExcel.Location = new System.Drawing.Point(139, 215);
             this.btnTablasExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTablasExcel.Name = "btnTablasExcel";
-            this.btnTablasExcel.Size = new System.Drawing.Size(126, 37);
+            this.btnTablasExcel.Size = new System.Drawing.Size(91, 37);
             this.btnTablasExcel.TabIndex = 46;
-            this.btnTablasExcel.Text = "Tabla datos";
+            this.btnTablasExcel.Text = "Tabla \r\ndatos";
             this.btnTablasExcel.ToolTip = "Generar Tablas";
             this.btnTablasExcel.Click += new System.EventHandler(this.btnTablasExcel_Click);
             // 
@@ -222,6 +224,18 @@
             this.separatorControl1.Size = new System.Drawing.Size(457, 26);
             this.separatorControl1.TabIndex = 40;
             // 
+            // btnEditarReporte
+            // 
+            this.btnEditarReporte.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarReporte.ImageOptions.Image")));
+            this.btnEditarReporte.Location = new System.Drawing.Point(298, 215);
+            this.btnEditarReporte.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEditarReporte.Name = "btnEditarReporte";
+            this.btnEditarReporte.Size = new System.Drawing.Size(114, 37);
+            this.btnEditarReporte.TabIndex = 47;
+            this.btnEditarReporte.Text = "Editar\r\nReporte\r\n";
+            this.btnEditarReporte.Click += new System.EventHandler(this.btnEditarReporte_Click);
+            // 
             // frmLibroRemuneraciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -265,5 +279,6 @@
         private DevExpress.XtraEditors.LookUpEdit txtGrupo;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.SimpleButton btnTablasExcel;
+        private DevExpress.XtraEditors.SimpleButton btnEditarReporte;
     }
 }

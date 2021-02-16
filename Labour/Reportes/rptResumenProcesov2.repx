@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptResumenProcesov2, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptResumenProcesov2" Margins="100, 100, 128, 100" PageWidth="850" PageHeight="1100" Version="18.1" EventsInfo="rptResumenProcesov2,BeforePrint,RptResumenProcesov2_BeforePrint;xrTableCell1,BeforePrint,xrTableCell1_BeforePrint;CeldaTotal,BeforePrint,CeldaTotal_BeforePrint;celdaDetalle,BeforePrint,celdaDetalle_BeforePrint;PictureLogo,BeforePrint,PictureLogo_BeforePrint" DataMember="tabla" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" ValueInfo="Junio 2019" Name="periodo" />
+    <Item2 Ref="4" Visible="false" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
+    <Item3 Ref="5" Visible="false" Description="Nombre condicion aplicada a la busqueda" ValueInfo="No Aplica" Name="condicion" />
+    <Item4 Ref="6" Visible="false" Description="Logo guardado en bd" Name="imagen" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="14.99999" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRTable" Name="xrTable1" TextAlignment="TopCenter" SizeF="650,14.99999" LocationFloat="0, 0" Borders="None">
+          <Rows>
+            <Item1 Ref="9" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="10" ControlType="XRTableCell" Name="xrTableCell1" Weight="0.41534957328732525" Multiline="true" Text="xrTableCell1" TextAlignment="TopLeft" Font="Tahoma, 7.5pt, charSet=0" Padding="2,2,0,0,100" Borders="None">
+                  <ExpressionBindings>
+                    <Item1 Ref="11" Expression="[N]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="12" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="13" ControlType="XRTableCell" Name="celdaDescripcion" Weight="4.8964229545442883" Multiline="true" Text="celdaDescripcion" TextAlignment="TopLeft" Font="Tahoma, 7.5pt, charSet=0" Padding="2,2,0,0,100" Borders="None">
+                  <ExpressionBindings>
+                    <Item1 Ref="14" Expression="[descripcion]" PropertyName="Text" EventName="BeforePrint" />
+                    <Item2 Ref="15" Expression="Iif([detalle] == 'subtotal' Or [detalle] == 'totalizado' ,true , false)" PropertyName="Font.Bold" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="16" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="17" ControlType="XRTableCell" Name="CeldaTotal" Weight="0.72239675554527771" TextFormatString="{0:#,#}" Multiline="true" Text="CeldaTotal" TextAlignment="TopRight" Font="Tahoma, 7.5pt, charSet=0" Padding="2,2,0,0,100" Borders="None">
+                  <ExpressionBindings>
+                    <Item1 Ref="18" Expression="[total]" PropertyName="Text" EventName="BeforePrint" />
+                    <Item2 Ref="19" Expression="Iif([detalle] == 'subtotal' Or [detalle] == 'totalizado',true , false)" PropertyName="Font.Bold" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="20" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="21" ControlType="XRTableCell" Name="celdaDetalle" Weight="0.57620832307323933" Multiline="true" Text="celdaDetalle" Font="Tahoma, 7.5pt, charSet=0" Padding="2,2,0,0,100" Visible="false">
+                  <ExpressionBindings>
+                    <Item1 Ref="22" Expression="[detalle]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="23" UseFont="false" UsePadding="false" />
+                </Item4>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="24" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item1>
+    <Item2 Ref="25" ControlType="TopMarginBand" Name="TopMargin" HeightF="128" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="26" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="xrLabel5" SizeF="559.7917,17.70834" LocationFloat="80.20834, 100" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="27" Expression="[Parameters].[condicion]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="28" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Condición:" SizeF="80.20834,17.70834" LocationFloat="0, 100" Padding="2,2,0,0,100" />
+        <Item3 Ref="29" ControlType="XRPictureBox" Name="PictureLogo" SizeF="80.20834,51.08334" LocationFloat="0, 48.91666" />
+        <Item4 Ref="30" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="xrLabel2" SizeF="100,23" LocationFloat="500.4166, 76.99998" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="31" Expression="[Parameters].[periodo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item4>
+        <Item5 Ref="32" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Resumen del Periodo" TextAlignment="TopCenter" SizeF="223.9583,23" LocationFloat="200, 48.9166565" Font="Tahoma, 11pt, style=Bold, charSet=0" Padding="2,2,0,0,100">
+          <StylePriority Ref="33" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+      </Controls>
+    </Item2>
+    <Item3 Ref="34" ControlType="BottomMarginBand" Name="BottomMargin" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item4 Ref="35" ControlType="PageFooterBand" Name="PageFooter">
+      <Controls>
+        <Item1 Ref="36" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="xrLabel3" SizeF="328.125,23" LocationFloat="200, 76.99998" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="37" Expression="[Parameters].[empresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="38" ControlType="XRPageInfo" Name="xrPageInfo2" PageInfo="DateTime" SizeF="170.8333,23" LocationFloat="0, 76.99998" Padding="2,2,0,0,100" />
+        <Item3 Ref="39" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="Pagina {0} de {1}" SizeF="100,23" LocationFloat="550, 76.99998" Padding="2,2,0,0,100" />
+      </Controls>
+    </Item4>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="40" Name="Grilla" BorderStyle="Inset" Padding="0,0,0,0,100" BackColor="Silver" StringFormat="Near;Near;0;None;Character;Default" />
+    <Item2 Ref="41" Name="GrillaSinColor" BorderStyle="Inset" BackColor="White" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="42" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9IkRhcmlvX0xvY2FsX3BlclNvcHl0ZWMiIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IkN1c3RvbVNxbFF1ZXJ5IiBOYW1lPSJRdWVyeSI+PFNxbD5zZWxlY3QgKiBmcm9tIGVtcHJlc2E8L1NxbD48L1F1ZXJ5PjxSZXN1bHRTY2hlbWE+PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iTiIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iZGVzY3JpcGNpb24iIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9InRvdGFsIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJkZXRhbGxlIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJ0aXBvIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJzdWJvcmRlbiIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PC9EYXRhU2V0PjwvUmVzdWx0U2NoZW1hPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

@@ -15,6 +15,7 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors.Calendar;
 using DevExpress.Utils;
 using DevExpress.XtraScheduler;
+using System.IO;
 
 namespace Labour
 {
@@ -232,8 +233,9 @@ namespace Labour
             //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+            Comp.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
-            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+            //Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             vacaciones Vac = new vacaciones();
             Documento Doc = new Documento("", 0);
 
@@ -304,7 +306,7 @@ namespace Labour
                             if (pregunta == DialogResult.Yes)
                             {
                                 //dataCalculo = CalculoDias(FechaProgresivo, finalRetornoTrabajo);
-                               Comp = vacaciones.GeneraComprobante(Convert.ToDateTime(Salida.EditValue), Convert.ToDateTime(Finaliza.EditValue), pTrabajador.Contrato, DataReporte);
+                               Comp = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(Convert.ToDateTime(Salida.EditValue), Convert.ToDateTime(Finaliza.EditValue), pTrabajador.Contrato, DataReporte);
                                 if (Comp != null)
                                     Doc.ShowDocument(Comp);
                             }
@@ -345,8 +347,9 @@ namespace Labour
             //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+            Comp.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
-            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+            //Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             //TABLA HASH PRECARGA
@@ -426,7 +429,7 @@ namespace Labour
                             if (pregunta == DialogResult.Yes)
                             {
                                 //dataCalculo = CalculoDias(FechaProgresivo, FinalVacaciones);
-                                Comp = vacaciones.GeneraComprobante((DateTime)Salida.EditValue, Convert.ToDateTime(Finaliza.EditValue), pTrabajador.Contrato, DataReporte);
+                                Comp = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante((DateTime)Salida.EditValue, Convert.ToDateTime(Finaliza.EditValue), pTrabajador.Contrato, DataReporte);
                                 if (Comp != null)
                                     doc.ShowDocument(Comp);
                             }
@@ -1361,7 +1364,7 @@ namespace Labour
         #endregion
 
         //METODO PARA MOSTRAR INFORME
-        private void InformeVacaciones(string contrato, bool? imprime = false, bool? GeneraPdf = false)
+        private void InformeVacaciones(string contrato, bool? imprime = false, bool? GeneraPdf = false, bool editar = false)
         {
             string sql = "select vacacionDetalle.contrato, concat(nombre, ' ', apepaterno, ' ', apematerno) as nombre, " +
                         " vacacionDetalle.salida, vacacionDetalle.finaliza, folio, trabajador.rut, dias, tipo, vacacionDetalle.retorna from vacaciondetalle" +
@@ -1387,10 +1390,13 @@ namespace Labour
                         data.Dispose();
                         fnSistema.sqlConn.Close();
 
-                        if (ds.Tables[0].Rows.Count > 0)
+                        if (ds.Tables[0].Rows.Count > 0 || editar)
                         {
                             //CREAMOS REPORTE
-                            rptVacacion vac = new rptVacacion();
+                            //rptVacacion vac = new rptVacacion();
+                            ReportesExternos.rptVacacion vac = new ReportesExternos.rptVacacion();
+                            vac.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptVacacion.repx"));
+
                             vac.DataSource = ds.Tables[0];
                             vac.DataMember = "vacaciondetalle";
 
@@ -1422,14 +1428,24 @@ namespace Labour
                             }
 
 
-                            Documento doc = new Documento("", 0);                          
+                            Documento doc = new Documento("", 0);
+                            //vac.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptVacacion.repx"));
 
-                            if ((bool)imprime)
-                                doc.PrintDocument(vac);
-                            else if ((bool)GeneraPdf)
-                                doc.ExportToPdf(vac, $"Vacaciones_{contrato}");
+                            if (editar)
+                            {
+                                splashScreenManager1.ShowWaitForm();
+                                //Se le pasa el waitform para que se cierre una vez cargado
+                                DiseñadorReportes.MostrarEditorLimitado(vac, "rptVacacion.repx", splashScreenManager1);
+                            }
                             else
-                                doc.ShowDocument(vac);
+                            {
+                                if ((bool)imprime)
+                                    doc.PrintDocument(vac);
+                                else if ((bool)GeneraPdf)
+                                    doc.ExportToPdf(vac, $"Vacaciones_{contrato}");
+                                else
+                                    doc.ShowDocument(vac);
+                            }
                         }
                     }
                 }
@@ -1514,6 +1530,7 @@ namespace Labour
                             //RptComprobanteVacacion vaca = new RptComprobanteVacacion();
                             //Reporte externo
                             ReportesExternos.rptComprobanteVacacion vaca = new ReportesExternos.rptComprobanteVacacion();
+                            vaca.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
                             vaca.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
@@ -1554,6 +1571,7 @@ namespace Labour
                            // vaca.Parameters["totalDiasPendientes"].Value = totalDiasPendientes;
 
                             Documento d = new Documento("", 0);
+                            //vaca.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
                             if (Imprime == false)
                                 d.ShowDocument(vaca);
                             else
@@ -2412,12 +2430,15 @@ namespace Labour
             {
                 //CREAMOS UN SUBMENU PARA EL MENU
                 DXMenuItem submenu = new DXMenuItem("Ver comprobante", new EventHandler(ShowComprobante_Click));
+                DXMenuItem editar = new DXMenuItem("Editar comprobante", new EventHandler(EditarComprobante_Click));
                 DXMenuItem PrintMenu = new DXMenuItem("Imprimir comprobante", new EventHandler(ImprimirComprobante_Click));
                 PrintMenu.ImageOptions.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/print/print_16x16.png");
+                editar.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/edit_16x16.png");
                 submenu.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/show_16x16.png");                   
                 e.Menu.Items.Clear();
                 //AGREGAMOS SUBMENU A MENU
                 menu.Items.Add(submenu);
+                menu.Items.Add(editar);
                 menu.Items.Add(PrintMenu);
             }
         }
@@ -2427,8 +2448,9 @@ namespace Labour
             //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+            Comp.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
-            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+            //Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             if (viewVacaciones.RowCount > 0 && Trabajador != null)
@@ -2444,7 +2466,8 @@ namespace Labour
                 //PrimerIngreso(FechaProgresivo, false, true, finaliza, true);
                 //GeneraComprobante(salida, finaliza, contrato, DataReporte, true);
                 vacaciones.PrimerIngreso(Trabajador, DataReporte, true, finaliza);
-                Comp = vacaciones.GeneraComprobante(salida, finaliza, Trabajador.Contrato, DataReporte);
+                Comp = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(salida, finaliza, Trabajador.Contrato, DataReporte);
+                //Comp.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
                 if (Comp != null)
                     doc.PrintDocument(Comp);
             }
@@ -2456,8 +2479,9 @@ namespace Labour
             //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+            Comp.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
 
-            Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+            //Comp.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             Documento doc = new Documento("", 0);
 
             if (viewVacaciones.RowCount>0 && Trabajador != null)
@@ -2471,10 +2495,16 @@ namespace Labour
                 //data = CalculoDias(FechaProgresivo, salida);
                 //PrimerIngreso(Trabajador.FechaProgresivo, false, true, finaliza, true);
                 vacaciones.PrimerIngreso(Trabajador, DataReporte, true, finaliza);
-                Comp = vacaciones.GeneraComprobante(salida, finaliza, Trabajador.Contrato, DataReporte);
+                Comp = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(salida, finaliza, Trabajador.Contrato, DataReporte);
+                //Comp.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
                 if (Comp != null)
                     doc.ShowDocument(Comp);
             }
+        }
+
+        private void EditarComprobante_Click(object sender, EventArgs e)
+        {
+            AbreEditorComprobanteVacaciones();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
@@ -2723,6 +2753,35 @@ namespace Labour
         private void txtDiasVac_Leave(object sender, EventArgs e)
         {
             ValidaDias();
+        }
+
+        private void AbreEditorComprobanteVacaciones() 
+        {
+            //RptComprobanteVacacion Comp = new RptComprobanteVacacion();
+            //Reporte externo
+            ReportesExternos.rptComprobanteVacacion Comp = new ReportesExternos.rptComprobanteVacacion();
+            Comp.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
+
+            DateTime salida = viewVacaciones.GetFocusedDataRow() == null ? DateTime.Now : Convert.ToDateTime(viewVacaciones.GetFocusedDataRow()["salida"]);
+            DateTime finaliza = viewVacaciones.GetFocusedDataRow() == null ? DateTime.Now : Convert.ToDateTime(viewVacaciones.GetFocusedDataRow()["finaliza"]);
+
+            //salida = (DateTime)viewVacaciones.GetFocusedDataRow()["salida"];
+            //finaliza = (DateTime)viewVacaciones.GetFocusedDataRow()["finaliza"];
+
+            vacaciones.PrimerIngreso(Trabajador, DataReporte, true, finaliza);
+            Comp = (ReportesExternos.rptComprobanteVacacion)vacaciones.GeneraComprobante(salida, finaliza, Trabajador.Contrato, DataReporte);
+            splashScreenManager1.ShowWaitForm();
+            DiseñadorReportes.MostrarEditorLimitado(Comp, "rptComprobanteVacacion.repx", splashScreenManager1);
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            InformeVacaciones(contrato, editar: true);
+        }
+
+        private void btnEditarComprobante_Click(object sender, EventArgs e)
+        {
+            AbreEditorComprobanteVacaciones();
         }
     }
 }

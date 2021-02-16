@@ -1456,6 +1456,7 @@ namespace Labour
             //RptLiquidacion reporte = new RptLiquidacion();
             //Report externo
             ReportesExternos.rptLiquidacion reporte = new ReportesExternos.rptLiquidacion();
+            reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacion.repx"));
             reporte.DataSource = listado;
 
             //SETEAR PARAMETROS...
@@ -1479,8 +1480,7 @@ namespace Labour
                 parametro.Visible = false;
             }
 
-
-
+            //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacion.repx"));
             fnSistema.ShowDocument(reporte);
         }
 
@@ -1808,7 +1808,6 @@ namespace Labour
             XtraReport reporte = new XtraReport();
 
             reporte = docu.SoloHaberesAnteriores();
-            //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacion2.repx"));
             docu.ShowDocument(reporte);
         }
 
@@ -1871,9 +1870,8 @@ namespace Labour
             splashScreenManager1.ShowWaitForm();
             //Prueba de edición de certificado
             Documento docu = new Documento(contrato, PeriodoEmpleado);
-            ReportesExternos.rptLiquidacion2 reporte = new ReportesExternos.rptLiquidacion2();
 
-            reporte = (ReportesExternos.rptLiquidacion2)docu.SoloHaberesAnteriores();
+            ReportesExternos.rptLiquidacion2 reporte = (ReportesExternos.rptLiquidacion2)docu.SoloHaberesAnteriores();
 
             //Se le pasa el waitform para que se cierre una vez cargado
             DiseñadorReportes.MostrarEditorLimitado(reporte, "rptLiquidacion2.repx", splashScreenManager1);

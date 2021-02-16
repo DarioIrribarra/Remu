@@ -4442,7 +4442,7 @@ namespace Labour
         }
 
         //GENERA DOCUMENTO COMPROBANTE DE VACACIONES
-        public static ReportesExternos.rptComprobanteVacacion GeneraComprobante(DateTime salida, DateTime finaliza, string contrato, Hashtable data)
+        public static XtraReport GeneraComprobante(DateTime salida, DateTime finaliza, string contrato, Hashtable data)
         {
             string sql = "select DISTINCT rut, concat(nombre, ' ', apepaterno, ' ', apematerno) as name, " +
                 "vacacionDetalle.contrato, vacaciondetalle.salida, finaliza, dias, tipo, retorna, folio, pervac " +
@@ -4457,7 +4457,8 @@ namespace Labour
             //RptComprobanteVacacion vaca = new RptComprobanteVacacion();
             //Reporte externo
             ReportesExternos.rptComprobanteVacacion vaca = new ReportesExternos.rptComprobanteVacacion();
-            vaca.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
+            vaca.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteVacacion.repx"));
+            //vaca.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
             try
             {
                 if (fnSistema.ConectarSQLServer())

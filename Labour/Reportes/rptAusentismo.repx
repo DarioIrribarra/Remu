@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptAusentismo, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptAusentismo" Margins="100, 100, 20, 102" PageWidth="850" PageHeight="1100" Version="18.1" EventsInfo="rptAusentismo,BeforePrint,rptAusentismo_BeforePrint;imgLogo,BeforePrint,imgLogo_BeforePrint" DataMember="ausentismos" DataSource="#Ref-0">
   <Parameters>
-    <Item1 Ref="3" Visible="false" Description="NOMBRE TRABAJADOR" ValueInfo="VERONICA DEL PILAR  CARROSA NAVARRETE" Name="nombre" />
-    <Item2 Ref="5" Visible="false" Description="Total licencias" ValueInfo="0" Name="totallic" Type="#Ref-4" />
+    <Item1 Ref="3" Visible="false" Description="NOMBRE TRABAJADOR" ValueInfo="JEAN PIERRE ALEXIS ALMENDRAS PACHECO" Name="nombre" />
+    <Item2 Ref="5" Visible="false" Description="Total licencias" ValueInfo="1" Name="totallic" Type="#Ref-4" />
     <Item3 Ref="6" Visible="false" Description="total ausencias" ValueInfo="0" Name="totalaus" Type="#Ref-4" />
     <Item4 Ref="7" Visible="false" Description="Nombre Empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
     <Item5 Ref="8" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
-    <Item6 Ref="9" Visible="false" Description="Rut Trabajador" ValueInfo="13.953.284-8" Name="rutTrabajador" />
+    <Item6 Ref="9" Visible="false" Description="Rut Trabajador" ValueInfo="14.391.703-7" Name="rutTrabajador" />
     <Item7 Ref="10" Visible="false" Description="Total Permisos" ValueInfo="0" Name="totalPermi" Type="#Ref-4" />
     <Item8 Ref="12" Visible="false" Description="Imagen BD" ValueInfo="0" Name="imagen" Type="#Ref-11" />
   </Parameters>
@@ -65,7 +65,7 @@
           </DataBindings>
           <StylePriority Ref="40" UseFont="false" />
         </Item3>
-        <Item4 Ref="41" ControlType="XRLabel" Name="xrLabel8" Text="Historial de Ausentismo" TextAlignment="TopCenter" SizeF="286.4583,23" LocationFloat="168.75, 47" Font="Times New Roman, 16pt" Padding="2,2,0,0,100" Borders="Bottom">
+        <Item4 Ref="41" ControlType="XRLabel" Name="xrLabel8" Text="Historial de Ausentismo" TextAlignment="TopCenter" SizeF="286.4583,23" LocationFloat="164.910309, 46.9999962" Font="Times New Roman, 16pt" Padding="2,2,0,0,100" Borders="Bottom">
           <StylePriority Ref="42" UseFont="false" UseBorders="false" UseTextAlignment="false" />
         </Item4>
       </Controls>

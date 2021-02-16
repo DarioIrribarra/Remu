@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.Utils.Menu;
+using System.IO;
 
 namespace Labour
 {
@@ -65,7 +66,16 @@ namespace Labour
                 txtComboPeriodo.ItemIndex = 0;
                 CargaTotal(Convert.ToInt32(txtComboPeriodo.EditValue), "", txtTrabajador.Text);
             }
-         
+
+            if (viewTrabajador.DataRowCount <= 0)
+            {
+                btnEditarReporte.Enabled = false;
+            }
+            else
+            {
+                btnEditarReporte.Enabled = true;
+            }
+
         }
 
         #region "MANEJO DE DATOS"
@@ -107,8 +117,59 @@ namespace Labour
         }
 
         //FICHA EMPLEADO
-        private void FichaEmpleado(string contrato, int periodo)
+        private void FichaEmpleado(string contrato, int periodo, bool editar = false)
         {
+
+            #region Datos estándar trabajador
+
+            Empresa emp = new Empresa();
+            emp.SetInfo();
+            DataSet ds = new DataSet();
+            ds = Persona.GetInfoDataset(contrato, periodo);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                //PASAMOS COMO DATASOURCE EL DATASET A REPORTE
+                //rptTrabajador ficha = new rptTrabajador();
+                ReportesExternos.rptTrabajador ficha = new ReportesExternos.rptTrabajador();
+                ficha.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
+                ficha.DataSource = ds.Tables[0];
+                ficha.DataMember = "ficha";
+
+                //NO MOSTRAR LOS PARAMETROS
+                foreach (DevExpress.XtraReports.Parameters.Parameter parametro in ficha.Parameters)
+                {
+                    parametro.Visible = false;
+                }
+
+                ficha.Parameters["empresa"].Value = emp.Razon;
+
+                Documento d = new Documento("", 0);
+
+
+                //ficha.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(ficha, "rptTrabajador.repx", splashScreenManager1);
+                }
+                else
+                {
+                    //if ((bool)ImpresionRapida)
+                    //    d.PrintDocument(ficha);
+                    //else if ((bool)GeneraPdf)
+                    //    d.ExportToPdf(ficha, $"Ficha_{contrato}");
+                    //else
+                    d.ShowDocument(ficha);
+                }
+
+            }
+
+            #endregion
+
+            #region Datos desde Query
+
+            /*
             string sql = " select contrato, trabajador.rut, CONCAT(trabajador.nombre, ' ', apepaterno, ' ', apematerno)as name, fechanac,sexo, direccion, telefono, ingreso, salida, tipocontrato, " +
                         " isapre.nombre as salud, area.nombre as area, banco.nombre as banco, cuenta,  cajaPrevision.nombre as caja, cargo.nombre as cargo, causalTermino.descCausal, " +
                         " ccosto.nombre as costo, ciudad.descCiudad as ciudad, ecivil.nombre as civil, formapago.nombre as formapago, nacion.nombre as pais, tipocuenta.nombre as tipocuenta, afp.nombre as afp" +
@@ -133,8 +194,8 @@ namespace Labour
 
             SqlCommand cmd;
             SqlDataAdapter ad = new SqlDataAdapter();
+
             DataSet ds = new DataSet();
-                 
             try
             {
                 if (fnSistema.ConectarSQLServer())
@@ -153,7 +214,10 @@ namespace Labour
                         if (ds.Tables[0].Rows.Count > 0)
                         {
                             //PASAMOS COMO DATASOURCE EL DATASET A REPORTE
-                            rptTrabajador ficha = new rptTrabajador();
+                            //rptTrabajador ficha = new rptTrabajador();
+                            ReportesExternos.rptTrabajador ficha = new ReportesExternos.rptTrabajador();
+                            ficha.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
+
                             ficha.DataSource = ds.Tables[0];
                             ficha.DataMember = "ficha";
 
@@ -166,7 +230,18 @@ namespace Labour
 
 
                             Documento d = new Documento("", 0);
-                            d.ShowDocument(ficha);
+                            //ficha.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
+                            if (editar)
+                            {
+                                splashScreenManager1.ShowWaitForm();
+                                //Se le pasa el waitform para que se cierre una vez cargado
+                                DiseñadorReportes.MostrarEditorLimitado(ficha, "rptTrabajador.repx", splashScreenManager1);
+                            }
+                            else 
+                            {
+                                d.ShowDocument(ficha);
+                            }
+                            
                             
                         }                        
                     }
@@ -176,6 +251,8 @@ namespace Labour
             {
                 XtraMessageBox.Show(ex.Message);
             }
+            */
+            #endregion
         }
 
         //MANEJO DE TECLA TAB
@@ -229,7 +306,16 @@ namespace Labour
 
                 //BUSCAMOS POR CONJUNTO
                 CargaTotal(Convert.ToInt32(txtComboPeriodo.EditValue), txtConjunto.Text, txtTrabajador.Text);
-            }                       
+            }
+
+            if (viewTrabajador.DataRowCount <= 0)
+            {
+                btnEditarReporte.Enabled = false;
+            }
+            else 
+            {
+                btnEditarReporte.Enabled = true;
+            }
             
         }
 
@@ -405,6 +491,20 @@ namespace Labour
             FrmFiltroBusqueda filtro = new FrmFiltroBusqueda(true);
             filtro.opener = this;
             filtro.ShowDialog();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptfichatrabajador") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            //CONTRATO Y NOMBRE
+            string nombre = "", contrato = "";
+            nombre = viewTrabajador.GetFocusedDataRow()["nombre"].ToString();
+            contrato = viewTrabajador.GetFocusedDataRow()["contrato"].ToString();
+
+            FichaEmpleado(contrato, Convert.ToInt32(viewTrabajador.GetFocusedDataRow()["anomes"]), editar:true);
+
         }
     }
 }

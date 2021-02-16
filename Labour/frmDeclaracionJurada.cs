@@ -806,51 +806,9 @@ namespace Labour
             if (txtPeriodo.Properties.DataSource == null || txtPeriodo.EditValue == null)
             { XtraMessageBox.Show("Por favor selecciona un periodo válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
 
-            DataTable tabla = new DataTable();
-            int PeriodoBusqueda = 0;
-            Empresa emp = new Empresa();
-            emp.SetInfo();
-            try
-            {
-                PeriodoBusqueda = Convert.ToInt32(txtPeriodo.EditValue) - 1;
-                tabla = GetDataSourceReport(PeriodoBusqueda);
+            GenerarReporte();
 
-                if (tabla.Rows.Count > 0)
-                {
-                    Documento doc = new Documento("", 0);
 
-                    //rptDeclaracionJurada dec = new rptDeclaracionJurada();
-                    //Reporte externo
-                    ReportesExternos.rptDeclaracionJurada dec = new ReportesExternos.rptDeclaracionJurada();
-                    dec.DataSource = tabla;
-                    dec.DataMember = "data";
-
-                    dec.Parameters["folio"].Value = txtFolioBase.Text + txtFolioOriginal.Text;
-                    dec.Parameters["casos"].Value = tabla.Rows.Count;
-                    dec.Parameters["comuna"].Value = emp.Comuna;
-                    dec.Parameters["correo"].Value = emp.EmailEmp;
-                    dec.Parameters["direccion"].Value = emp.Direccion;
-                    dec.Parameters["fax"].Value = emp.CodigoPais + emp.CodigoArea + emp.Telefono;
-                    dec.Parameters["razon"].Value = emp.Razon;
-                    dec.Parameters["rutemp"].Value = fnSistema.fFormatearRut2(emp.Rut);
-                    dec.Parameters["rutrepresentante"].Value = fnSistema.fFormatearRut2(emp.RutRep);
-                    dec.Parameters["telefono"].Value = emp.CodigoArea + emp.Telefono;
-
-                    //PARA QUE NO APARESCA EL FORMULARIO DE INGRESO DE VALORES PARA PARAMETROS
-                    foreach (DevExpress.XtraReports.Parameters.Parameter item in dec.Parameters)
-                    {
-                        item.Visible = false;
-                    }
-
-                    doc.ShowDocument(dec);
-                }
-
-            }
-            catch (SqlException ex)
-            {
-                //ERROR...
-                XtraMessageBox.Show("No se pudo generar reporte", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
         }
 
         private void txtCodEmpresa_KeyPress(object sender, KeyPressEventArgs e)
@@ -916,5 +874,72 @@ namespace Labour
                 }
             }
         }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            GenerarReporte(editar: true);
+        }
+
+        private void GenerarReporte(bool editar = false) 
+        {
+            DataTable tabla = new DataTable();
+            int PeriodoBusqueda = 0;
+            Empresa emp = new Empresa();
+            emp.SetInfo();
+            try
+            {
+                PeriodoBusqueda = Convert.ToInt32(txtPeriodo.EditValue) - 1;
+                tabla = GetDataSourceReport(PeriodoBusqueda);
+
+                if (tabla.Rows.Count > 0 || editar)
+                {
+                    Documento doc = new Documento("", 0);
+
+                    //rptDeclaracionJurada dec = new rptDeclaracionJurada();
+                    //Reporte externo
+                    ReportesExternos.rptDeclaracionJurada dec = new ReportesExternos.rptDeclaracionJurada();
+                    dec.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptDeclaracionJurada.repx"));
+                    dec.DataSource = tabla;
+                    dec.DataMember = "data";
+
+                    dec.Parameters["folio"].Value = txtFolioBase.Text + txtFolioOriginal.Text;
+                    dec.Parameters["casos"].Value = tabla.Rows.Count;
+                    dec.Parameters["comuna"].Value = emp.Comuna;
+                    dec.Parameters["correo"].Value = emp.EmailEmp;
+                    dec.Parameters["direccion"].Value = emp.Direccion;
+                    dec.Parameters["fax"].Value = emp.CodigoPais + emp.CodigoArea + emp.Telefono;
+                    dec.Parameters["razon"].Value = emp.Razon;
+                    dec.Parameters["rutemp"].Value = fnSistema.fFormatearRut2(emp.Rut);
+                    dec.Parameters["rutrepresentante"].Value = fnSistema.fFormatearRut2(emp.RutRep);
+                    dec.Parameters["telefono"].Value = emp.CodigoArea + emp.Telefono;
+
+                    //PARA QUE NO APARESCA EL FORMULARIO DE INGRESO DE VALORES PARA PARAMETROS
+                    foreach (DevExpress.XtraReports.Parameters.Parameter item in dec.Parameters)
+                    {
+                        item.Visible = false;
+                    }
+                    if (editar)
+                    {
+                        splashScreenManager1.ShowWaitForm();
+                        //Se le pasa el waitform para que se cierre una vez cargado
+                        DiseñadorReportes.MostrarEditorLimitado(dec, "rptDeclaracionJurada.repx", splashScreenManager1);
+                    }
+                    else 
+                    {
+                        //dec.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptDeclaracionJurada.repx"));
+                        doc.ShowDocument(dec);
+                    }
+                    
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                //ERROR...
+                XtraMessageBox.Show("No se pudo generar reporte", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        
     }
 }

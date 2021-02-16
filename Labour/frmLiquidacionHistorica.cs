@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using DevExpress.XtraReports.Configuration;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraGrid;
+using System.IO;
 
 namespace Labour
 {
@@ -293,11 +294,13 @@ namespace Labour
         }
 
         //IMPRIME DOCUMENTO
-        private void ImprimeDocumento(bool? impresionRapida = false)
+        private void ImprimeDocumento(bool? impresionRapida = false, bool editar = false)
         {
-            if (data.Tables[0].Rows.Count>0)
+            if (data.Tables[0].Rows.Count > 0)
             {
-                rptLiquidacionHistorica liq = new rptLiquidacionHistorica();
+                //rptLiquidacionHistorica liq = new rptLiquidacionHistorica();
+                ReportesExternos.rptLiquidacionHistorica liq = new ReportesExternos.rptLiquidacionHistorica();
+                liq.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacionHistorica.repx"));
                 liq.DataSource = data.Tables[0];
                 liq.DataMember = "historico";
                 string field = "";
@@ -354,10 +357,27 @@ namespace Labour
                 }
 
                 Documento d = new Documento("", 0);
-                if ((bool)impresionRapida)
-                    d.PrintDocument(liq);
+
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(liq, "rptLiquidacionHistorica.repx", splashScreenManager1);
+                }
                 else
-                    d.ShowDocument(liq);
+                {
+                    //liq.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptLiquidacionHistorica.repx"));
+                    if ((bool)impresionRapida)
+                        d.PrintDocument(liq);
+                    else
+                        d.ShowDocument(liq);
+                }
+
+
+            }
+            else 
+            {
+                { XtraMessageBox.Show("No existen resultados", "Periodo", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
             }
         }
 
@@ -539,6 +559,19 @@ namespace Labour
             {
                 lblLiquidaciones.Text = $"LIQUIDACIONES DISPONIBLES PARA {viewHistorico.GetFocusedDataRow()["nombre"]} :" + Calculo.GetLiqCount(viewHistorico.GetFocusedDataRow()["rut"].ToString());
             }
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptliqtotal") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            ImprimeDocumento(editar: true);
         }
 
         private void btnConjunto_Click(object sender, EventArgs e)

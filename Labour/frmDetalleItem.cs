@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraReports.UI;
+using System.IO;
 
 namespace Labour
 {
@@ -276,6 +277,7 @@ namespace Labour
                             data = ds.Copy();
                             itemBusqueda = pItem;
                             btnImprimir.Enabled = true;
+                            btnEditarReporte.Enabled = true;
 
                             fechaformatoperiodo = fnSistema.FechaPeriodo(pPeriodo);
                             groupPeriodo.Text = "Periodo evaluado: " + fechaformatoperiodo.ToString("MMMM yyyy");
@@ -383,6 +385,7 @@ namespace Labour
                            // ColumnasGrilla();
                             lblTotalCalculado.Text = SumaItemsCalculado(periodo, item).ToString("N0");
                             btnImprimir.Enabled = true;
+                            btnEditarReporte.Enabled = true;
                             itemBusqueda = item;
                             fechaFormatoPeriodo = fnSistema.FechaPeriodo(periodo);
                             groupPeriodo.Text = "Periodo evaluado: " + fechaFormatoPeriodo.ToString("MMMM yyyy");
@@ -641,6 +644,7 @@ namespace Labour
             gridDetalleItem.TabStop = false;         
             btnLimpiar.AllowFocus = false;
             btnImprimir.Enabled = false;
+            btnEditarReporte.Enabled = false;
             cbTodos.Checked = true;
             txtConjunto.Text = "";
             txtConjunto.Enabled = false;
@@ -686,7 +690,7 @@ namespace Labour
         }
 
         //IMPRIME DOCUMENTO (PDF)
-        private void ImprimeDocumento(int periodo, bool? incluyeOriginal = false)
+        private void ImprimeDocumento(int periodo, bool? incluyeOriginal = false, bool editar = false)
         {
             string descripcion = "", field = "";
             if (data.Tables[0].Rows.Count>0 && itemBusqueda != "")
@@ -702,6 +706,7 @@ namespace Labour
                 //RptDetalleItemv2 rpt = new RptDetalleItemv2();
                 //Reporte externo
                 ReportesExternos.rptDetalleItemv2 rpt = new ReportesExternos.rptDetalleItemv2();
+                rpt.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptDetalleItemv2.repx"));
 
                 rpt.DataSource = data.Tables[0];               
                 rpt.DataMember = "itemtrabajador";
@@ -715,7 +720,6 @@ namespace Labour
                 rpt.Parameters["registros"].Value = data.Tables[0].Rows.Count;
                 rpt.Parameters["empresa"].Value = emp.Razon;
                 rpt.Parameters["condicion"].Value = DescripcionCondicion;
-                rpt.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
                 
 
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in rpt.Parameters)
@@ -757,7 +761,18 @@ namespace Labour
                 }
 
                 Documento docu = new Documento("", 0);
-                docu.ShowDocument(rpt);
+                //rpt.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptDetalleItemv2.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(rpt, "rptDetalleItemv2.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    docu.ShowDocument(rpt);
+                }
+                
             }
         }
 
@@ -1094,6 +1109,11 @@ namespace Labour
                     }
                 }
             }
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            ImprimeDocumento(Convert.ToInt32(txtComboPeriodo.EditValue), editar: true);
         }
     }
 }

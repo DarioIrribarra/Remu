@@ -18,6 +18,9 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.Skins;
 using System.IO;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraGrid.Menu;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Labour
 {
@@ -2451,7 +2454,8 @@ namespace Labour
             //rptComprobanteAusentismo repo = new rptComprobanteAusentismo();
             //Reporte externo
             ReportesExternos.rptComprobanteAusentismo repo = new ReportesExternos.rptComprobanteAusentismo();
-            
+            repo.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteAusentismo.repx"));
+
             try
             {
                 cn = fnSistema.OpenConnection();
@@ -2491,7 +2495,9 @@ namespace Labour
                         cmd.Dispose();
                     }
                 }
+                //repo.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptComprobanteAusentismo.repx"));
             }
+
             catch (SqlException ex)
             {
                 //ERROR
@@ -3345,16 +3351,22 @@ namespace Labour
         {
             DXPopupMenu menu = e.Menu;
 
+            //CREAMOS UN SUBMENU PARA EL MENU
+            DXMenuItem submenu = new DXMenuItem("Ver comprobante", new EventHandler(ShowComprobante_Click));
+            DXMenuItem editar = new DXMenuItem("Editar comprobante", new EventHandler(EditarComprobante_Click));
+            DXMenuItem PrintMenu = new DXMenuItem("Imprimir comprobante", new EventHandler(ImprimirComprobante_Click));
+
+            //PReferencias de menú
+            PrintMenu.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/print/print_16x16.png");
+            submenu.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/show_16x16.png");
+            editar.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/edit_16x16.png");
+
             if (menu != null)
             {
-                //CREAMOS UN SUBMENU PARA EL MENU
-                DXMenuItem submenu = new DXMenuItem("Ver comprobante", new EventHandler(ShowComprobante_Click));
-                DXMenuItem PrintMenu = new DXMenuItem("Imprimir comprobante", new EventHandler(ImprimirComprobante_Click));
-                PrintMenu.ImageOptions.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/print/print_16x16.png");
-                submenu.Image = DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/show_16x16.png");
-                e.Menu.Items.Clear();
+                menu.Items.Clear();
                 //AGREGAMOS SUBMENU A MENU
                 menu.Items.Add(submenu);
+                menu.Items.Add(editar);
                 menu.Items.Add(PrintMenu);
             }
         }
@@ -3385,6 +3397,11 @@ namespace Labour
                     }
                 }
             }
+        }
+
+        private void EditarComprobante_Click(object sender, EventArgs e)
+        {
+            AbreEditorComprobanteAusentismo();
         }
 
         private void ShowComprobante_Click(object sender, EventArgs e)
@@ -3443,6 +3460,22 @@ namespace Labour
         private void btnEditarReporte_Click(object sender, EventArgs e)
         {
             ImprimeDocument(Contrato, editar:true);
+        }
+
+        private void btnEditarComprobante_Click(object sender, EventArgs e)
+        {
+            AbreEditorComprobanteAusentismo();
+        }
+
+        private void AbreEditorComprobanteAusentismo() 
+        {
+            //OBTENEMOS LAS FECHAS DESDE LA GRILLA
+            DateTime Inicio = viewAusentismo.GetFocusedDataRow() == null ? DateTime.Now : Convert.ToDateTime(viewAusentismo.GetFocusedDataRow()["fechaevento"]);
+            DateTime Termino = viewAusentismo.GetFocusedDataRow() == null ? DateTime.Now : Convert.ToDateTime(viewAusentismo.GetFocusedDataRow()["Fecfin"]);
+
+            splashScreenManager1.ShowWaitForm();
+            ReportesExternos.rptComprobanteAusentismo reporte = (ReportesExternos.rptComprobanteAusentismo)GeneraComprobante(Contrato, Inicio, Termino);
+            DiseñadorReportes.MostrarEditorLimitado(reporte, "rptComprobanteAusentismo.repx", splashScreenManager1);
         }
     }
 }

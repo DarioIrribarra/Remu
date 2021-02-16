@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptLibroRemuneraciones, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptLibroRemuneraciones" SnapGridSize="25" ReportUnit="TenthsOfAMillimeter" Margins="130, 127, 400, 135" PageWidth="2159" PageHeight="2794" Version="18.1" EventsInfo="rptLibroRemuneraciones,BeforePrint,rptLibroRemuneracionesFormaNueva_BeforePrint;r1,BeforePrint,r1_BeforePrint;r5,BeforePrint,r5_BeforePrint;r9,BeforePrint,r9_BeforePrint;r13,BeforePrint,r13_BeforePrint;r17,BeforePrint,r17_BeforePrint;xrTableCell7,BeforePrint,xrTableCell7_BeforePrint;r2,BeforePrint,r2_BeforePrint;r6,BeforePrint,r6_BeforePrint;r10,BeforePrint,r10_BeforePrint;r14,BeforePrint,r14_BeforePrint;r18,BeforePrint,r18_BeforePrint;r3,BeforePrint,r3_BeforePrint;r7,BeforePrint,r7_BeforePrint;r11,BeforePrint,r11_BeforePrint;r15,BeforePrint,r15_BeforePrint;r19,BeforePrint,r19_BeforePrint;r4,BeforePrint,r4_BeforePrint;r8,BeforePrint,r8_BeforePrint;r12,BeforePrint,r12_BeforePrint;r16,BeforePrint,r16_BeforePrint;r20,BeforePrint,r20_BeforePrint;xrTable1,BeforePrint,xrTable1_BeforePrint;c1,BeforePrint,c1_BeforePrint;c5,BeforePrint,c5_BeforePrint;c9,BeforePrint,c9_BeforePrint;c13,BeforePrint,c13_BeforePrint;c17,BeforePrint,c17_BeforePrint;c2,BeforePrint,c2_BeforePrint;c6,BeforePrint,c6_BeforePrint;c10,BeforePrint,c10_BeforePrint;c14,BeforePrint,c14_BeforePrint;c18,BeforePrint,c18_BeforePrint;c3,BeforePrint,c3_BeforePrint;c7,BeforePrint,c7_BeforePrint;c11,BeforePrint,c11_BeforePrint;c15,BeforePrint,c15_BeforePrint;c19,BeforePrint,c19_BeforePrint;c4,BeforePrint,c4_BeforePrint;c8,BeforePrint,c8_BeforePrint;c12,BeforePrint,c12_BeforePrint;c16,BeforePrint,c16_BeforePrint;c20,BeforePrint,c20_BeforePrint;xrTable2,BeforePrint,xrTable2_BeforePrint" DataMember="prueba" DataSource="#Ref-0" Dpi="254" Font="Times New Roman, 9.75pt">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="Periodo" ValueInfo="Junio 2019" Name="periodo" Type="#Ref-2" />
+    <Item2 Ref="5" Visible="false" Description="descripcion condicion " ValueInfo="No Aplica" Name="condicion" />
+    <Item3 Ref="6" Visible="false" Description="indica por que campo se realiza la agrupación" ValueInfo="Sin Agrupar" Name="agrupacion" />
+  </Parameters>
+  <CalculatedFields>
+    <Item1 Ref="7" Name="TotalCol1" FieldType="Decimal" Expression="Iif([visible13] == 'True',  Sum([campo14]), 0 )" DataMember="Query" />
+    <Item2 Ref="8" Name="TotalCol2" FieldType="Decimal" DataMember="Query" />
+    <Item3 Ref="9" Name="TotalCol3" FieldType="Decimal" DataMember="Query" />
+    <Item4 Ref="10" Name="TotalCol4" FieldType="Decimal" Expression="Iif([visible13] == 'True',  Sum([campo14]), 0 )" DataMember="Query" />
+    <Item5 Ref="11" Name="TotalCol5" FieldType="Decimal" DataMember="Query" />
+    <Item6 Ref="12" Name="SubTotal1" FieldType="Double" DataMember="Query" />
+    <Item7 Ref="13" Name="SubTotal2" FieldType="Double" DataMember="Query" />
+    <Item8 Ref="14" Name="SubTotal3" FieldType="Double" DataMember="Query" />
+    <Item9 Ref="15" Name="SubTotal4" FieldType="Double" />
+    <Item10 Ref="16" Name="SubTotal5" FieldType="Double" />
+    <Item11 Ref="17" Name="calculatedField1" DataMember="Query" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="18" ControlType="DetailBand" Name="Detail" HeightF="199.4958" KeepTogether="true" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254">
+      <Controls>
+        <Item1 Ref="19" ControlType="XRTable" Name="xrTable1" SizeF="1899.92,199.4958" LocationFloat="0, 0" Dpi="254" Borders="Left, Right, Bottom">
+          <Rows>
+            <Item1 Ref="20" ControlType="XRTableRow" Name="xrTableRow1" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="21" ControlType="XRTableCell" Name="xrTableCell1" Weight="1.5" Multiline="true" Text="xrTableCell1" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="22" Expression="[Query].[nombre]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="23" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="24" ControlType="XRTableCell" Name="r1" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r1" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="25" Expression="[Query].[campo1]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="26" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="27" ControlType="XRTableCell" Name="r5" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r5" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="28" Expression="[Query].[campo5]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="29" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="30" ControlType="XRTableCell" Name="r9" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r9" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="31" Expression="[Query].[campo9]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="32" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="33" ControlType="XRTableCell" Name="r13" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r13" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="34" Expression="[Query].[campo13]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="35" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="36" ControlType="XRTableCell" Name="r17" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r17" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" Expression="[Query].[campo17]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="38" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+            <Item2 Ref="39" ControlType="XRTableRow" Name="xrTableRow2" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="40" ControlType="XRTableCell" Name="xrTableCell7" Weight="1.5" Multiline="true" Text="xrTableCell7" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="41" Expression="[Query].[rut]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="42" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="43" ControlType="XRTableCell" Name="r2" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r2" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="44" Expression="[Query].[campo2]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="45" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="46" ControlType="XRTableCell" Name="r6" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r6" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="47" Expression="[Query].[campo6]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="48" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="49" ControlType="XRTableCell" Name="r10" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r10" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="50" Expression="[Query].[campo10]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="51" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="52" ControlType="XRTableCell" Name="r14" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r14" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="53" Expression="[Query].[campo14]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="54" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="55" ControlType="XRTableCell" Name="r18" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r18" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="56" Expression="[Query].[campo18]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="57" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item2>
+            <Item3 Ref="58" ControlType="XRTableRow" Name="xrTableRow3" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="59" ControlType="XRTableCell" Name="xrTableCell13" Weight="1.5" TextFormatString="{0:#.0}" Multiline="true" Text="xrTableCell13" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="60" Expression="[Query].[diasTrabajados]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="61" UsePadding="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="62" ControlType="XRTableCell" Name="r3" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r3" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="63" Expression="[Query].[campo3]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="64" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="65" ControlType="XRTableCell" Name="r7" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r7" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="66" Expression="[Query].[campo7]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="67" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="68" ControlType="XRTableCell" Name="r11" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r11" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="69" Expression="[Query].[campo11]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="70" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="71" ControlType="XRTableCell" Name="r15" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r15" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="72" Expression="[Query].[campo15]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="73" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="74" ControlType="XRTableCell" Name="r19" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r19" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <ExpressionBindings>
+                    <Item1 Ref="75" Expression="[Query].[campo19]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="76" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item3>
+            <Item4 Ref="77" ControlType="XRTableRow" Name="xrTableRow4" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="78" ControlType="XRTableCell" Name="xrTableCell19" Weight="1.5" Multiline="true" Text="xrTableCell19" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="79" Expression="[Query].[cargo]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="80" UsePadding="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="81" ControlType="XRTableCell" Name="r4" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r4" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="82" Expression="[Query].[campo4]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="83" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="84" ControlType="XRTableCell" Name="r8" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r8" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="85" Expression="[Query].[campo8]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="86" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="87" ControlType="XRTableCell" Name="r12" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r12" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="88" Expression="[Query].[campo12]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="89" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="90" ControlType="XRTableCell" Name="r16" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r16" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="91" Expression="[Query].[campo16]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="92" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="93" ControlType="XRTableCell" Name="r20" Weight="0.7291996765136719" TextFormatString="{0:#,#}" Multiline="true" Text="r20" TextAlignment="TopRight" Dpi="254" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="94" Expression="[Query].[campo20]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="95" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item4>
+          </Rows>
+          <StylePriority Ref="96" UseBorders="false" />
+        </Item1>
+      </Controls>
+    </Item1>
+    <Item2 Ref="97" ControlType="TopMarginBand" Name="TopMargin" HeightF="400" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" />
+    <Item3 Ref="98" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="135.0625" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" />
+    <Item4 Ref="99" ControlType="PageHeaderBand" Name="PageHeader" HeightF="359.9349" TextAlignment="TopLeft" Dpi="254">
+      <Controls>
+        <Item1 Ref="100" ControlType="XRLabel" Name="xrLabel6" Multiline="true" Text="xrLabel6" SizeF="548.223,39.89924" LocationFloat="272.5206, 109.4317" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="101" Expression="[Parameters].[agrupacion]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="102" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="Agrupado por:" SizeF="254,39.8992" LocationFloat="18.52064, 109.4318" Dpi="254" Padding="5,5,0,0,254" />
+        <Item3 Ref="103" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="xrLabel5" SizeF="1444.625,39.8992" LocationFloat="272.5207, 58.63176" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="104" Expression="[Parameters].[condicion]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item3>
+        <Item4 Ref="105" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="Condición:" SizeF="254,39.8992" LocationFloat="18.52067, 58.63176" Dpi="254" Padding="5,5,0,0,254" />
+        <Item5 Ref="106" ControlType="XRTable" Name="xrTable2" SizeF="1899.92,199.4916" LocationFloat="0.07995605, 160.4433" Dpi="254" Font="Times New Roman, 7.75pt" Borders="All">
+          <Rows>
+            <Item1 Ref="107" ControlType="XRTableRow" Name="xrTableRow5" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="108" ControlType="XRTableCell" Name="xrTableCell25" Weight="1.0759052761314216" CanGrow="false" Multiline="true" Text="Nombre del trabajador" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="5,5,0,0,254" Borders="Left, Top, Right">
+                  <StylePriority Ref="109" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="110" ControlType="XRTableCell" Name="c1" Weight="0.52303332473181874" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="All">
+                  <ExpressionBindings>
+                    <Item1 Ref="111" Expression="[Query].[headercampo1]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="112" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="113" ControlType="XRTableCell" Name="c5" Weight="0.52303317414015527" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="114" Expression="[Query].[headercampo5]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="115" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="116" ControlType="XRTableCell" Name="c9" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="117" Expression="[Query].[headercampo9]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="118" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="119" ControlType="XRTableCell" Name="c13" Weight="0.523033475323482" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="120" Expression="[Query].[headercampo13]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="121" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="122" ControlType="XRTableCell" Name="c17" Weight="0.52303281733921581" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="123" Expression="[Query].[headercampo17]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="124" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+            <Item2 Ref="125" ControlType="XRTableRow" Name="xrTableRow6" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="126" ControlType="XRTableCell" Name="xrTableCell26" Weight="1.0759052761314216" CanGrow="false" Multiline="true" Text="Rut" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <StylePriority Ref="127" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="128" ControlType="XRTableCell" Name="c2" Weight="0.52303332473181874" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="129" Expression="[Query].[headercampo2]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="130" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="131" ControlType="XRTableCell" Name="c6" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="132" Expression="[Query].[headercampo6]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="133" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="134" ControlType="XRTableCell" Name="c10" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="135" Expression="[Query].[headercampo10]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="136" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="137" ControlType="XRTableCell" Name="c14" Weight="0.5230334753234821" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="138" Expression="[Query].[headercampo14]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="139" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="140" ControlType="XRTableCell" Name="c18" Weight="0.52303281733921536" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="141" Expression="[Query].[headercampo18]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="142" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item6>
+              </Cells>
+            </Item2>
+            <Item3 Ref="143" ControlType="XRTableRow" Name="xrTableRow7" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="144" ControlType="XRTableCell" Name="xrTableCell27" Weight="1.0759052761314216" CanGrow="false" Multiline="true" Text="Días trabajados" Dpi="254" Font="Times New Roman, 9.75pt" Padding="5,5,0,0,254" Borders="Left, Right">
+                  <StylePriority Ref="145" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="146" ControlType="XRTableCell" Name="c3" Weight="0.52303332473181874" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="147" Expression="[Query].[headercampo3]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="148" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="149" ControlType="XRTableCell" Name="c7" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="150" Expression="[Query].[headercampo7]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="151" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="152" ControlType="XRTableCell" Name="c11" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="153" Expression="[Query].[headercampo11]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="154" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="155" ControlType="XRTableCell" Name="c15" Weight="0.5230334753234821" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="156" Expression="[Query].[headercampo15]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="157" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="158" ControlType="XRTableCell" Name="c19" Weight="0.52303281733921536" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="159" Expression="[Query].[headercampo19]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="160" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item6>
+              </Cells>
+            </Item3>
+            <Item4 Ref="161" ControlType="XRTableRow" Name="xrTableRow8" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="162" ControlType="XRTableCell" Name="xrTableCell28" Weight="1.0759052761314216" CanGrow="false" Multiline="true" Text="Cargo" Dpi="254" Font="Times New Roman, 9.75pt" Padding="5,5,0,0,254">
+                  <StylePriority Ref="163" UseFont="false" UsePadding="false" />
+                </Item1>
+                <Item2 Ref="164" ControlType="XRTableCell" Name="c4" Weight="0.52303332473181874" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="165" Expression="[Query].[headercampo4]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="166" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="167" ControlType="XRTableCell" Name="c8" Weight="0.52303317414015527" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="168" Expression="[Query].[headercampo8]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="169" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="170" ControlType="XRTableCell" Name="c12" Weight="0.52303317414015538" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="171" Expression="[Query].[headercampo12]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="172" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="173" ControlType="XRTableCell" Name="c16" Weight="0.523033475323482" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="174" Expression="[Query].[headercampo16]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="175" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="176" ControlType="XRTableCell" Name="c20" Weight="0.52303281733921581" Multiline="true" Dpi="254" Font="Times New Roman, 7.25pt" Padding="5,5,0,0,254" Borders="Top, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="177" Expression="[Query].[headercampo20]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="178" UseFont="false" UsePadding="false" UseBorders="false" />
+                </Item6>
+              </Cells>
+            </Item4>
+          </Rows>
+          <StylePriority Ref="179" UseFont="false" UseBorders="false" />
+        </Item5>
+        <Item6 Ref="180" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="Periodo:" SizeF="161.3959,58.42001" LocationFloat="1469.381, 0.2117119" Dpi="254" Padding="5,5,0,0,254" />
+        <Item7 Ref="181" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="xrLabel2" SizeF="254,58.42001" LocationFloat="1646, 0.2117119" Dpi="254" Padding="5,5,0,0,254">
+          <ExpressionBindings>
+            <Item1 Ref="182" Expression="[Parameters].[periodo]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item7>
+      </Controls>
+      <StylePriority Ref="183" UseTextAlignment="false" />
+    </Item4>
+    <Item5 Ref="184" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="306.8542" Dpi="254">
+      <Controls>
+        <Item1 Ref="185" ControlType="XRTable" Name="xrTable4" SizeF="1899.839,63.49998" LocationFloat="0, 232.8333" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="186" ControlType="XRTableRow" Name="xrTableRow13" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="187" ControlType="XRTableCell" Name="xrTableCell33" Weight="2.1782614704870875" Multiline="true" Text="TOTAL GENERAL" TextAlignment="MiddleCenter" Dpi="254" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="188" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="189" ControlType="XRTableCell" Name="xrTableCell34" Weight="1.0587720312698468" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell34" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="190" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="191" Expression="Iif([visible1] == 'True',  Sum([campo1]), 0 ) +&#xA;Iif([visible2] == 'True',  Sum([campo2]), 0 ) +&#xA;Iif([visible3] == 'True',  Sum([campo3]), 0 ) +&#xA;Iif([visible4] == 'True',  Sum([campo4]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="192" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="193" ControlType="XRTableCell" Name="xrTableCell35" Weight="1.054661199430319" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell35" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="194" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="195" Expression="Iif([visible5] == 'True',  Sum([campo5]), 0 ) +&#xA;Iif([visible6] == 'True',  Sum([campo6]), 0 ) +&#xA;Iif([visible7] == 'True',  Sum([campo7]), 0 ) +&#xA;Iif([visible8] == 'True',  Sum([campo8]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="196" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="197" ControlType="XRTableCell" Name="xrTableCell36" Weight="1.0599331592950294" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell36" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="198" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="199" Expression="Iif([visible9] == 'True',  Sum([campo9]), 0 ) +&#xA;Iif([visible10] == 'True',  Sum([campo10]), 0 ) +&#xA;Iif([visible11] == 'True',  Sum([campo11]), 0 ) +&#xA;Iif([visible12] == 'True',  Sum([campo12]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="200" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="201" ControlType="XRTableCell" Name="xrTableCell37" Weight="1.0599341204785924" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell37" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="202" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="203" Expression="Iif([visible13] == 'True',  Sum([campo13]), 0 ) +&#xA;Iif([visible14] == 'True',  Sum([campo14]), 0 ) +&#xA;Iif([visible15] == 'True',  Sum([campo15]), 0 ) +&#xA;Iif([visible16] == 'True',  Sum([campo16]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="204" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="205" ControlType="XRTableCell" Name="xrTableCell38" Weight="1.0599297951525593" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell38" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="206" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="207" Expression="Iif([visible17] == 'True',  Sum([campo17]), 0 ) +&#xA;Iif([visible18] == 'True',  Sum([campo18]), 0 ) +&#xA;Iif([visible19] == 'True',  Sum([campo19]), 0 ) +&#xA;Iif([visible20] == 'True',  Sum([campo20]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="208" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="209" UseFont="false" />
+        </Item1>
+        <Item2 Ref="210" ControlType="XRTable" Name="xrTable3" SizeF="1899.839,232.8333" LocationFloat="0, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="211" ControlType="XRTableRow" Name="xrTableRow9" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="212" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.7490057014865246" RowSpan="4" Multiline="true" TextAlignment="MiddleCenter" Dpi="254" Borders="Left, Bottom">
+                  <StylePriority Ref="213" UseBorders="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="214" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.84999667490925057" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell3" TextAlignment="TopRight" Dpi="254" Borders="Left, Right">
+                  <Summary Ref="215" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="216" Expression="Iif([visible1] == 'True',  Sum([campo1]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="217" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="218" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.85075479560008571" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell4" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="219" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="220" Expression="Iif([visible5] == 'True',  Sum([campo5]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="221" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="222" ControlType="XRTableCell" Name="xrTableCell5" Weight="0.84974473904784165" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell5" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="223" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="224" Expression="Iif([visible9] == 'True',  Sum([campo9]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="225" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="226" ControlType="XRTableCell" Name="xrTableCell6" Weight="0.85075595215339" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell6" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="227" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="228" Expression="Iif([visible13] == 'True',  Sum([campo13]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="229" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="230" ControlType="XRTableCell" Name="xrTableCell8" Weight="0.84974213680290756" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell8" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="231" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="232" Expression="Iif([visible17] == 'True',  Sum([campo17]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="233" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+            <Item2 Ref="234" ControlType="XRTableRow" Name="xrTableRow11" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="235" ControlType="XRTableCell" Name="xrTableCell16" Weight="1.7490057014865246" Multiline="true" Text="xrTableCell16" Dpi="254" />
+                <Item2 Ref="236" ControlType="XRTableCell" Name="xrTableCell17" Weight="0.84999667490925057" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell17" TextAlignment="TopRight" Dpi="254" Borders="Left, Right">
+                  <Summary Ref="237" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="238" Expression="Iif([visible2] == 'True',  Sum([campo2]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="239" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="240" ControlType="XRTableCell" Name="xrTableCell18" Weight="0.85075479560008571" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell18" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="241" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="242" Expression="Iif([visible6] == 'True',  Sum([campo6]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="243" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="244" ControlType="XRTableCell" Name="xrTableCell20" Weight="0.84974473904784165" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell20" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="245" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="246" Expression="Iif([visible10] == 'True',  Sum([campo10]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="247" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="248" ControlType="XRTableCell" Name="xrTableCell21" Weight="0.85075595215339" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell21" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="249" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="250" Expression="Iif([visible14] == 'True',  Sum([campo14]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="251" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="252" ControlType="XRTableCell" Name="xrTableCell22" Weight="0.84974213680290756" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell22" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="253" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="254" Expression="Iif([visible18] == 'True',  Sum([campo18]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="255" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item2>
+            <Item3 Ref="256" ControlType="XRTableRow" Name="xrTableRow10" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="257" ControlType="XRTableCell" Name="xrTableCell9" Weight="1.7490057014865246" Multiline="true" Text="xrTableCell9" Dpi="254" />
+                <Item2 Ref="258" ControlType="XRTableCell" Name="xrTableCell10" Weight="0.84999667490925057" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell10" TextAlignment="TopRight" Dpi="254" Borders="Left, Right">
+                  <Summary Ref="259" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="260" Expression="Iif([visible3] == 'True',  Sum([campo3]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="261" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="262" ControlType="XRTableCell" Name="xrTableCell11" Weight="0.85075479560008571" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell11" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="263" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="264" Expression="Iif([visible7] == 'True',  Sum([campo7]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="265" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="266" ControlType="XRTableCell" Name="xrTableCell12" Weight="0.84974473904784165" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell12" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="267" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="268" Expression="Iif([visible11] == 'True',  Sum([campo11]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="269" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="270" ControlType="XRTableCell" Name="xrTableCell14" Weight="0.85075595215339" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell14" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="271" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="272" Expression="Iif([visible15] == 'True',  Sum([campo15]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="273" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="274" ControlType="XRTableCell" Name="xrTableCell15" Weight="0.84974213680290756" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell15" TextAlignment="TopRight" Dpi="254" Borders="Right">
+                  <Summary Ref="275" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="276" Expression="Iif([visible19] == 'True',  Sum([campo19]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="277" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item3>
+            <Item4 Ref="278" ControlType="XRTableRow" Name="xrTableRow12" Weight="1" Dpi="254">
+              <Cells>
+                <Item1 Ref="279" ControlType="XRTableCell" Name="xrTableCell23" Weight="1.7490057014865246" Multiline="true" Text="xrTableCell23" Dpi="254" />
+                <Item2 Ref="280" ControlType="XRTableCell" Name="xrTableCell24" Weight="0.84999667490925057" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell24" TextAlignment="TopRight" Dpi="254" Borders="Left, Right, Bottom">
+                  <Summary Ref="281" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="282" Expression="Iif([visible4] == 'True',  Sum([campo4]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="283" UseBorders="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="284" ControlType="XRTableCell" Name="xrTableCell29" Weight="0.85075479560008571" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell29" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="285" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="286" Expression="Iif([visible8] == 'True',  Sum([campo8]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="287" UseBorders="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="288" ControlType="XRTableCell" Name="xrTableCell30" Weight="0.84974473904784165" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell30" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="289" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="290" Expression="Iif([visible12] == 'True',  Sum([campo12]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="291" UseBorders="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="292" ControlType="XRTableCell" Name="xrTableCell31" Weight="0.85075595215339" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell31" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="293" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="294" Expression="Iif([visible16] == 'True',  Sum([campo16]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="295" UseBorders="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="296" ControlType="XRTableCell" Name="xrTableCell32" Weight="0.84974213680290756" TextFormatString="{0:#,#}" Multiline="true" Text="xrTableCell32" TextAlignment="TopRight" Dpi="254" Borders="Right, Bottom">
+                  <Summary Ref="297" Running="Report" />
+                  <ExpressionBindings>
+                    <Item1 Ref="298" Expression="Iif([visible20] == 'True',  Sum([campo20]), 0 )" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="299" UseBorders="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item4>
+          </Rows>
+          <StylePriority Ref="300" UseFont="false" />
+        </Item2>
+      </Controls>
+    </Item5>
+    <Item6 Ref="301" ControlType="GroupHeaderBand" Name="groupHeaderBand1" HeightF="58.00001" Dpi="254">
+      <GroupFields>
+        <Item1 Ref="302" FieldName="Query.anomes" />
+      </GroupFields>
+    </Item6>
+    <Item7 Ref="303" ControlType="GroupFooterBand" Name="groupFooterBand1" HeightF="58.42" KeepTogether="true" Dpi="254" Visible="false">
+      <Controls>
+        <Item1 Ref="304" ControlType="XRLabel" Name="xrLabel19" Multiline="true" Text="Subtotal" TextAlignment="MiddleCenter" SizeF="553.8051,58.42" LocationFloat="0, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Left, Right, Bottom">
+          <StylePriority Ref="305" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="306" ControlType="XRLabel" Name="xrLabel18" TextFormatString="{0:#,#}" Multiline="true" Text="xrLabel18" TextAlignment="TopRight" SizeF="269.2214,58.42" LocationFloat="1630.698, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Right, Bottom">
+          <Summary Ref="307" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="308" Expression="Iif([Query].[visible17] == 'True',sumSum([Query].[campo17]) ,  0)  +&#xD;&#xA;Iif([Query].[visible18] == 'True',sumSum([Query].[campo18]) ,  0)  +&#xD;&#xA;Iif([Query].[visible19] == 'True',sumSum([Query].[campo19]) ,  0)  +&#xD;&#xA;Iif([Query].[visible20] == 'True',sumSum([Query].[campo20]) ,  0)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="309" UseFont="false" UseBorders="false" />
+        </Item2>
+        <Item3 Ref="310" ControlType="XRLabel" Name="xrLabel17" TextFormatString="{0:#,#}" Multiline="true" Text="xrLabel17" TextAlignment="TopRight" SizeF="269.2235,58.42" LocationFloat="1361.474, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Right, Bottom">
+          <Summary Ref="311" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="312" Expression="Iif([Query].[visible13] == 'True',sumSum([Query].[campo13]) ,  0)  +&#xD;&#xA;Iif([Query].[visible14] == 'True',sumSum([Query].[campo14]) ,  0)  +&#xD;&#xA;Iif([Query].[visible15] == 'True',sumSum([Query].[campo15]) ,  0)  +&#xD;&#xA;Iif([Query].[visible16] == 'True',sumSum([Query].[campo16]) ,  0)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="313" UseFont="false" UseBorders="false" />
+        </Item3>
+        <Item4 Ref="314" ControlType="XRLabel" Name="xrLabel16" TextFormatString="{0:#,#}" Multiline="true" Text="xrLabel16" TextAlignment="TopRight" SizeF="269.2227,58.42" LocationFloat="1092.251, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Right, Bottom">
+          <Summary Ref="315" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="316" Expression="Iif([Query].[visible8] == 'True',sumSum([Query].[campo8]) ,  0)  +&#xD;&#xA;Iif([Query].[visible9] == 'True',sumSum([Query].[campo9]) ,  0)  +&#xD;&#xA;Iif([Query].[visible10] == 'True',sumSum([Query].[campo10]) ,  0)  +&#xD;&#xA;Iif([Query].[visible11] == 'True',sumSum([Query].[campo11]) ,  0)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="317" UseFont="false" UseBorders="false" />
+        </Item4>
+        <Item5 Ref="318" ControlType="XRLabel" Name="xrLabel15" TextFormatString="{0:#,#}" Multiline="true" Text="xrLabel15" TextAlignment="TopRight" SizeF="269.2229,58.42" LocationFloat="823.028, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Right, Bottom">
+          <Summary Ref="319" Running="Group" />
+          <ExpressionBindings>
+            <Item1 Ref="320" Expression="Iif([Query].[visible4] == 'True',sumSum([Query].[campo4]) ,  0)  +&#xD;&#xA;Iif([Query].[visible5] == 'True',sumSum([Query].[campo5]) ,  0)  +&#xD;&#xA;Iif([Query].[visible6] == 'True',sumSum([Query].[campo6]) ,  0)  +&#xD;&#xA;Iif([Query].[visible7] == 'True',sumSum([Query].[campo7]) ,  0)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="321" UseFont="false" UseBorders="false" />
+        </Item5>
+        <Item6 Ref="322" ControlType="XRLabel" Name="xrLabel14" TextFormatString="{0:#,#}" Multiline="true" Text="xrLabel14" TextAlignment="TopRight" SizeF="269.223,58.42" LocationFloat="553.805, 0" Dpi="254" Font="Times New Roman, 9.75pt, style=Bold, Italic" Padding="5,5,0,0,254" Borders="Right, Bottom">
+          <Summary Ref="323" Running="Group" IgnoreNullValues="true" />
+          <ExpressionBindings>
+            <Item1 Ref="324" Expression="Iif([Query].[visible1] == 'True',sumSum([Query].[campo1]) ,  0)  +&#xD;&#xA;Iif([Query].[visible2] == 'True',sumSum([Query].[campo2]) ,  0)  +&#xD;&#xA;Iif([Query].[visible3] == 'True',sumSum([Query].[campo3]) ,  0)  +&#xD;&#xA;Iif([Query].[visible4] == 'True',sumSum([Query].[campo4]) ,  0)" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="325" UseFont="false" UseBorders="false" />
+        </Item6>
+      </Controls>
+    </Item7>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="326" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uT3B0aW9ucyBDbG9zZUNvbm5lY3Rpb249InRydWUiIC8+PC9TcWxEYXRhU291cmNlPg==" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="2" Content="System.Int32" Type="System.Type" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

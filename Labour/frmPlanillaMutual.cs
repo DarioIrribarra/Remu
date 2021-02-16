@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
+using System.IO;
 
 namespace Labour
 {
@@ -252,12 +253,14 @@ namespace Labour
                 {
 
                     btnImprimir.Enabled = true;
+                    btnEditarReporte.Enabled = true;
                     btnImpresionRapida.Enabled = true;
                     btnPdf.Enabled = true;
                     XtraMessageBox.Show($"{lista.Count} registros encontrados", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else {
                     btnImprimir.Enabled = false;
+                    btnEditarReporte.Enabled = false;
                     btnImpresionRapida.Enabled = false;
                     btnPdf.Enabled = false;
                     XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -331,6 +334,7 @@ namespace Labour
 
                         btnImpresionRapida.Enabled = true;
                         btnImprimir.Enabled = true;
+                        btnEditarReporte.Enabled = true;
                        
                     }
 
@@ -350,7 +354,7 @@ namespace Labour
     
 
         //IMPRIMIR DOCUMENTO
-        private void ImprimeDocumento(int periodo, bool? impresionRapida = false, bool? GeneraPdf = false)
+        private void ImprimeDocumento(int periodo, bool? impresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
             //PARA DATOS EMpresa
            // Hashtable dataEmp = new Hashtable();
@@ -365,6 +369,7 @@ namespace Labour
                 //rptPlanillaMutual reporte = new rptPlanillaMutual();
                 //Reporte externo
                 ReportesExternos.rptPlanillaMutual reporte = new ReportesExternos.rptPlanillaMutual();
+                reporte.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaMutual.repx"));
                 reporte.DataSource = lista;
 
                 //PARAMETROS
@@ -373,7 +378,6 @@ namespace Labour
                 reporte.Parameters["totalimponible"].Value = sumImponible;
                 reporte.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)));
                 reporte.Parameters["condicion"].Value = DescripcionCondicion;
-                reporte.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 //FORMA MAS SIMPLE DE OCULTAR LOS PARAMETROS CUANDO SE MOUESTRA EL DOCUMENTO...
                 foreach (DevExpress.XtraReports.Parameters.Parameter parametro in reporte.Parameters)
@@ -421,13 +425,23 @@ namespace Labour
                 }
 
                 Documento d = new Documento("", 0);
-
-                if ((bool)impresionRapida)
-                    d.PrintDocument(reporte);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(reporte, $"PlanillaMutual_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)))}");
-                else
-                    d.ShowDocument(reporte);
+                //reporte.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPlanillaMutual.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(reporte, "rptPlanillaMutual.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)impresionRapida)
+                        d.PrintDocument(reporte);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(reporte, $"PlanillaMutual_{fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(periodo)))}");
+                    else
+                        d.ShowDocument(reporte);
+                }
+                
 
             }
         }
@@ -496,6 +510,7 @@ namespace Labour
 
             btnImpresionRapida.Enabled = false;
             btnImprimir.Enabled = false;
+            btnEditarReporte.Enabled = false;
             btnPdf.Enabled = false;
             if (txtComboPeriodo.Properties.DataSource != null)
                 txtComboPeriodo.ItemIndex = 0;
@@ -652,6 +667,23 @@ namespace Labour
             filtro.opener = this;
             filtro.StartPosition = FormStartPosition.CenterParent;
             filtro.ShowDialog();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptplanillamutual") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            if (txtComboPeriodo.Properties.DataSource != null)
+            {
+                if (Calculo.PeriodoValido(Convert.ToInt32(txtComboPeriodo.EditValue)))
+                {
+                    ImprimeDocumento(Convert.ToInt32(txtComboPeriodo.EditValue), editar:true);
+                }
+            }
         }
     }
 }

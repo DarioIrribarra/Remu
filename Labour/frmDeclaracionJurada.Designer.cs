@@ -55,6 +55,8 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.txtArchivo79 = new DevExpress.XtraEditors.TextEdit();
             this.btn79 = new DevExpress.XtraEditors.SimpleButton();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Labour.WaitFormRemuneraciones), true, true);
+            this.btnEditarReporte = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtTipoFormulario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriodo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodEmpresa.Properties)).BeginInit();
@@ -344,11 +346,28 @@
             this.btn79.TabIndex = 11;
             this.btn79.Click += new System.EventHandler(this.btn79_Click);
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // btnEditarReporte
+            // 
+            this.btnEditarReporte.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditarReporte.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarReporte.ImageOptions.Image")));
+            this.btnEditarReporte.Location = new System.Drawing.Point(279, 264);
+            this.btnEditarReporte.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnEditarReporte.Name = "btnEditarReporte";
+            this.btnEditarReporte.Size = new System.Drawing.Size(114, 37);
+            this.btnEditarReporte.TabIndex = 119;
+            this.btnEditarReporte.Text = "Editar\r\nReporte\r\n";
+            this.btnEditarReporte.Click += new System.EventHandler(this.btnEditarReporte_Click);
+            // 
             // frmDeclaracionJurada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 322);
+            this.Controls.Add(this.btnEditarReporte);
             this.Controls.Add(this.txtArchivo79);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.btnReporte);
@@ -427,5 +446,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.TextEdit txtArchivo79;
         private DevExpress.XtraEditors.SimpleButton btn79;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.SimpleButton btnEditarReporte;
     }
 }

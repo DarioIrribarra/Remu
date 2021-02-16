@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="1" ControlType="ReportesExternos.rptComprobanteVacacion, ReportesExternos, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="rptComprobanteVacacion" Margins="100, 100, 20, 24" PageWidth="850" PageHeight="1100" Version="18.1" EventsInfo="xrTableCell59,BeforePrint,xrTableCell59_BeforePrint;imgLogo1,BeforePrint,imgLogo1_BeforePrint;xrTableCell65,BeforePrint,xrTableCell65_BeforePrint;xrTableCell99,BeforePrint,xrTableCell99_BeforePrint;xrlblDias,BeforePrint,xrlblDias_BeforePrint;xrTableCell83,BeforePrint,xrTableCell83_BeforePrint;xrTableCell56,BeforePrint,xrTableCell56_BeforePrint;xrLabel19,BeforePrint,xrLabel19_BeforePrint;xrTableCell30,BeforePrint,xrTableCell30_BeforePrint_1;xrLabel28,BeforePrint,xrLabel28_BeforePrint;imgLogo2,BeforePrint,imgLogo2_BeforePrint;xrTableCell62,BeforePrint,xrTableCell62_BeforePrint" DataMember="data" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="nombre empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="empresa" />
+    <Item2 Ref="5" Visible="false" Description="Proporcionales usados" ValueInfo="2" Name="propusados" Type="#Ref-4" />
+    <Item3 Ref="6" Visible="false" Description="Progresivos usados" ValueInfo="0" Name="progusados" Type="#Ref-4" />
+    <Item4 Ref="7" Visible="false" Description="Proporcionales restantes" ValueInfo="13" Name="proprestante" Type="#Ref-4" />
+    <Item5 Ref="8" Visible="false" Description="Progresivos restantes" ValueInfo="0" Name="progrestante" Type="#Ref-4" />
+    <Item6 Ref="9" Visible="false" Description="Rut Empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
+    <Item7 Ref="10" Visible="false" Description="Dias de vacaciones totales (Prop)" ValueInfo="15" Name="diasVacacionesAcumuladas" Type="#Ref-4" />
+    <Item8 Ref="11" Visible="false" Description="Dias acumulados mas prog y prop restantes" ValueInfo="0" Name="subTotalDiasAcumulados" Type="#Ref-4" />
+    <Item9 Ref="12" Visible="false" Description="Días restantes antes de los dias a utilizar" ValueInfo="0" Name="totalDiasPendientes" Type="#Ref-4" />
+    <Item10 Ref="13" Visible="false" Description="Dias Progresivos Acumulados" ValueInfo="0" Name="diasProgAcumulados" Type="#Ref-4" />
+    <Item11 Ref="15" Visible="false" Description="Proporcionales usados hasta la fecha del comprobante" ValueInfo="2" Name="propUsadosRepo" Type="#Ref-14" />
+    <Item12 Ref="16" Visible="false" Description="Progresivos usados hasta la fecha del comprobante" ValueInfo="0" Name="progUsadosRepo" Type="#Ref-14" />
+    <Item13 Ref="18" Visible="false" Description="Imagen BD" ValueInfo="System.Drawing.Bitmap" Name="imagen" Type="#Ref-17" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="19" ControlType="DetailBand" Name="Detail" HeightF="0" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item2 Ref="20" ControlType="TopMarginBand" Name="TopMargin" SnapLinePadding="0,0,0,0,100" HeightF="20" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="21" ControlType="BottomMarginBand" Name="BottomMargin" SnapLinePadding="0,0,0,0,100" HeightF="24" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item4 Ref="22" ControlType="PageHeaderBand" Name="PageHeader" HeightF="952">
+      <Controls>
+        <Item1 Ref="23" ControlType="XRTable" Name="xrTable5" SizeF="80.55267,25" LocationFloat="568.4056, 9.999996" Font="Times New Roman, 9.75pt, style=Bold">
+          <Rows>
+            <Item1 Ref="24" ControlType="XRTableRow" Name="xrTableRow21" Weight="1">
+              <Cells>
+                <Item1 Ref="25" ControlType="XRTableCell" Name="xrTableCell57" Weight="0.79365278737283962" CanShrink="true" Multiline="true" Text="Número" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="26" UseFont="false" />
+                </Item1>
+                <Item2 Ref="27" ControlType="XRTableCell" Name="xrTableCell58" Weight="0.15195855387733942" CanShrink="true" Multiline="true" Text=":" Padding="2,2,0,0,100" />
+                <Item3 Ref="28" ControlType="XRTableCell" Name="xrTableCell59" Weight="0.1500209579937668" Multiline="true" TextAlignment="TopLeft" Padding="2,2,0,0,100">
+                  <DataBindings>
+                    <Item1 Ref="29" PropertyName="Text" DataMember="Query.folio" />
+                  </DataBindings>
+                  <StylePriority Ref="30" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="31" UseFont="false" />
+        </Item1>
+        <Item2 Ref="32" ControlType="XRPictureBox" Name="imgLogo1" ImageAlignment="MiddleLeft" SizeF="53.75837,49.69618" LocationFloat="0, 0" />
+        <Item3 Ref="33" ControlType="XRLabel" Name="xrLabel7" Multiline="true" Text="xrLabel19" SizeF="401.4499,12.99998" LocationFloat="53.75843, 10.00002" Font="Times New Roman, 7pt, charSet=0" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="35" Parameter="#Ref-3" PropertyName="Text" DataMember="empresa" />
+          </DataBindings>
+          <StylePriority Ref="36" UseFont="false" />
+        </Item3>
+        <Item4 Ref="37" ControlType="XRLabel" Name="xrLabel6" Multiline="true" SizeF="100,12.91669" LocationFloat="53.75837, 23" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="38" Parameter="#Ref-9" PropertyName="Text" DataMember="rutEmpresa" />
+          </DataBindings>
+          <StylePriority Ref="39" UseFont="false" />
+        </Item4>
+        <Item5 Ref="40" ControlType="XRPanel" Name="xrPanel3" SizeF="650,378" LocationFloat="0, 75" Borders="All">
+          <Controls>
+            <Item1 Ref="41" ControlType="XRLabel" Name="xrLabel38" Multiline="true" Text="xrLabel38" SizeF="194.1784,15.00002" LocationFloat="430.2085, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="42" PropertyName="Text" DataMember="Query.pervac" />
+              </DataBindings>
+              <StylePriority Ref="43" UseBorders="false" />
+            </Item1>
+            <Item2 Ref="44" ControlType="XRLabel" Name="xrLabel25" Multiline="true" Text="Periodos:" SizeF="66.66669,15.00002" LocationFloat="362.5001, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="45" UseBorders="false" />
+            </Item2>
+            <Item3 Ref="46" ControlType="XRTable" Name="xrTable8" SizeF="297.5003,13.97058" LocationFloat="329.2559, 242.9167">
+              <Rows>
+                <Item1 Ref="47" ControlType="XRTableRow" Name="xrTableRow23" Weight="1">
+                  <Cells>
+                    <Item1 Ref="48" ControlType="XRTableCell" Name="xrTableCell63" Weight="2.307481994628906" Multiline="true" Text="Total días restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="49" UseFont="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="50" ControlType="XRTableCell" Name="xrTableCell64" Weight="0.12496093750000004" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="51" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="52" ControlType="XRTableCell" Name="xrTableCell65" Weight="0.542559814453125" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <StylePriority Ref="53" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item3>
+            <Item4 Ref="54" ControlType="XRTable" Name="xrTable7" SizeF="297.5003,64" LocationFloat="329.2559, 178.9167">
+              <Rows>
+                <Item1 Ref="55" ControlType="XRTableRow" Name="xrTableRow32" Weight="1">
+                  <Cells>
+                    <Item1 Ref="56" ControlType="XRTableCell" Name="xrTableCell92" Weight="3" Multiline="true" Text="Resumen días progresivos" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                      <StylePriority Ref="57" UseTextAlignment="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="58" ControlType="XRTableRow" Name="xrTableRow33" Weight="1">
+                  <Cells>
+                    <Item1 Ref="59" ControlType="XRTableCell" Name="xrTableCell93" Weight="2.32687047705547" Multiline="true" Text="Días progresivos totales acumulados" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="60" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="61" ControlType="XRTableCell" Name="xrTableCell94" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="62" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="63" ControlType="XRTableCell" Name="xrTableCell95" Weight="0.54711858422366788" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="64" Parameter="#Ref-13" PropertyName="Text" DataMember="diasProgAcumulados" />
+                      </DataBindings>
+                      <StylePriority Ref="65" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="66" ControlType="XRTableRow" Name="xrTableRow30" Weight="1">
+                  <Cells>
+                    <Item1 Ref="67" ControlType="XRTableCell" Name="xrTableCell84" Weight="2.32687047705547" Multiline="true" Text="Días progresivos usados" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="68" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="69" ControlType="XRTableCell" Name="xrTableCell85" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="70" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="71" ControlType="XRTableCell" Name="xrTableCell86" Weight="0.54711858422366788" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="72" Parameter="#Ref-6" PropertyName="Text" DataMember="progusados" />
+                      </DataBindings>
+                      <StylePriority Ref="73" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="74" ControlType="XRTableRow" Name="xrTableRow35" Weight="1">
+                  <Cells>
+                    <Item1 Ref="75" ControlType="XRTableCell" Name="xrTableCell97" Weight="2.32687047705547" Multiline="true" Text="Días progresivos restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="76" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="77" ControlType="XRTableCell" Name="xrTableCell98" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="78" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="79" ControlType="XRTableCell" Name="xrTableCell99" Weight="0.54711858422366788" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <StylePriority Ref="80" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+              </Rows>
+            </Item4>
+            <Item5 Ref="81" ControlType="XRLabel" Name="xrLabel16" Multiline="true" Text="tipo" SizeF="67.30003,23" LocationFloat="86.45827, 96.16664" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="82" UseFont="false" UseBorders="false" />
+            </Item5>
+            <Item6 Ref="83" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="con remuneracion." SizeF="112.5,22.99998" LocationFloat="153.7583, 96.16664" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="84" UseBorders="false" />
+            </Item6>
+            <Item7 Ref="85" ControlType="XRLabel" Name="xrlblDias" Multiline="true" Text="dias" SizeF="54.25598,14.99998" LocationFloat="572.5002, 81.16665" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="86" UseFont="false" UseBorders="false" />
+            </Item7>
+            <Item8 Ref="87" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text=" días feriados" SizeF="76.24976,22.99998" LocationFloat="10.20851, 96.16664" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="88" UseBorders="false" />
+            </Item8>
+            <Item9 Ref="89" ControlType="XRTable" Name="xrTable3" SizeF="297.5002,64.00005" LocationFloat="329.2559, 114.9166">
+              <Rows>
+                <Item1 Ref="90" ControlType="XRTableRow" Name="xrTableRow11" Weight="1">
+                  <Cells>
+                    <Item1 Ref="91" ControlType="XRTableCell" Name="xrTableCell17" Weight="2.0607825879400852" Multiline="true" Text="Resumen días normales" TextAlignment="TopCenter" Padding="2,2,0,0,100" Borders="All">
+                      <StylePriority Ref="92" UseBorders="false" UseTextAlignment="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="93" ControlType="XRTableRow" Name="xrTableRow12" Weight="1">
+                  <Cells>
+                    <Item1 Ref="94" ControlType="XRTableCell" Name="xrTableCell18" Weight="1.5983917661205242" Multiline="true" Text="Días vacaciones normales acumulados" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="95" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="96" ControlType="XRTableCell" Name="xrTableCell31" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="97" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="98" ControlType="XRTableCell" Name="xrTableCell32" Weight="0.3824416086151663" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="99" Parameter="#Ref-10" PropertyName="Text" DataMember="diasVacacionesAcumuladas" />
+                      </DataBindings>
+                      <StylePriority Ref="100" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="101" ControlType="XRTableRow" Name="xrTableRow24" Weight="1">
+                  <Cells>
+                    <Item1 Ref="102" ControlType="XRTableCell" Name="xrTableCell66" Weight="1.5983917661205242" Multiline="true" Text="Días normales usados" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="103" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="104" ControlType="XRTableCell" Name="xrTableCell67" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="105" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="106" ControlType="XRTableCell" Name="xrTableCell68" Weight="0.3824416086151663" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="107" Parameter="#Ref-5" PropertyName="Text" DataMember="propusados" />
+                      </DataBindings>
+                      <StylePriority Ref="108" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="109" ControlType="XRTableRow" Name="xrTableRow29" Weight="1">
+                  <Cells>
+                    <Item1 Ref="110" ControlType="XRTableCell" Name="xrTableCell81" Weight="1.5983917661205242" Multiline="true" Text="Días normales restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="111" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="112" ControlType="XRTableCell" Name="xrTableCell82" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="113" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="114" ControlType="XRTableCell" Name="xrTableCell83" Weight="0.3824416086151663" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <StylePriority Ref="115" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+              </Rows>
+            </Item9>
+            <Item10 Ref="116" ControlType="XRLabel" Name="xrLabel8" Multiline="true" Text="Copia trabajador" SizeF="100,15" LocationFloat="548.9584, 360.4979" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="117" UseBorders="false" />
+            </Item10>
+            <Item11 Ref="118" ControlType="XRTable" Name="xrTable4" SizeF="256.0498,93" LocationFloat="10.20851, 126.9999" Borders="None">
+              <Rows>
+                <Item1 Ref="119" ControlType="XRTableRow" Name="xrTableRow16" Weight="1">
+                  <Cells>
+                    <Item1 Ref="120" ControlType="XRTableCell" Name="xrTableCell42" Weight="2.9943873023217318" Multiline="true" Text="Fecha desde" Padding="2,2,0,0,100" Borders="Left, Top">
+                      <StylePriority Ref="121" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="122" ControlType="XRTableCell" Name="xrTableCell43" Weight="0.30847150400297429" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top">
+                      <StylePriority Ref="123" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="124" ControlType="XRTableCell" Name="xrTableCell44" Weight="3.5888783062700895" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Top, Right">
+                      <DataBindings>
+                        <Item1 Ref="125" PropertyName="Text" DataMember="Query.salida" />
+                      </DataBindings>
+                      <StylePriority Ref="126" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="127" ControlType="XRTableRow" Name="xrTableRow17" Weight="1">
+                  <Cells>
+                    <Item1 Ref="128" ControlType="XRTableCell" Name="xrTableCell45" Weight="2.9943873023217318" Multiline="true" Text="Fecha hasta" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="129" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="130" ControlType="XRTableCell" Name="xrTableCell46" Weight="0.30847150400297429" Multiline="true" Text=":&#x9;&#x9;" Padding="2,2,0,0,100">
+                      <StylePriority Ref="131" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="132" ControlType="XRTableCell" Name="xrTableCell47" Weight="3.5888783062700895" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="133" PropertyName="Text" DataMember="Query.finaliza" />
+                      </DataBindings>
+                      <StylePriority Ref="134" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="135" ControlType="XRTableRow" Name="xrTableRow18" Weight="1">
+                  <Cells>
+                    <Item1 Ref="136" ControlType="XRTableCell" Name="xrTableCell48" Weight="2.9943873023217318" Multiline="true" Text="Fecha retorno" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="137" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="138" ControlType="XRTableCell" Name="xrTableCell49" Weight="0.30847150400297429" Multiline="true" Text=":" Padding="2,2,0,0,100">
+                      <StylePriority Ref="139" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="140" ControlType="XRTableCell" Name="xrTableCell50" Weight="3.5888783062700895" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="141" PropertyName="Text" DataMember="Query.retorna" />
+                      </DataBindings>
+                      <StylePriority Ref="142" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="143" ControlType="XRTableRow" Name="xrTableRow27" Weight="1">
+                  <Cells>
+                    <Item1 Ref="144" ControlType="XRTableCell" Name="xrTableCell74" Weight="2.9943873023217318" Multiline="true" Text="Días a utilizar" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="145" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="146" ControlType="XRTableCell" Name="xrTableCell75" Weight="0.30847150400297429" Multiline="true" Text=":" Padding="2,2,0,0,100">
+                      <StylePriority Ref="147" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="148" ControlType="XRTableCell" Name="xrTableCell77" Weight="3.5888783062700895" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="149" PropertyName="Text" DataMember="Query.dias" />
+                      </DataBindings>
+                      <StylePriority Ref="150" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+                <Item5 Ref="151" ControlType="XRTableRow" Name="xrTableRow20" Weight="1">
+                  <Cells>
+                    <Item1 Ref="152" ControlType="XRTableCell" Name="xrTableCell54" Weight="2.9943873023217318" Multiline="true" Text="Tipo de vacaciones" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="153" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="154" ControlType="XRTableCell" Name="xrTableCell55" Weight="0.30847150400297429" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="155" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="156" ControlType="XRTableCell" Name="xrTableCell56" Weight="3.5888783062700895" Multiline="true" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="157" PropertyName="Text" DataMember="Query.tipo" />
+                      </DataBindings>
+                      <StylePriority Ref="158" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item5>
+              </Rows>
+              <StylePriority Ref="159" UseBorders="false" />
+            </Item11>
+            <Item12 Ref="160" ControlType="XRLabel" Name="xrLabel9" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 9.999974" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="161" UseBorders="false" />
+            </Item12>
+            <Item13 Ref="162" ControlType="XRLabel" Name="xrLabel10" Multiline="true" Text="Contrato" SizeF="111.46,15" LocationFloat="10.0001, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="163" UseBorders="false" />
+            </Item13>
+            <Item14 Ref="164" ControlType="XRLabel" Name="xrLabel11" Multiline="true" Text="xrLabel3" SizeF="100,15" LocationFloat="132.9201, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="165" PropertyName="Text" DataMember="Query.contrato" />
+              </DataBindings>
+              <StylePriority Ref="166" UseBorders="false" />
+            </Item14>
+            <Item15 Ref="167" ControlType="XRLabel" Name="xrLabel12" Multiline="true" Text="En cumplimiento de las disposiciones legales vigentes, se deja constancia que el trabajador hará uso de" SizeF="562.2917,14.99998" LocationFloat="10.20851, 81.16665" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="168" UseBorders="false" />
+            </Item15>
+            <Item16 Ref="169" ControlType="XRLabel" Name="xrLabel13" Text="xrLabel17" SizeF="373.96,15" LocationFloat="132.9201, 40.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="170" PropertyName="Text" DataMember="Query.name" />
+              </DataBindings>
+              <StylePriority Ref="171" UseBorders="false" />
+            </Item16>
+            <Item17 Ref="172" ControlType="XRLabel" Name="xrLabel14" Text="Nombre" SizeF="111.46,15" LocationFloat="10.00001, 40.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="173" UseBorders="false" />
+            </Item17>
+            <Item18 Ref="174" ControlType="XRLabel" Name="xrLabel19" Text="xrLabel16" SizeF="100,15" LocationFloat="132.9201, 25.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="175" PropertyName="Text" DataMember="Query.rut" />
+              </DataBindings>
+              <StylePriority Ref="176" UseBorders="false" />
+            </Item18>
+            <Item19 Ref="177" ControlType="XRLabel" Name="xrLabel20" Text="Rut trabajador" SizeF="111.46,15" LocationFloat="10.00001, 24.99997" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="178" UseBorders="false" />
+            </Item19>
+            <Item20 Ref="179" ControlType="XRPageInfo" Name="xrPageInfo3" PageInfo="DateTime" SizeF="210.4216,15" LocationFloat="132.9201, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="180" UseBorders="false" />
+            </Item20>
+            <Item21 Ref="181" ControlType="XRLabel" Name="xrLabel41" Text="Fecha comprobante" SizeF="111.46,15" LocationFloat="10.00001, 10.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="182" UseBorders="false" />
+            </Item21>
+            <Item22 Ref="183" ControlType="XRLabel" Name="xrLabel42" Text="Firma empleador" SizeF="100,15" LocationFloat="275.0003, 360.4979" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="184" UseBorders="false" />
+            </Item22>
+            <Item23 Ref="185" ControlType="XRLine" Name="xrLine3" SizeF="198.9583,22.99997" LocationFloat="230.2085, 337.4979" Borders="None">
+              <StylePriority Ref="186" UseBorders="false" />
+            </Item23>
+            <Item24 Ref="187" ControlType="XRLabel" Name="xrLabel43" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 25.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="188" UseBorders="false" />
+            </Item24>
+            <Item25 Ref="189" ControlType="XRLabel" Name="xrLabel44" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5002, 40.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="190" UseBorders="false" />
+            </Item25>
+            <Item26 Ref="191" ControlType="XRLabel" Name="xrLabel49" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="192" UseBorders="false" />
+            </Item26>
+          </Controls>
+          <StylePriority Ref="193" UseBorders="false" />
+        </Item5>
+        <Item6 Ref="194" ControlType="XRLabel" Name="xrLabel2" Text="Comprobante de Vacaciones" TextAlignment="TopCenter" SizeF="286.4583,23" LocationFloat="168.75, 41.2795067" Font="Times New Roman, 16pt" Padding="2,2,0,0,100" Borders="Bottom">
+          <StylePriority Ref="195" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="196" ControlType="XRLabel" Name="xrLabel35" Text="Comprobante de Vacaciones" TextAlignment="TopCenter" SizeF="286.4583,23" LocationFloat="168.75, 555" Font="Times New Roman, 16pt" Padding="2,2,0,0,100" Borders="Bottom">
+          <StylePriority Ref="197" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+        <Item8 Ref="198" ControlType="XRPanel" Name="xrPanel1" SizeF="650,368" LocationFloat="0, 584" Borders="All">
+          <Controls>
+            <Item1 Ref="199" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="tipo" SizeF="67.30003,23" LocationFloat="86.45834, 93.33331" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="200" UseFont="false" UseBorders="false" />
+            </Item1>
+            <Item2 Ref="201" ControlType="XRLabel" Name="xrLabel15" Multiline="true" Text="con remuneracion." SizeF="112.5,22.99998" LocationFloat="153.7584, 93.33331" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="202" UseBorders="false" />
+            </Item2>
+            <Item3 Ref="203" ControlType="XRLabel" Name="xrLabel17" Multiline="true" Text="dias" SizeF="54.25598,14.99998" LocationFloat="572.5002, 78.33334" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="204" UseFont="false" UseBorders="false" />
+            </Item3>
+            <Item4 Ref="205" ControlType="XRLabel" Name="xrLabel36" Multiline="true" Text=" días feriados" SizeF="76.24976,22.99998" LocationFloat="10.20858, 93.33331" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="206" UseBorders="false" />
+            </Item4>
+            <Item5 Ref="207" ControlType="XRLabel" Name="xrLabel37" Multiline="true" Text="En cumplimiento de las disposiciones legales vigentes, se deja constancia que el trabajador hará uso de" SizeF="562.2917,14.99998" LocationFloat="10.20858, 78.33334" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="208" UseBorders="false" />
+            </Item5>
+            <Item6 Ref="209" ControlType="XRLabel" Name="xrLabel21" Multiline="true" Text="Copia empleador" SizeF="100,15" LocationFloat="548.9582, 350.7487" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="210" UseBorders="false" />
+            </Item6>
+            <Item7 Ref="211" ControlType="XRTable" Name="xrTable2" SizeF="256.0498,93" LocationFloat="10.20851, 126.9999" Borders="None">
+              <Rows>
+                <Item1 Ref="212" ControlType="XRTableRow" Name="xrTableRow6" Weight="1">
+                  <Cells>
+                    <Item1 Ref="213" ControlType="XRTableCell" Name="xrTableCell14" Weight="2.9943873023217318" Multiline="true" Text="Fecha desde" Padding="2,2,0,0,100" Borders="Left, Top">
+                      <StylePriority Ref="214" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="215" ControlType="XRTableCell" Name="xrTableCell15" Weight="0.28046096791890984" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top">
+                      <StylePriority Ref="216" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="217" ControlType="XRTableCell" Name="xrTableCell16" Weight="3.6168894584035969" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Top, Right">
+                      <DataBindings>
+                        <Item1 Ref="218" PropertyName="Text" DataMember="Query.salida" />
+                      </DataBindings>
+                      <StylePriority Ref="219" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="220" ControlType="XRTableRow" Name="xrTableRow7" Weight="1">
+                  <Cells>
+                    <Item1 Ref="221" ControlType="XRTableCell" Name="xrTableCell19" Weight="2.9943873023217318" Multiline="true" Text="Fecha hasta" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="222" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="223" ControlType="XRTableCell" Name="xrTableCell20" Weight="0.28046096791890984" Multiline="true" Text=":&#x9;&#x9;" Padding="2,2,0,0,100">
+                      <StylePriority Ref="224" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="225" ControlType="XRTableCell" Name="xrTableCell21" Weight="3.6168894584035969" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="226" PropertyName="Text" DataMember="Query.finaliza" />
+                      </DataBindings>
+                      <StylePriority Ref="227" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="228" ControlType="XRTableRow" Name="xrTableRow8" Weight="1">
+                  <Cells>
+                    <Item1 Ref="229" ControlType="XRTableCell" Name="xrTableCell22" Weight="2.9943873023217318" Multiline="true" Text="Fecha retorno" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="230" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="231" ControlType="XRTableCell" Name="xrTableCell23" Weight="0.28046096791890984" Multiline="true" Text=":" Padding="2,2,0,0,100">
+                      <StylePriority Ref="232" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="233" ControlType="XRTableCell" Name="xrTableCell24" Weight="3.6168894584035969" TextFormatString="{0:dd-MM-yyyy}" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="234" PropertyName="Text" DataMember="Query.retorna" />
+                      </DataBindings>
+                      <StylePriority Ref="235" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="236" ControlType="XRTableRow" Name="xrTableRow9" Weight="1">
+                  <Cells>
+                    <Item1 Ref="237" ControlType="XRTableCell" Name="xrTableCell25" Weight="2.9943873023217318" Multiline="true" Text="Dias de vacaciones" Padding="2,2,0,0,100" Borders="Left">
+                      <StylePriority Ref="238" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="239" ControlType="XRTableCell" Name="xrTableCell26" Weight="0.28046096791890984" Multiline="true" Text=":" Padding="2,2,0,0,100">
+                      <StylePriority Ref="240" UsePadding="false" />
+                    </Item2>
+                    <Item3 Ref="241" ControlType="XRTableCell" Name="xrTableCell27" Weight="3.6168894584035969" Multiline="true" Padding="2,2,0,0,100" Borders="Right">
+                      <DataBindings>
+                        <Item1 Ref="242" PropertyName="Text" DataMember="Query.dias" />
+                      </DataBindings>
+                      <StylePriority Ref="243" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+                <Item5 Ref="244" ControlType="XRTableRow" Name="xrTableRow10" Weight="1">
+                  <Cells>
+                    <Item1 Ref="245" ControlType="XRTableCell" Name="xrTableCell28" Weight="2.9943873023217318" Multiline="true" Text="Tipo de vacaciones" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="246" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="247" ControlType="XRTableCell" Name="xrTableCell29" Weight="0.28046096791890984" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="248" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="249" ControlType="XRTableCell" Name="xrTableCell30" Weight="3.6168894584035969" Multiline="true" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="250" PropertyName="Text" DataMember="Query.tipo" />
+                      </DataBindings>
+                      <StylePriority Ref="251" UsePadding="false" UseBorders="false" />
+                    </Item3>
+                  </Cells>
+                </Item5>
+              </Rows>
+              <StylePriority Ref="252" UseBorders="false" />
+            </Item7>
+            <Item8 Ref="253" ControlType="XRLabel" Name="xrLabel22" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 9.999974" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="254" UseBorders="false" />
+            </Item8>
+            <Item9 Ref="255" ControlType="XRLabel" Name="xrLabel23" Multiline="true" Text="Contrato" SizeF="111.46,15" LocationFloat="10.0001, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="256" UseBorders="false" />
+            </Item9>
+            <Item10 Ref="257" ControlType="XRLabel" Name="xrLabel24" Multiline="true" Text="xrLabel3" SizeF="100,15" LocationFloat="132.9201, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="258" PropertyName="Text" DataMember="Query.contrato" />
+              </DataBindings>
+              <StylePriority Ref="259" UseBorders="false" />
+            </Item10>
+            <Item11 Ref="260" ControlType="XRLabel" Name="xrLabel26" Text="xrLabel17" SizeF="373.96,15" LocationFloat="132.9201, 40.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="261" PropertyName="Text" DataMember="Query.name" />
+              </DataBindings>
+              <StylePriority Ref="262" UseBorders="false" />
+            </Item11>
+            <Item12 Ref="263" ControlType="XRLabel" Name="xrLabel27" Text="Nombre" SizeF="111.46,15" LocationFloat="10.00001, 40.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="264" UseBorders="false" />
+            </Item12>
+            <Item13 Ref="265" ControlType="XRLabel" Name="xrLabel28" Text="xrLabel16" SizeF="100,15" LocationFloat="132.9201, 25.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="266" PropertyName="Text" DataMember="Query.rut" />
+              </DataBindings>
+              <StylePriority Ref="267" UseBorders="false" />
+            </Item13>
+            <Item14 Ref="268" ControlType="XRLabel" Name="xrLabel29" Text="Rut trabajador" SizeF="111.46,15" LocationFloat="10.00001, 24.99997" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="269" UseBorders="false" />
+            </Item14>
+            <Item15 Ref="270" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="DateTime" SizeF="171.88,15" LocationFloat="132.9201, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="271" UseBorders="false" />
+            </Item15>
+            <Item16 Ref="272" ControlType="XRLabel" Name="xrLabel30" Text="Fecha comprobante" SizeF="111.46,15" LocationFloat="10.00001, 10.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="273" UseBorders="false" />
+            </Item16>
+            <Item17 Ref="274" ControlType="XRLabel" Name="xrLabel31" Text="Firma trabajador" SizeF="100,15" LocationFloat="274.9998, 350.7488" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="275" UseBorders="false" />
+            </Item17>
+            <Item18 Ref="276" ControlType="XRLine" Name="xrLine1" SizeF="198.9583,22.99997" LocationFloat="230.2083, 327.7486" Borders="None">
+              <StylePriority Ref="277" UseBorders="false" />
+            </Item18>
+            <Item19 Ref="278" ControlType="XRLabel" Name="xrLabel32" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 25.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="279" UseBorders="false" />
+            </Item19>
+            <Item20 Ref="280" ControlType="XRLabel" Name="xrLabel33" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5002, 40.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="281" UseBorders="false" />
+            </Item20>
+            <Item21 Ref="282" ControlType="XRLabel" Name="xrLabel34" Multiline="true" Text=":" SizeF="10.42,15" LocationFloat="122.5001, 55.00001" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="283" UseBorders="false" />
+            </Item21>
+            <Item22 Ref="284" ControlType="XRTable" Name="xrTable1" SizeF="297.5002,64.00005" LocationFloat="329.2559, 114.9166">
+              <Rows>
+                <Item1 Ref="285" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+                  <Cells>
+                    <Item1 Ref="286" ControlType="XRTableCell" Name="xrTableCell1" Weight="2.0607825879400852" Multiline="true" Text="Resumen días normales" TextAlignment="TopCenter" Padding="2,2,0,0,100" Borders="All">
+                      <StylePriority Ref="287" UseBorders="false" UseTextAlignment="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="288" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+                  <Cells>
+                    <Item1 Ref="289" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.5983917661205242" Multiline="true" Text="Días vacaciones normales acumulados" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="290" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="291" ControlType="XRTableCell" Name="xrTableCell3" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="292" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="293" ControlType="XRTableCell" Name="xrTableCell4" Weight="0.3824416086151663" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="294" Parameter="#Ref-10" PropertyName="Text" DataMember="diasVacacionesAcumuladas" />
+                      </DataBindings>
+                      <StylePriority Ref="295" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="296" ControlType="XRTableRow" Name="xrTableRow3" Weight="1">
+                  <Cells>
+                    <Item1 Ref="297" ControlType="XRTableCell" Name="xrTableCell5" Weight="1.5983917661205242" Multiline="true" Text="Días normales usados" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="298" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="299" ControlType="XRTableCell" Name="xrTableCell6" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="300" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="301" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.3824416086151663" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="302" Parameter="#Ref-5" PropertyName="Text" DataMember="propusados" />
+                      </DataBindings>
+                      <StylePriority Ref="303" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="304" ControlType="XRTableRow" Name="xrTableRow13" Weight="1">
+                  <Cells>
+                    <Item1 Ref="305" ControlType="XRTableCell" Name="xrTableCell33" Weight="1.5983917661205242" Multiline="true" Text="Días normales restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Bottom">
+                      <StylePriority Ref="306" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="307" ControlType="XRTableCell" Name="xrTableCell34" Weight="0.079949213204394437" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Bottom">
+                      <StylePriority Ref="308" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="309" ControlType="XRTableCell" Name="xrTableCell35" Weight="0.3824416086151663" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Right, Bottom">
+                      <StylePriority Ref="310" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+              </Rows>
+            </Item22>
+            <Item23 Ref="311" ControlType="XRTable" Name="xrTable9" SizeF="297.5003,64" LocationFloat="329.2559, 178.9166">
+              <Rows>
+                <Item1 Ref="312" ControlType="XRTableRow" Name="xrTableRow14" Weight="1">
+                  <Cells>
+                    <Item1 Ref="313" ControlType="XRTableCell" Name="xrTableCell36" Weight="3" Multiline="true" Text="Resumen días progresivos" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                      <StylePriority Ref="314" UseTextAlignment="false" />
+                    </Item1>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="315" ControlType="XRTableRow" Name="xrTableRow15" Weight="1">
+                  <Cells>
+                    <Item1 Ref="316" ControlType="XRTableCell" Name="xrTableCell37" Weight="2.32687047705547" Multiline="true" Text="Días progresivos totales acumulados" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="317" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="318" ControlType="XRTableCell" Name="xrTableCell38" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="319" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="320" ControlType="XRTableCell" Name="xrTableCell39" Weight="0.54711858422366788" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="321" Parameter="#Ref-13" PropertyName="Text" DataMember="diasProgAcumulados" />
+                      </DataBindings>
+                      <StylePriority Ref="322" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="323" ControlType="XRTableRow" Name="xrTableRow19" Weight="1">
+                  <Cells>
+                    <Item1 Ref="324" ControlType="XRTableCell" Name="xrTableCell40" Weight="2.32687047705547" Multiline="true" Text="Días progresivos usados" Font="Times New Roman, 9.75pt" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="325" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="326" ControlType="XRTableCell" Name="xrTableCell41" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="327" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="328" ControlType="XRTableCell" Name="xrTableCell51" Weight="0.54711858422366788" TextFormatString="{0:#.00}" Multiline="true" TextAlignment="TopRight" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <DataBindings>
+                        <Item1 Ref="329" Parameter="#Ref-6" PropertyName="Text" DataMember="progusados" />
+                      </DataBindings>
+                      <StylePriority Ref="330" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="331" ControlType="XRTableRow" Name="xrTableRow26" Weight="1">
+                  <Cells>
+                    <Item1 Ref="332" ControlType="XRTableCell" Name="xrTableCell70" Weight="2.32687047705547" Multiline="true" Text="Días progresivos restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="333" UseFont="false" UsePadding="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="334" ControlType="XRTableCell" Name="xrTableCell71" Weight="0.12601093872086233" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="335" UsePadding="false" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="336" ControlType="XRTableCell" Name="xrTableCell72" Weight="0.54711858422366788" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <StylePriority Ref="337" UseFont="false" UsePadding="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item4>
+              </Rows>
+            </Item23>
+            <Item24 Ref="338" ControlType="XRTable" Name="xrTable10" SizeF="297.5003,13.97058" LocationFloat="329.2558, 242.9166">
+              <Rows>
+                <Item1 Ref="339" ControlType="XRTableRow" Name="xrTableRow28" Weight="1">
+                  <Cells>
+                    <Item1 Ref="340" ControlType="XRTableCell" Name="xrTableCell73" Weight="2.307481994628906" Multiline="true" Text="Total días restantes" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Left, Top, Bottom">
+                      <StylePriority Ref="341" UseFont="false" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="342" ControlType="XRTableCell" Name="xrTableCell76" Weight="0.12496093750000004" Multiline="true" Text=":" Padding="2,2,0,0,100" Borders="Top, Bottom">
+                      <StylePriority Ref="343" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="344" ControlType="XRTableCell" Name="xrTableCell78" Weight="0.542559814453125" Multiline="true" TextAlignment="TopRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100" Borders="Top, Right, Bottom">
+                      <StylePriority Ref="345" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item24>
+            <Item25 Ref="346" ControlType="XRLabel" Name="xrLabel39" Multiline="true" Text="xrLabel38" SizeF="194.1784,15.00002" LocationFloat="430.2085, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <DataBindings>
+                <Item1 Ref="347" PropertyName="Text" DataMember="Query.pervac" />
+              </DataBindings>
+              <StylePriority Ref="348" UseBorders="false" />
+            </Item25>
+            <Item26 Ref="349" ControlType="XRLabel" Name="xrLabel40" Multiline="true" Text="Periodos:" SizeF="66.66647,15.00002" LocationFloat="362.5001, 10.00004" Padding="2,2,0,0,100" Borders="None">
+              <StylePriority Ref="350" UseBorders="false" />
+            </Item26>
+          </Controls>
+          <StylePriority Ref="351" UseBorders="false" />
+        </Item8>
+        <Item9 Ref="352" ControlType="XRLabel" Name="xrLabel18" Multiline="true" SizeF="100,12.91669" LocationFloat="53.75837, 531.8312" Font="Times New Roman, 7pt" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="353" Parameter="#Ref-9" PropertyName="Text" DataMember="rutEmpresa" />
+          </DataBindings>
+          <StylePriority Ref="354" UseFont="false" />
+        </Item9>
+        <Item10 Ref="355" ControlType="XRLabel" Name="xrLabel5" Multiline="true" Text="xrLabel19" SizeF="401.4499,13" LocationFloat="53.75843, 518.8312" Font="Times New Roman, 7pt, charSet=0" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="356" Parameter="#Ref-3" PropertyName="Text" DataMember="empresa" />
+          </DataBindings>
+          <StylePriority Ref="357" UseFont="false" />
+        </Item10>
+        <Item11 Ref="358" ControlType="XRPictureBox" Name="imgLogo2" ImageAlignment="MiddleLeft" SizeF="53.75837,49.69623" LocationFloat="0, 509.6609" />
+        <Item12 Ref="359" ControlType="XRTable" Name="xrTable6" SizeF="80.55267,25" LocationFloat="568.4056, 518.8312" Font="Times New Roman, 9.75pt, style=Bold">
+          <Rows>
+            <Item1 Ref="360" ControlType="XRTableRow" Name="xrTableRow22" Weight="1">
+              <Cells>
+                <Item1 Ref="361" ControlType="XRTableCell" Name="xrTableCell60" Weight="0.79365278737283962" CanGrow="false" Multiline="true" Text="Número" WordWrap="false" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="362" UseFont="false" />
+                </Item1>
+                <Item2 Ref="363" ControlType="XRTableCell" Name="xrTableCell61" Weight="0.15195855387733942" CanGrow="false" Multiline="true" Text=":" WordWrap="false" Padding="2,2,0,0,100" />
+                <Item3 Ref="364" ControlType="XRTableCell" Name="xrTableCell62" Weight="0.1500209579937668" TextAlignment="TopLeft" Padding="2,2,0,0,100">
+                  <DataBindings>
+                    <Item1 Ref="365" PropertyName="Text" DataMember="Query.folio" />
+                  </DataBindings>
+                  <StylePriority Ref="366" UseTextAlignment="false" />
+                </Item3>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="367" UseFont="false" />
+        </Item12>
+      </Controls>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="368" ObjectType="DevExpress.DataAccess.Sql.SqlDataSource,DevExpress.DataAccess.v18.1" Name="sqlDataSource1" Base64="PFNxbERhdGFTb3VyY2UgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxDb25uZWN0aW9uIE5hbWU9ImxvY2FsaG9zdF9wZXJTZXNjX0Nvbm5lY3Rpb24iIEZyb21BcHBDb25maWc9InRydWUiIC8+PFF1ZXJ5IFR5cGU9IkN1c3RvbVNxbFF1ZXJ5IiBOYW1lPSJRdWVyeSI+PFNxbD5zZWxlY3QgRElTVElOQ1QgcnV0LCBjb25jYXQobm9tYnJlLCAnICcsIGFwZXBhdGVybm8sICcgJywgYXBlbWF0ZXJubykgYXMgbmFtZSwgDQogICAgICAgICAgICAgICAgdmFjYWNpb25EZXRhbGxlLmNvbnRyYXRvLCB2YWNhY2lvbmRldGFsbGUuc2FsaWRhLCBmaW5hbGl6YSwgZGlhcywgdGlwbywgcmV0b3JuYSwgZm9saW8sIHBlcnZhYyANCiAgICAgICAgICAgICAgICBmcm9tIHZhY2FjaW9uRGV0YWxsZSANCiAgICAgICAgICAgICAgICBJTk5FUiBKT0lOIHRyYWJhamFkb3IgT04gdHJhYmFqYWRvci5jb250cmF0byA9IHZhY2FjaW9uRGV0YWxsZS5jb250cmF0byANCiAgICAgICAgICAgICAgICB3aGVyZSB2YWNhY2lvbkRldGFsbGUuY29udHJhdG8gPSAnODA2ODg5Ny0wJyBBTkQgdmFjYWNpb25kZXRhbGxlLnNhbGlkYSA9ICcyMDE5LTA0LTAxJyANCiAgICAgICAgICAgICAgICBBTkQgdmFjYWNpb25kZXRhbGxlLmZpbmFsaXphID0gJzIwMTktMDQtMTcnPC9TcWw+PC9RdWVyeT48UmVzdWx0U2NoZW1hPjxEYXRhU2V0IE5hbWU9InNxbERhdGFTb3VyY2UxIj48VmlldyBOYW1lPSJRdWVyeSI+PEZpZWxkIE5hbWU9InJ1dCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJuYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ImNvbnRyYXRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InNhbGlkYSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9ImZpbmFsaXphIiBUeXBlPSJEYXRlVGltZSIgLz48RmllbGQgTmFtZT0iZGlhcyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0idGlwbyIgVHlwZT0iSW50MTYiIC8+PEZpZWxkIE5hbWU9InJldG9ybmEiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJmb2xpbyIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9InBlcnZhYyIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+PC9SZXN1bHRTY2hlbWE+PENvbm5lY3Rpb25PcHRpb25zIENsb3NlQ29ubmVjdGlvbj0idHJ1ZSIgLz48L1NxbERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="4" Content="System.Decimal" Type="System.Type" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="14" Content="System.Double" Type="System.Type" />
+    <Item3 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="17" Content="System.Int32" Type="System.Type" />
+    <Item4 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="0" Content="~Xtra#NULL" Type="System.Data.DataTable" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

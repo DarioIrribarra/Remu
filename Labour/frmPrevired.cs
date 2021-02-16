@@ -164,6 +164,7 @@ namespace Labour
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+
             //NUEVA ACTIVIDAD DE SESION
             Sesion.NuevaActividad();
 
@@ -248,12 +249,14 @@ namespace Labour
                             FileExcel.AbrirExcel(pathFile);
 
                         btnResumen.Enabled = true;                        
+                        btnEditarReporte.Enabled = true;                        
                     }
                     else
                     {
                         XtraMessageBox.Show("No se encontrato informacion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         splashScreenManager1.CloseWaitForm();
                         btnResumen.Enabled = false;
+                        btnEditarReporte.Enabled = false;
                     }
                 }
                 else
@@ -261,6 +264,7 @@ namespace Labour
                     XtraMessageBox.Show("Archivo no se pudo generar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     splashScreenManager1.CloseWaitForm();
                     btnResumen.Enabled = false;
+                    btnEditarReporte.Enabled = false;
                 }                  
             }
             else
@@ -308,6 +312,7 @@ namespace Labour
 
                         //HABILITAMOS BOTON
                         btnResumen.Enabled = true;
+                        btnEditarReporte.Enabled = true;
                        
                     }
                     else
@@ -315,6 +320,7 @@ namespace Labour
                         XtraMessageBox.Show("No se encontrato informacion", "informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         splashScreenManager1.CloseWaitForm();
                         btnResumen.Enabled = false;
+                        btnEditarReporte.Enabled = false;
                     }
                 }
                 else
@@ -322,6 +328,7 @@ namespace Labour
                     XtraMessageBox.Show("Error al generar el archivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     splashScreenManager1.CloseWaitForm();
                     btnResumen.Enabled = false;
+                    btnEditarReporte.Enabled = false;
 
                 }
             }                     
@@ -381,137 +388,7 @@ namespace Labour
 
         private void btnResumen_Click(object sender, EventArgs e)
         {
-            //NUEVA ACTIVIDAD DE SESION
-            Sesion.NuevaActividad();
-
-            if (txtComboPeriodo.Properties.DataSource != null)
-            {
-                if (Calculo.PeriodoValido(Convert.ToInt32(txtComboPeriodo.EditValue)) == false)
-                { XtraMessageBox.Show("Periodo ingresado no valido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtComboPeriodo.Focus();return; }
-
-                if (ListadoPersona(Convert.ToInt32(txtComboPeriodo.EditValue)) == null)
-                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
-
-                Empresa emp = new Empresa();
-                emp.SetInfo();
-
-                List<ReportePrevired> DataSum = new List<ReportePrevired>();
-                string Cond = "";
-
-                Cursor = Cursors.WaitCursor;
-
-                if (PreviredData.Count == 0)
-                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
-
-                if (PreviredData.Count > 0)
-                {
-                    DataSum = PreviredData.GroupBy(x => x.Entidad).
-                        Select(x => new ReportePrevired
-                        {
-                            Cotizacion = x.Sum(y => y.Cotizacion),
-                            CotizacionAfp = x.Sum(y => y.CotizacionAfp),
-                            CotizacionIps = x.Sum(y => y.CotizacionIps),
-                            CotizacionFonasa = x.Sum(y => y.CotizacionFonasa),
-                            CotizacionIsapre = x.Sum(y => y.CotizacionIsapre),
-                            AdicionalIsapre = x.Sum(y => y.AdicionalIsapre),
-                            AhorroPrevisional = x.Sum(y => y.AhorroPrevisional),
-                            AhorroVoluntario = x.Sum(y => y.AhorroVoluntario),
-                            Prestamo = x.Sum(y => y.Prestamo),
-                            SeguroVida = x.Sum(y => y.SeguroVida),
-                            Leasing = x.Sum(y => y.Leasing),
-                            Entidad = x.First().Entidad,
-                            Caja = x.Sum(y => y.Caja), 
-                            AsignacionFam = x.Sum(y => y.AsignacionFam), 
-                            Mutal = x.Sum(y =>y.Mutal), 
-                            SegAfiliado = x.Sum(y => y.SegAfiliado), 
-                            SegEmpresa = x.Sum(y => y.SegEmpresa), 
-                            SegInv = x.Sum(y => y.SegInv), 
-                            Tipo = x.First().Tipo, 
-                            Area = x.First().Area, 
-                            Cargo = x.First().Cargo, 
-                            CentroCosto = x.First().CentroCosto, 
-                            Sucursal = x.First().Sucursal
-                            
-                            
-                        }).ToList();
-                              
-                }
-
-                Cursor = Cursors.Default;
-                if (DataSum.Count == 0)
-                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
-
-                if (txtConjunto.Text.Length > 0 && User.GetUserFilter().Length > 0)
-                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter()) + ";" + Conjunto.GetCondicionFromCode(txtConjunto.Text);
-                    Cond = Labour.Conjunto.GetDescConjunto(txtConjunto.Text);
-                else if (User.GetUserFilter().Length > 0)
-                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter());
-                    Cond = Labour.Conjunto.GetDescConjunto(User.GetUserFilter());
-                else if (User.GetUserFilter().Length == 0)
-                    Cond = "";
-
-                //RptPreviredRes r = new RptPreviredRes();
-                //Reporte externo
-                ReportesExternos.rptPreviredRes r = new ReportesExternos.rptPreviredRes();
-
-                foreach (DevExpress.XtraReports.Parameters.Parameter parametro in r.Parameters)
-                {
-                    parametro.Visible = false;
-                }
-
-                r.Parameters["periodo"].Value = txtComboPeriodo.Text;
-                r.Parameters["periodo"].Visible = false;
-                r.Parameters["condicion"].Visible = false;
-                r.Parameters["condicion"].Value = Cond;
-                r.Parameters["empresa"].Visible = false;
-                r.Parameters["empresa"].Value = emp.Razon;
-                r.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
-
-                r.DataSource = DataSum;
-                Documento doc = new Documento("", 0);
-                doc.ShowDocument(r);
-
-                //Hashtable data = new Hashtable();
-                //RptResumenPrevired resumen = new RptResumenPrevired();
-                //if (cbTodos.Checked == false)
-                //{
-                //    //SE CALCULA EN BASE A CONJUNTO (SUPONER QUE EL CONJUNTO INGRESADO EXISTE)
-                //    if (txtConjunto.Text != "")
-                //    {
-                //        if (Conjunto.ExisteConjunto(txtConjunto.Text) == false)
-                //        { XtraMessageBox.Show("Conjunto ingresado no existe", "informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); txtConjunto.Focus(); return; }
-
-                //        //resumen.Parameters["periodo"].Value = txtComboPeriodo.Text;
-                //        //resumen.Parameters["empresa"].Value = emp.Razon;
-                //        //resumen.Parameters["empresa"].Visible = false;
-                //        //resumen.Parameters["periodo"].Visible = false;                
-
-                //        //DataSourceResumen(Convert.ToInt32(txtComboPeriodo.EditValue), resumen, txtConjunto.Text);
-                //        SqlReportePrev(Convert.ToInt32(txtComboPeriodo.EditValue), txtConjunto.Text);
-                //    }
-                //    else
-                //    {
-                //        XtraMessageBox.Show("Por favor selecciona un conjunto valido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //        txtConjunto.Focus();                     
-                //        return;
-                //    }
-                //}
-                //else
-                //{
-                //    resumen.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(Convert.ToInt32(txtComboPeriodo.EditValue))));
-                //    resumen.Parameters["empresa"].Value = emp.Razon;
-                //    resumen.Parameters["empresa"].Visible = false;
-                //    resumen.Parameters["periodo"].Visible = false;
-
-                //    //DataSourceResumen(Convert.ToInt32(txtComboPeriodo.EditValue), resumen, "");
-                //    SqlReportePrev(Convert.ToInt32(txtComboPeriodo.EditValue), "");
-                //}                              
-            }
-            else
-            {
-                XtraMessageBox.Show("Ingresa un periodo valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
+            MostrarReporte();
         }
 
         private void DataSourceResumen(int pPeriodo, XtraReport reporte, string pCodeConjunto)
@@ -615,7 +492,9 @@ namespace Labour
             SqlCommand cmd;
             SqlDataAdapter ad = new SqlDataAdapter();
             DataSet ds = new DataSet();
-            RptResumenPreviredV2 resumen = new RptResumenPreviredV2();
+            //RptResumenPreviredV2 resumen = new RptResumenPreviredV2();
+            ReportesExternos.RptResumenPreviredV2 resumen = new ReportesExternos.RptResumenPreviredV2();
+            resumen.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "RptResumenPreviredV2.repx"));
             string Cond = "", Filtro = "";
             Empresa emp = new Empresa();
             emp.SetInfo();
@@ -667,6 +546,7 @@ namespace Labour
                                 resumen.Parameters["empresa"].Visible = false;
 
                                 Documento doc = new Documento("", 0);
+                                //resumen.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "RptResumenPreviredV2.repx"));
                                 doc.ShowDocument(resumen);
                             }
                         }
@@ -1391,6 +1271,153 @@ namespace Labour
         private void groupControl1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void MostrarReporte(bool editar = false) 
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            if (txtComboPeriodo.Properties.DataSource != null)
+            {
+                if (Calculo.PeriodoValido(Convert.ToInt32(txtComboPeriodo.EditValue)) == false)
+                { XtraMessageBox.Show("Periodo ingresado no valido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtComboPeriodo.Focus(); return; }
+
+                if (ListadoPersona(Convert.ToInt32(txtComboPeriodo.EditValue)) == null)
+                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+                Empresa emp = new Empresa();
+                emp.SetInfo();
+
+                List<ReportePrevired> DataSum = new List<ReportePrevired>();
+                string Cond = "";
+
+                Cursor = Cursors.WaitCursor;
+
+                if (PreviredData.Count == 0)
+                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+                if (PreviredData.Count > 0)
+                {
+                    DataSum = PreviredData.GroupBy(x => x.Entidad).
+                        Select(x => new ReportePrevired
+                        {
+                            Cotizacion = x.Sum(y => y.Cotizacion),
+                            CotizacionAfp = x.Sum(y => y.CotizacionAfp),
+                            CotizacionIps = x.Sum(y => y.CotizacionIps),
+                            CotizacionFonasa = x.Sum(y => y.CotizacionFonasa),
+                            CotizacionIsapre = x.Sum(y => y.CotizacionIsapre),
+                            AdicionalIsapre = x.Sum(y => y.AdicionalIsapre),
+                            AhorroPrevisional = x.Sum(y => y.AhorroPrevisional),
+                            AhorroVoluntario = x.Sum(y => y.AhorroVoluntario),
+                            Prestamo = x.Sum(y => y.Prestamo),
+                            SeguroVida = x.Sum(y => y.SeguroVida),
+                            Leasing = x.Sum(y => y.Leasing),
+                            Entidad = x.First().Entidad,
+                            Caja = x.Sum(y => y.Caja),
+                            AsignacionFam = x.Sum(y => y.AsignacionFam),
+                            Mutal = x.Sum(y => y.Mutal),
+                            SegAfiliado = x.Sum(y => y.SegAfiliado),
+                            SegEmpresa = x.Sum(y => y.SegEmpresa),
+                            SegInv = x.Sum(y => y.SegInv),
+                            Tipo = x.First().Tipo,
+                            Area = x.First().Area,
+                            Cargo = x.First().Cargo,
+                            CentroCosto = x.First().CentroCosto,
+                            Sucursal = x.First().Sucursal
+
+
+                        }).ToList();
+
+                }
+
+                Cursor = Cursors.Default;
+                if (DataSum.Count == 0)
+                { XtraMessageBox.Show("No se encontró información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+                if (txtConjunto.Text.Length > 0 && User.GetUserFilter().Length > 0)
+                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter()) + ";" + Conjunto.GetCondicionFromCode(txtConjunto.Text);
+                    Cond = Labour.Conjunto.GetDescConjunto(txtConjunto.Text);
+                else if (User.GetUserFilter().Length > 0)
+                    //Cond = Conjunto.GetCondicionFromCode(User.GetUserFilter());
+                    Cond = Labour.Conjunto.GetDescConjunto(User.GetUserFilter());
+                else if (User.GetUserFilter().Length == 0)
+                    Cond = "";
+
+                //RptPreviredRes r = new RptPreviredRes();
+                //Reporte externo
+                ReportesExternos.rptPreviredRes r = new ReportesExternos.rptPreviredRes();
+                r.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPreviredRes.repx"));
+                foreach (DevExpress.XtraReports.Parameters.Parameter parametro in r.Parameters)
+                {
+                    parametro.Visible = false;
+                }
+
+                r.Parameters["periodo"].Value = txtComboPeriodo.Text;
+                r.Parameters["condicion"].Value = Cond;
+                r.Parameters["empresa"].Value = emp.Razon;
+
+                r.DataSource = DataSum;
+                Documento doc = new Documento("", 0);
+                //r.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptPreviredRes.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(r, "rptPreviredRes.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    doc.ShowDocument(r);
+                }
+                
+
+                //Hashtable data = new Hashtable();
+                //RptResumenPrevired resumen = new RptResumenPrevired();
+                //if (cbTodos.Checked == false)
+                //{
+                //    //SE CALCULA EN BASE A CONJUNTO (SUPONER QUE EL CONJUNTO INGRESADO EXISTE)
+                //    if (txtConjunto.Text != "")
+                //    {
+                //        if (Conjunto.ExisteConjunto(txtConjunto.Text) == false)
+                //        { XtraMessageBox.Show("Conjunto ingresado no existe", "informacion", MessageBoxButtons.OK, MessageBoxIcon.Information); txtConjunto.Focus(); return; }
+
+                //        //resumen.Parameters["periodo"].Value = txtComboPeriodo.Text;
+                //        //resumen.Parameters["empresa"].Value = emp.Razon;
+                //        //resumen.Parameters["empresa"].Visible = false;
+                //        //resumen.Parameters["periodo"].Visible = false;                
+
+                //        //DataSourceResumen(Convert.ToInt32(txtComboPeriodo.EditValue), resumen, txtConjunto.Text);
+                //        SqlReportePrev(Convert.ToInt32(txtComboPeriodo.EditValue), txtConjunto.Text);
+                //    }
+                //    else
+                //    {
+                //        XtraMessageBox.Show("Por favor selecciona un conjunto valido", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        txtConjunto.Focus();                     
+                //        return;
+                //    }
+                //}
+                //else
+                //{
+                //    resumen.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(Convert.ToInt32(txtComboPeriodo.EditValue))));
+                //    resumen.Parameters["empresa"].Value = emp.Razon;
+                //    resumen.Parameters["empresa"].Visible = false;
+                //    resumen.Parameters["periodo"].Visible = false;
+
+                //    //DataSourceResumen(Convert.ToInt32(txtComboPeriodo.EditValue), resumen, "");
+                //    SqlReportePrev(Convert.ToInt32(txtComboPeriodo.EditValue), "");
+                //}                              
+            }
+            else
+            {
+                XtraMessageBox.Show("Ingresa un periodo valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            MostrarReporte(editar:true);
         }
     }
 }

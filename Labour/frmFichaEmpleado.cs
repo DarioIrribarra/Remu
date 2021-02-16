@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Labour
 {
@@ -100,7 +101,7 @@ namespace Labour
         }
 
         //FICHA EMPLEADO ARCHIVO PDF
-        private void FichaEmpleado(string contrato, int periodo, bool? ImpresionRapida = false, bool? GeneraPdf = false)
+        private void FichaEmpleado(string contrato, int periodo, bool? ImpresionRapida = false, bool? GeneraPdf = false, bool editar = false)
         {
 
             Empresa emp = new Empresa();
@@ -111,7 +112,9 @@ namespace Labour
             if (ds.Tables[0].Rows.Count > 0)
             {
                 //PASAMOS COMO DATASOURCE EL DATASET A REPORTE
-                rptTrabajador ficha = new rptTrabajador();
+                //rptTrabajador ficha = new rptTrabajador();
+                ReportesExternos.rptTrabajador ficha = new ReportesExternos.rptTrabajador();
+                ficha.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
                 ficha.DataSource = ds.Tables[0];
                 ficha.DataMember = "ficha";
 
@@ -122,16 +125,27 @@ namespace Labour
                 }
 
                 ficha.Parameters["empresa"].Value = emp.Razon;
-                //ficha.Parameters["empresa"].Visible = false;
 
                 Documento d = new Documento("", 0);
 
-                if ((bool)ImpresionRapida)
-                    d.PrintDocument(ficha);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(ficha, $"Ficha_{contrato}");
-                else
-                    d.ShowDocument(ficha);
+
+                //ficha.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptTrabajador.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(ficha, "rptTrabajador.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)ImpresionRapida)
+                        d.PrintDocument(ficha);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(ficha, $"Ficha_{contrato}");
+                    else
+                        d.ShowDocument(ficha);
+                }
+                
             }
 
         }
@@ -166,6 +180,14 @@ namespace Labour
             { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
 
             FichaEmpleado(NumeroContrato, Periodo, false, true);
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            if (objeto.ValidaAcceso(User.GetUserGroup(), "rptfichatrabajador") == false)
+            { XtraMessageBox.Show("No tienes los privilegios necesarios para utilizar esta funcion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            FichaEmpleado(NumeroContrato, Periodo, editar:true);
         }
     }
 }

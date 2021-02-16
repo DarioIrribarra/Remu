@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using System.IO;
 
 namespace Labour
 {
@@ -477,7 +478,7 @@ namespace Labour
             }
         }
 
-        private void MostrarReporte(int pPeriodo, bool? Imprime = false, bool? GeneraPdf=false)
+        private void MostrarReporte(int pPeriodo, bool? Imprime = false, bool? GeneraPdf=false, bool editar = false)
         {       
             if (DataSourceReport.Tables[0].Rows.Count > 0)
             {
@@ -485,8 +486,10 @@ namespace Labour
                 pTabla = DataSourceReport.Tables[0];
 
                 //TestRptResumenProcesoExterno res = new TestRptResumenProcesoExterno();
-                ReportesExternos.rptResumenProcesov2 res = new ReportesExternos.rptResumenProcesov2();
                 //RptResumenProcesov2 res = new RptResumenProcesov2();
+                ReportesExternos.rptResumenProcesov2 res = new ReportesExternos.rptResumenProcesov2();
+                res.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptResumenProcesov2.repx"));
+
                 res.DataSource = DataSourceReport.Tables[0];
                 res.DataSource = pTabla;
                 res.DataMember = "tabla";
@@ -503,17 +506,25 @@ namespace Labour
                 res.Parameters["periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo)));
                 res.Parameters["empresa"].Value = emp.Razon;
                 res.Parameters["condicion"].Value = NombreCondicion;
-                //Pasar la imagen al reporte dll como parámetro
-                res.Parameters["imagen"].Value = Imagen.GetLogoFromBd();
 
                 Documento d = new Documento("", 0);
-
-                if ((bool)Imprime)
-                    d.PrintDocument(res);
-                else if ((bool)GeneraPdf)
-                    d.ExportToPdf(res, $"ResumenProceso_{fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo))}");
-                else
-                    d.ShowDocument(res);
+                //res.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptResumenProcesov2.repx"));
+                if (editar)
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    //Se le pasa el waitform para que se cierre una vez cargado
+                    DiseñadorReportes.MostrarEditorLimitado(res, "rptResumenProcesov2.repx", splashScreenManager1);
+                }
+                else 
+                {
+                    if ((bool)Imprime)
+                        d.PrintDocument(res);
+                    else if ((bool)GeneraPdf)
+                        d.ExportToPdf(res, $"ResumenProceso_{fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo))}");
+                    else
+                        d.ShowDocument(res);
+                }
+                
             }        
         }
 
@@ -786,6 +797,28 @@ namespace Labour
             Sesion.NuevaActividad();
 
             Close();
+        }
+
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            //NUEVA ACTIVIDAD DE SESION
+            Sesion.NuevaActividad();
+
+            Cursor.Current = Cursors.WaitCursor;
+            if (txtComboPeriodo.Properties.DataSource != null)
+            {
+                //ShowResumenProceso(Convert.ToInt32(txtPeriodo.Text));
+                //ImprimeDocumento(Convert.ToInt32(txtPeriodo.Text));
+                if (Calculo.PeriodoValido(Convert.ToInt32(txtComboPeriodo.EditValue)) == false)
+                { XtraMessageBox.Show("Selecciona un periodo valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); txtComboPeriodo.Focus(); return; }
+
+                MostrarReporte(Convert.ToInt32(txtComboPeriodo.EditValue), editar:true);
+            }
+            else
+            {
+                XtraMessageBox.Show("Por favor ingresa un periodo a evaluar", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtComboPeriodo.Focus();
+            }
         }
     }
 
