@@ -16,6 +16,7 @@ using System.Diagnostics;
 using BancoItau;
 using System.Globalization;
 using System.Collections;
+using DevExpress.XtraReports.UI;
 
 namespace Labour
 {
@@ -401,13 +402,21 @@ namespace Labour
         /// <param name="pCoditem">Codigo item seleccionado.</param>
         /// <param name="pPeriodo">CMes consultado.</param>
         /// <param name="pBank">Nombre banco seleccionado en combobox.</param>
-        private rptNominasBanco CreateReport(string pSql, string pCoditem, int pPeriodo, string pBank)
+        private XtraReport CreateReport(string pSql, string pCoditem, int pPeriodo, string pBank)
         {
             SqlConnection cn;
             SqlCommand cmd;
             SqlDataAdapter ad = new SqlDataAdapter();
             DataSet ds = new DataSet();
-            rptNominasBanco report = new rptNominasBanco();
+            //rptNominasBanco report = new rptNominasBanco();
+            ReportesExternos.rptNominasBanco report = new ReportesExternos.rptNominasBanco();
+            //report.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptNominasBanco.repx"));
+
+            foreach (var parametro in report.Parameters)
+            {
+                parametro.Visible = false;
+            }
+
             if (pSql.Length > 0)
             {
                 try
@@ -433,10 +442,7 @@ namespace Labour
                                     report.DataSource = ds.Tables[0];
                                     report.DataMember = "data";
 
-                                    //PARAMETROS REPORTE
-                                    report.Parameters["NombreBanco"].Visible = false;
-                                    report.Parameters["Periodo"].Visible = false;
-                                    report.Parameters["Item"].Visible = false;
+                                    
                                     report.Parameters["NombreBanco"].Value = pBank;
                                     report.Parameters["Periodo"].Value = fnSistema.PrimerMayuscula(fnSistema.FechaFormatoSoloMes(fnSistema.FechaPeriodo(pPeriodo)));
                                     report.Parameters["Item"].Value = pCoditem;
@@ -453,7 +459,7 @@ namespace Labour
                     XtraMessageBox.Show(ex.Message);
                 }
             }
-
+            //report.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptNominasBanco.repx"));
             return report;
         }
 
@@ -463,7 +469,8 @@ namespace Labour
             Cursor.Current = Cursors.AppStarting;
 
             string condition = "", SqlReporte = "";
-            rptNominasBanco report;
+            //rptNominasBanco report;
+            ReportesExternos.rptNominasBanco report;
             Documento doc = new Documento("", 0);
 
             if (txtItem.Properties.DataSource == null || txtBanco.Properties.DataSource == null)
@@ -489,7 +496,7 @@ namespace Labour
                     SqlReporte = SqlReporte.Replace("{condicion}", condition);
 
                     //GENERAMOS REPORTE
-                    report = CreateReport(SqlReporte, txtItem.EditValue.ToString(), Convert.ToInt32(txtPeriodo.Text), NombreBanco);
+                    report = (ReportesExternos.rptNominasBanco)CreateReport(SqlReporte, txtItem.EditValue.ToString(), Convert.ToInt32(txtPeriodo.Text), NombreBanco);
                     if (report.DataSource != null)
                         doc.ShowDocument(report);
                 }
@@ -517,7 +524,7 @@ namespace Labour
                     SqlReporte = SqlReporte.Replace("{condicion}", condition);
 
                     //GENERAMOS REPORTE
-                    report = CreateReport(SqlReporte, txtItem.EditValue.ToString(), Convert.ToInt32(txtPeriodo.Text), NombreBanco);
+                    report = (ReportesExternos.rptNominasBanco)CreateReport(SqlReporte, txtItem.EditValue.ToString(), Convert.ToInt32(txtPeriodo.Text), NombreBanco);
                     if (report.DataSource != null)
                         doc.ShowDocument(report);
                 }

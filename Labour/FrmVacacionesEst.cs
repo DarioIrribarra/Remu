@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Collections;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
+using System.IO;
 
 namespace Labour
 {
@@ -93,7 +94,7 @@ namespace Labour
             }
         }
 
-        private void Busqueda(DateTime pFechaTope, string pCond)
+        private void Busqueda(DateTime pFechaTope, string pCond, bool editar = false)
         {
             string cond = "";
             cond = Calculo.GetSqlFiltro(User.GetUserFilter(), pCond, User.ShowPrivadas());
@@ -197,7 +198,10 @@ namespace Labour
 
 
             //Pasamos cono dartasource a reporte
-            RptVacEst va = new RptVacEst();
+            //RptVacEst va = new RptVacEst();
+            ReportesExternos.rptVacEst va = new ReportesExternos.rptVacEst();
+            va.LoadLayoutFromXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptVacEst.repx"));
+
             va.DataSource = DataSource;
 
             va.Parameters["condicion"].Visible = false;
@@ -250,7 +254,18 @@ namespace Labour
 
             Cursor = Cursors.Default;
             Documento doc = new Documento("", 0);
-            doc.ShowDocument(va);
+            //va.SaveLayoutToXml(Path.Combine(fnSistema.RutaCarpetaReportesExterno, "rptVacEst.repx"));
+            if (editar)
+            {
+                splashScreenManager1.ShowWaitForm();
+                //Se le pasa el waitform para que se cierre una vez cargado
+                DiseñadorReportes.MostrarEditorLimitado(va, "rptVacEst.repx", splashScreenManager1);
+            }
+            else 
+            {
+                doc.ShowDocument(va);
+            }
+            
 
 
         }
@@ -311,6 +326,26 @@ namespace Labour
             return List;
         }
 
-    
+        private void btnEditarReporte_Click(object sender, EventArgs e)
+        {
+            if (dtFecha.EditValue == null)
+            { XtraMessageBox.Show("Por favor selecciona una fecha válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); return; }
+
+            Cursor = Cursors.WaitCursor;
+            if (cbtodos.Checked)
+            {
+                //Consultamos para todos los registros del periodo
+                Busqueda(dtFecha.DateTime, "", editar: true);
+            }
+            else
+            {
+                //Buscamos en base a condicion
+                if (txtConjunto.Text == "" || Conjunto.ExisteConjunto(txtConjunto.Text) == false)
+                { XtraMessageBox.Show("Por favor selecciona un conjunto válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop); txtConjunto.Focus(); return; }
+
+                Busqueda(dtFecha.DateTime, txtConjunto.Text, editar:true);
+
+            }
+        }
     }
 }

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.12.0" Ref="0" ControlType="BancoItau.rptBancoItau, BancoItau, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Margins="49, 39, 25, 60" PageWidth="850" PageHeight="1100" Version="18.1" EventsInfo="xrTable1,BeforePrint,xrTable1_BeforePrint;Detail,BeforePrint,Detail_BeforePrint;imgLogo,BeforePrint,imgLogo_BeforePrint">
+  <Parameters>
+    <Item1 Ref="2" Visible="false" Description="Razon de la empresa" ValueInfo="SOPORTE Y TECNOLOGIA SOPYTEC S.A" Name="nombreEmpresa" />
+    <Item2 Ref="3" Visible="false" Description="Rut de la empresa" ValueInfo="76.008.781-5" Name="rutEmpresa" />
+    <Item3 Ref="4" Visible="false" Description="Dirección de la empresa" ValueInfo="PEDRO DE LA GASCA # 19" Name="direccionEmpresa" />
+    <Item4 Ref="5" Visible="false" Description="Ciudad de la empresa" ValueInfo="Concepción" Name="ciudadEmpresa" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="6" ControlType="DetailBand" Name="Detail" HeightF="206.25" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="7" ControlType="XRTable" Name="xrTable1" TextAlignment="TopCenter" SizeF="761.9999,29.16667" LocationFloat="0, 0">
+          <Rows>
+            <Item1 Ref="8" ControlType="XRTableRow" Name="xrTableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="9" ControlType="XRTableCell" Name="xrTableCell1" Weight="0.88582585225356736" CanShrink="true" Multiline="true" Text="RUT" TextAlignment="MiddleLeft" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="10" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="11" ControlType="XRTableCell" Name="xrTableCell2" Weight="1.1141741477464326" Multiline="true" Text="NOMBRE" TextAlignment="MiddleLeft" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="12" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="13" ControlType="XRTableCell" Name="xrTableCell3" Weight="1" Multiline="true" Text="BANCO" TextAlignment="MiddleLeft" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="14" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="15" ControlType="XRTableCell" Name="xrTableCell4" Weight="1" Multiline="true" Text="TIPO " TextAlignment="MiddleLeft" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="16" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="17" ControlType="XRTableCell" Name="xrTableCell5" Weight="1" Multiline="true" Text="NÚMERO" TextAlignment="MiddleLeft" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="18" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="19" ControlType="XRTableCell" Name="xrTableCell6" Weight="1" Multiline="true" Text="MONTO" TextAlignment="MiddleRight" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="20" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="21" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item1>
+    <Item2 Ref="22" ControlType="TopMarginBand" Name="TopMargin" HeightF="25" TextAlignment="TopLeft" Padding="0,0,0,0,100" />
+    <Item3 Ref="23" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="60" TextAlignment="TopLeft" Padding="0,0,0,0,100">
+      <Controls>
+        <Item1 Ref="24" ControlType="XRPageInfo" Name="xrPageInfo2" PageInfo="DateTime" TextFormatString="{0:d 'de' MMMM 'de' yyyy}" SizeF="291.67,23" LocationFloat="0, 0" Padding="2,2,0,0,100" />
+        <Item2 Ref="25" ControlType="XRPageInfo" Name="xrPageInfo1" TextFormatString="Página {0} de {1}" TextAlignment="TopRight" SizeF="126.4583,23" LocationFloat="634.9999, 0" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="26" UseFont="false" />
+        </Item2>
+      </Controls>
+    </Item3>
+    <Item4 Ref="27" ControlType="PageHeaderBand" Name="PageHeader" HeightF="147.2917">
+      <Controls>
+        <Item1 Ref="28" ControlType="XRLabel" Name="xrLabel4" Multiline="true" Text="xrLabel4" SizeF="472.92,12.66" LocationFloat="90.62503, 37.97998" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="29" Expression="[Parameters].[ciudadEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item1>
+        <Item2 Ref="30" ControlType="XRLabel" Name="xrLabel3" Multiline="true" Text="xrLabel3" SizeF="472.92,12.66" LocationFloat="90.625, 25.31999" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="31" Expression="[Parameters].[direccionEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item2>
+        <Item3 Ref="32" ControlType="XRLabel" Name="xrLabel2" Multiline="true" Text="xrLabel2" SizeF="201.045,12.66" LocationFloat="90.625, 12.66" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="33" Expression="[Parameters].[rutEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item3>
+        <Item4 Ref="34" ControlType="XRLabel" Name="xrLabel1" Multiline="true" Text="xrLabel1" SizeF="515.6283,12.66" LocationFloat="90.625, 0" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="35" Expression="[Parameters].[nombreEmpresa]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item4>
+        <Item5 Ref="36" ControlType="XRLabel" Name="xrLabel8" Text="Pago de Nómina Banco Itaú" AnchorHorizontal="Both" TextAlignment="TopCenter" SizeF="761.9999,26.69273" LocationFloat="0.0001271566, 73.30726" Font="Times New Roman, 15.99pt, style=Bold" Padding="2,2,0,0,100" Borders="None">
+          <StylePriority Ref="37" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="38" ControlType="XRPictureBox" Name="imgLogo" SizeF="90.625,60.5" LocationFloat="0, 0" />
+        <Item7 Ref="39" ControlType="XRTable" Name="xrTable2" TextAlignment="TopCenter" SizeF="761.9999,34.79166" LocationFloat="0, 112.5" Borders="All">
+          <Rows>
+            <Item1 Ref="40" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="41" ControlType="XRTableCell" Name="xrTableCell7" Weight="0.31496070040175883" CanShrink="true" Multiline="true" Text="RUT" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="42" UseFont="false" />
+                </Item1>
+                <Item2 Ref="43" ControlType="XRTableCell" Name="xrTableCell8" Weight="1.6850392995982411" Multiline="true" Text="NOMBRE" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="44" UseFont="false" />
+                </Item2>
+                <Item3 Ref="45" ControlType="XRTableCell" Name="xrTableCell9" Weight="1" Multiline="true" Text="BANCO" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="46" UseFont="false" />
+                </Item3>
+                <Item4 Ref="47" ControlType="XRTableCell" Name="xrTableCell10" Weight="1" Multiline="true" Text="TIPO &#xD;&#xA;CUENTA" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="48" UseFont="false" UsePadding="false" />
+                </Item4>
+                <Item5 Ref="49" ControlType="XRTableCell" Name="xrTableCell11" Weight="1" Multiline="true" Text="NÚMERO&#xD;&#xA;CUENTA" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="50" UseFont="false" UsePadding="false" />
+                </Item5>
+                <Item6 Ref="51" ControlType="XRTableCell" Name="xrTableCell12" Weight="1" Multiline="true" Text="MONTO" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="52" UseFont="false" UsePadding="false" />
+                </Item6>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="53" UseBorders="false" UseTextAlignment="false" />
+        </Item7>
+      </Controls>
+    </Item4>
+  </Bands>
+</XtraReportsLayoutSerializer>

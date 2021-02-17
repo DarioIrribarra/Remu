@@ -116,6 +116,7 @@ namespace Labour
         public static string setRutaCarpetaReportesExternos() 
         {
             RutaCarpetaReportesExterno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"RemuneracionesSopytec\Reportes");
+            BancoItau.Configuracion.RutaCarpetaReportesExterno = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"RemuneracionesSopytec\Reportes");
             if (!Directory.Exists(RutaCarpetaReportesExterno)) 
             {
                 Directory.CreateDirectory(RutaCarpetaReportesExterno);
