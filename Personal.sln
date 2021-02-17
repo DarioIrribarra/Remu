@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personal", "Labour\Personal.csproj", "{537EC716-751D-4D64-8B6C-EFDE5A06177C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportesExternos", "SlnReportesExternos\ReportesExternos\ReportesExternos.csproj", "{819DBD32-1AC8-4D80-95CA-E0D96392B31D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BancoItau", "BancoItau\BancoItau\BancoItau.csproj", "{DC71621C-F62B-46AC-AF1E-4FD96B00891E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{537EC716-751D-4D64-8B6C-EFDE5A06177C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{537EC716-751D-4D64-8B6C-EFDE5A06177C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{537EC716-751D-4D64-8B6C-EFDE5A06177C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{819DBD32-1AC8-4D80-95CA-E0D96392B31D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819DBD32-1AC8-4D80-95CA-E0D96392B31D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819DBD32-1AC8-4D80-95CA-E0D96392B31D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819DBD32-1AC8-4D80-95CA-E0D96392B31D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC71621C-F62B-46AC-AF1E-4FD96B00891E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC71621C-F62B-46AC-AF1E-4FD96B00891E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC71621C-F62B-46AC-AF1E-4FD96B00891E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC71621C-F62B-46AC-AF1E-4FD96B00891E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,8 +22,9 @@
 #archivos de la carpeta debug, excepto los que tienen !
 #además va ignorando en orden descendente
 
-#Ignora todos los archivos de Debug
+#Ignora todos los archivos de Debug y Release
 **/[Dd]ebug/*
+**/[Rr]elease/*
 #No ignora los archivos que terminen en .sqlite
 !**/[Dd]ebug/*.sqlite
 #No ignora archivos que terminen en .dll

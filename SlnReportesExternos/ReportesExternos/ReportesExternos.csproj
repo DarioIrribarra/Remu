@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{819DBD32-1AC8-4D80-95CA-E0D96392B31D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ReportesExternos</RootNamespace>
+    <AssemblyName>ReportesExternos</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.12.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fnSistema.cs" />
+    <Compile Include="PlanillaAFP.cs" />
+    <Compile Include="PlanillaCaja.cs" />
+    <Compile Include="PlanillaIsapre.cs" />
+    <Compile Include="PlanillaMutual.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RContable.cs" />
+    <Compile Include="ReporteContable.cs" />
+    <Compile Include="ReportePrevired.cs" />
+    <Compile Include="rptAntiguedad.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptAntiguedad.designer.cs">
+      <DependentUpon>rptAntiguedad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptAusentismo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptAusentismo.Designer.cs">
+      <DependentUpon>rptAusentismo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptCargaFamiliar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptCargaFamiliar.designer.cs">
+      <DependentUpon>rptCargaFamiliar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptCertificadoRentas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptCertificadoRentas.designer.cs">
+      <DependentUpon>rptCertificadoRentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptComprobanteAusentismo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptComprobanteAusentismo.designer.cs">
+      <DependentUpon>rptComprobanteAusentismo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptComprobanteVacacion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptComprobanteVacacion.designer.cs">
+      <DependentUpon>rptComprobanteVacacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptContable2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptContable2.designer.cs">
+      <DependentUpon>rptContable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptDeclaracionJurada.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptDeclaracionJurada.designer.cs">
+      <DependentUpon>rptDeclaracionJurada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptDetalleItemv2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptDetalleItemv2.designer.cs">
+      <DependentUpon>rptDetalleItemv2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLibroRemuneraciones.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLibroRemuneraciones.designer.cs">
+      <DependentUpon>rptLibroRemuneraciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLiquidacion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLiquidacion.designer.cs">
+      <DependentUpon>rptLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLiquidacion2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLiquidacion2.designer.cs">
+      <DependentUpon>rptLiquidacion2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptLiquidacionHistorica.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptLiquidacionHistorica.designer.cs">
+      <DependentUpon>rptLiquidacionHistorica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptMovimiento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptMovimiento.designer.cs">
+      <DependentUpon>rptMovimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptNominasBanco.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptNominasBanco.designer.cs">
+      <DependentUpon>rptNominasBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPlanillaAfp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPlanillaAfp.designer.cs">
+      <DependentUpon>rptPlanillaAfp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPlanillaCaja.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPlanillaCaja.designer.cs">
+      <DependentUpon>rptPlanillaCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPlanillaIsapre.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPlanillaIsapre.designer.cs">
+      <DependentUpon>rptPlanillaIsapre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPlanillaMutual.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPlanillaMutual.designer.cs">
+      <DependentUpon>rptPlanillaMutual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptPreviredRes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPreviredRes.designer.cs">
+      <DependentUpon>rptPreviredRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RptResumenPreviredV2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptResumenPreviredV2.designer.cs">
+      <DependentUpon>RptResumenPreviredV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptResumenProcesov2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptResumenProcesov2.designer.cs">
+      <DependentUpon>rptResumenProcesov2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptSubAportesLiq.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSubAportesLiq.designer.cs">
+      <DependentUpon>rptSubAportesLiq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptSubDescuentosLiq.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptSubDescuentosLiq.designer.cs">
+      <DependentUpon>rptSubDescuentosLiq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptTrabajador.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptTrabajador.designer.cs">
+      <DependentUpon>rptTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptVacacion.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptVacacion.designer.cs">
+      <DependentUpon>rptVacacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptVacEst.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptVacEst.designer.cs">
+      <DependentUpon>rptVacEst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VacEst.cs" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="rptAntiguedad.resx">
+      <DependentUpon>rptAntiguedad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptAusentismo.resx">
+      <DependentUpon>rptAusentismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptCargaFamiliar.resx">
+      <DependentUpon>rptCargaFamiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptCertificadoRentas.resx">
+      <DependentUpon>rptCertificadoRentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptComprobanteAusentismo.resx">
+      <DependentUpon>rptComprobanteAusentismo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptComprobanteVacacion.resx">
+      <DependentUpon>rptComprobanteVacacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptContable2.resx">
+      <DependentUpon>rptContable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDeclaracionJurada.resx">
+      <DependentUpon>rptDeclaracionJurada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDetalleItemv2.resx">
+      <DependentUpon>rptDetalleItemv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLibroRemuneraciones.resx">
+      <DependentUpon>rptLibroRemuneraciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLiquidacion.resx">
+      <DependentUpon>rptLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLiquidacion2.resx">
+      <DependentUpon>rptLiquidacion2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptLiquidacionHistorica.resx">
+      <DependentUpon>rptLiquidacionHistorica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptMovimiento.resx">
+      <DependentUpon>rptMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptNominasBanco.resx">
+      <DependentUpon>rptNominasBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPlanillaAfp.resx">
+      <DependentUpon>rptPlanillaAfp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPlanillaCaja.resx">
+      <DependentUpon>rptPlanillaCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPlanillaIsapre.resx">
+      <DependentUpon>rptPlanillaIsapre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPlanillaMutual.resx">
+      <DependentUpon>rptPlanillaMutual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptPreviredRes.resx">
+      <DependentUpon>rptPreviredRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptResumenPreviredV2.resx">
+      <DependentUpon>RptResumenPreviredV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptResumenProcesov2.resx">
+      <DependentUpon>rptResumenProcesov2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSubAportesLiq.resx">
+      <DependentUpon>rptSubAportesLiq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptSubDescuentosLiq.resx">
+      <DependentUpon>rptSubDescuentosLiq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptTrabajador.resx">
+      <DependentUpon>rptTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptVacacion.resx">
+      <DependentUpon>rptVacacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptVacEst.resx">
+      <DependentUpon>rptVacEst.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SinFoto.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
